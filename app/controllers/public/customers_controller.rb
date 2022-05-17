@@ -5,6 +5,12 @@ class Public::CustomersController < ApplicationController
   def edit
   end
 
+  def update
+  end
+
   def quit_check
+  end
+
+  def withdraw
   end
 end
