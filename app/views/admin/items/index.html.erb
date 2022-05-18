@@ -19,12 +19,12 @@
             <tr>
               <td><%= item.id %></td>
               <td>
-                <%= link_to admin_item_path(item_id) do %>
+                <%= link_to admin_item_path(item) do %>
                   <%= item.name %>
                 <% end %>
               </td>
               <td><%= item.no_tax_price %></td>
-              <td><%= item.genre_name %></td>
+              <td><%= item.genre.name %></td>
               <td><%= item.salling_status %></td>
             </tr>
           <% end %>
