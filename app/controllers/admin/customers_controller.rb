@@ -10,7 +10,7 @@ class Admin::CustomersController < ApplicationController
   def edit
     @customer = Customer.find(params[:id])
   end
-  
+
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
@@ -19,7 +19,7 @@ class Admin::CustomersController < ApplicationController
       render "edit"
     end
   end
-  
+
   private
 
   def customer_params
