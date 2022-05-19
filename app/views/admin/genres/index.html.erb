@@ -1,28 +1,42 @@
 <div class="container">
   <div class="row">
-    <h5>ジャンル一覧・追加</h5>
-    <%= form_with model: @genre, url: '/admin/genres', method: :post, local:false do |f| %>
-      <div class="form-group">
-        <span>ジャンル名</span>
-        <%= f.text_field :name, class: 'form-control', placeholder: "ジャンル名" %>
-        <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
+    <div class="col-md-3 offset-md-1">
+      <h5 class="text-center" style='background-color: #e6e6e6;'>ジャンル一覧・追加</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%= form_with model: @genre, url: '/admin/genres', method: :post, local:false do |f| %>
+      <div class="row my-4">
+        <div class="col-md-2 my-auto text-center">
+          ジャンル名
+        </div>
+        <div class="col-md-4 my-auto">
+          <%= f.text_field :name, class: 'form-control', placeholder: "ジャンル名" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.submit "新規登録", class: 'btn btn-success btn-lg btn-block' %>
+        </div>
       </div>
-    <% end %>
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th>ジャンル</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @genres.each do |genre| %>
-         <tr>
-           <td><%= genre.name %></td>
-           <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success" %></td>
-         </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <% end %>
+      <table class="table col-md-6">
+        <thead class="thead-light">
+          <tr>
+            <th>ジャンル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+           <tr>
+             <td><%= genre.name %></td>
+             <td>
+               <%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success btn-block" %>
+              </td>
+           </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
