@@ -21,7 +21,7 @@
             <%= link_to 'ジャンル一覧', admin_genres_path,class: 'ml-4 text-light btn btn-outline-light'%>
           </li>
           <li>
-            <%= link_to 'ログアウト', destroy_admin_session_path, class: 'ml-4 text-light btn btn-outline-light' %>
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,  class: 'ml-4 text-light btn btn-outline-light' %>
           </li>
         </ul>
         <% elsif customer_signed_in? %>
