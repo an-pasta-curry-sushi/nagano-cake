@@ -22,7 +22,8 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer = current_customer
-    if @customer.update(withdraw_params)
+    if @customer.update(is_active: false)
+      reset_session
       redirect_to root_path
     else
       render "quit_check"
@@ -35,7 +36,4 @@ class Public::CustomersController < ApplicationController
     params.require(:customer).permit(:last_name, :first_name, :last_name_easy, :first_name_easy, :postal_code, :address, :phone_number, :email)
   end
 
-  def withdraw_params
-    params.require(:customer).permit(:is_active)
-  end
 end
