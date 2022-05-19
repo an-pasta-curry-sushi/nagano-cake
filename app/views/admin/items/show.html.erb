@@ -1,20 +1,20 @@
 <div class='container'>
+  <h3 class='mt-4 mb-4'>商品詳細</h3>
   <div class='row'>
-    <div class='col-md-5'>
+    <div class='col-md-3'>
       <%= image_tag @item.get_item_image, size: '200x200' %>
     </div>
-    <div class='col-md-8'>
-      <h3>商品詳細</h3>
+    <div class='col'>
       <div class='table'>
         <table>
-          <tr><td>商品名</td><td><%= @item.name %></td></tr>
-          <tr><td>商品説明</td><td><%= @item.introduction %></td></tr>
-          <tr><td>ジャンル</td><td><%= @item.genre.name %></td></tr>
-          <tr><td>税込価格<br>(税抜価格)</td><td><%= @item.no_tax_price %><br>(<%=@item.no_tax_price * 1.1 %>)</td></tr>
-          <tr><td>販売ステータス</td><td><%= @item.salling_status %></td></tr>
+          <tr><td style='width: 40%'>商品名</td><td><%= @item.name %></td></tr>
+          <tr><td style='width: 40%'>商品説明</td><td><%= @item.introduction %></td></tr>
+          <tr><td style='width: 40%'>ジャンル</td><td><%= @item.genre.name %></td></tr>
+          <tr><td style='width: 40%'>税込価格<br>(税抜価格)</td><td><%= @item.no_tax_price %>(<%=@item.no_tax_price * 1.1 %>)</td></tr>
+          <tr><td style='width: 40%'>販売ステータス</td><td><%= @item.salling_status %></td></tr>
         </table>
       </div>
-    <p class='btn btn-lg btn-success'>編集する</p>
+    <p><%= link_to '編集する', edit_admin_item_path, class: 'btn btn-success'%></p>
     </div>
   </div>
 </div>

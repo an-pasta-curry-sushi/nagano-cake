@@ -1,12 +1,19 @@
 <div class='container'>
-  <div class='row'>
-    <h5>ジャンル編集</h5>
-    <%= form_with model: @genre, url: '/admin/genres', method: :post, local:false do |f| %>
-      <div class="form-group">
-        <span>ジャンル名</span>
-        <%= f.text_field :name, class: 'form-control', placeholder: "ジャンル名" %>
-        <%= f.submit "新規登録", class: 'btn btn-success btn-lg' %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= form_with model: @genre, url: admin_genre_path, method: :patch, local:false do |f| %>
+      <div class="row my-4">
+        <div class="col-md-2 my-auto text-center">
+          ジャンル名
+        </div>
+        <div class="col-md-4 my-auto">
+          <%= f.text_field :name, class: 'form-control', placeholder: "ジャンル名" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.submit "変更を保存", class: 'btn btn-success btn-lg btn-block' %>
+        </div>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
