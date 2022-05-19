@@ -1,7 +1,11 @@
 <div class='container'>
+  <div class="row">
+    <div class="col-md-2 offset-md-1 my-2">
+      <h5 class="text-center" style='background-color: #e6e6e6;'>　会員一覧　</h5>
+    </div>
+  </div>
   <div class='row'>
     <div class='col-md-10 mx-auto'>
-      <h5 class="py-1">　会員一覧　</h5>
       <table class='table table-hover table-inverse col-md-10 mx-auto'>
         <thead class='thead-light text-dark'>
           <tr>
@@ -15,11 +19,9 @@
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.id %></td>
-              <td>
+              <td class="text-dark">
                 <%= link_to admin_customer_path(customer) do %>
-                  <span class="text-dark">
-                    <u><%= customer.last_name %><%= customer.first_name %></u>
-                  </span>
+                  <u><%= customer.last_name %><%= customer.first_name %></u>
                 <% end %>
               </td>
               <td><%= customer.email %></td>
