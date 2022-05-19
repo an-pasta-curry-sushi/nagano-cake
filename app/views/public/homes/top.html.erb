@@ -1,2 +1,29 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<dvi class='container'>
+  <div class='row'>
+    <div class= "col-lg-3">
+      <h4>ジャンル一覧</h4>
+      <div>
+        <% @genres.each do |genre| %>
+          <p><%= genre.name %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class= "col-lg-8">
+      <p>
+        ようこそ、ながのCAKEへ</br>
+        このサイトは、ケーキ販売のECサイトになります。</br>
+        会員でない方も商品の閲覧はできますが、</br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+  </div>
+  <dvi class = "row">
+    <div class = "col">
+      <h2>新着商品</h2>
+      <% @items.each do |item| %>
+        <p><%= item.name %></p>
+      <% end %>
+      <%= link_to "すべての商品を見る 👉", items_path %>
+    </div>
+  </dvi>
+</dvi>
