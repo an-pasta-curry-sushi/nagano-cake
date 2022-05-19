@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 200 }
 
+  scope :latest, -> {order(created_at: :desc)}
 
   has_one_attached :item_image
 
