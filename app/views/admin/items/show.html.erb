@@ -11,7 +11,15 @@
           <tr><td style='width: 40%'>商品説明</td><td><%= @item.introduction %></td></tr>
           <tr><td style='width: 40%'>ジャンル</td><td><%= @item.genre.name %></td></tr>
           <tr><td style='width: 40%'>税込価格<br>(税抜価格)</td><td><%= @item.no_tax_price %>(<%=@item.no_tax_price * 1.1 %>)</td></tr>
-          <tr><td style='width: 40%'>販売ステータス</td><td><%= @item.salling_status %></td></tr>
+          <tr><td style='width: 40%'>販売ステータス</td>
+            <td>
+              <% if @item.salling_status == true %>
+                販売可能
+              <% else %>
+                売り切れ
+              <% end %>
+            </td>
+          </tr>
         </table>
       </div>
     <p><%= link_to '編集する', edit_admin_item_path, class: 'btn btn-success'%></p>
