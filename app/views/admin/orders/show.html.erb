@@ -1,2 +1,55 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class='container'>
+  <h3>注文履歴詳細</h3>
+  <div class='row'>
+    <table class='table'>
+      <tr><td>購入者</td><td><%= @order.customer.name %></td></tr>
+      <tr><td>注文日</td><td><%= @order.created_at %></td></tr>
+      <tr><td>配送先</td><%= @order.address %></tr>
+      <tr><td>支払い方法</td><td><%= @order.payment_method %></td></tr>
+      <tr><td>注文ステータス</td>
+        <td>
+          <%= form_with model: @order, url: admin_order_path method: :patch do |f| %>
+          <%= f.select :status options_from_collection_for_select(Order.all, :id, :status) %>
+          <%= f.submit "更新", class: 'btn btn-success btn-sm' %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class='row'>
+    <div class='col'>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.ammount %></td>
+            <td><%= order_detail.price * order_detail.amount %></td>
+            <td>
+              <%= form_with model: @order_detail, url: admin_order_order_detail_path, method: :patch, do |f| %>
+                <%= f.select :making_status options_from_collection_for_select(OrderDetail.all, :id, :making_status) %>
+                <%= f.submit "更新", class: 'btn btn-success btn-sm' %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class='col'>
+      <table class='table'>
+        <tr><td>商品合計</td><td></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
