@@ -1,38 +1,39 @@
 <div class='container'>
-  <div class='row'>
-    <div class='col-md-5'>
+  <div class='row mt-4 mb-4'>
+    <div class='col'>
       <h3>商品一覧</h3>
-      <span><%= link_to '+', new_admin_item_path, class: 'btn btn-rounded-circel' %></span>
-      <div>
-        <table class='table table-hover table-inverse'>
-          <thead class='thead-light'>
-            <tr>
-              <th>商品ID</th>
-              <th>商品名</th>
-              <th>税抜価格</th>
-              <th>ジャンル</th>
-              <th>ステータス</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @items.each do |item| %>
-            <tr>
-              <td><%= item.id %></td>
-              <td>
-                <%= link_to admin_item_path(item) do %>
-                  <%= item.name %>
-                <% end %>
-              </td>
-              <td><%= item.no_tax_price %></td>
-              <td><%= item.genre.name %></td>
-              <td><%= item.salling_status %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-        <%= paginate @items %>
-      </div>
     </div>
+    <div class='col'>
+      <h2 class='text-right'><%= link_to '+', new_admin_item_path, class: 'btn btn-light btn-lg shadow rounded-circle ' %></h2>
     </div>
+  </div>
+  <div class='row'>
+    <table class='table table-hover table-inverse'>
+      <thead class='thead-light'>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td>
+            <%= link_to admin_item_path(item) do %>
+              <%= item.name %>
+            <% end %>
+          </td>
+          <td><%= item.no_tax_price %></td>
+          <td><%= item.genre.name %></td>
+          <td><%= item.salling_status %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= paginate @items %>
   </div>
 </div>
