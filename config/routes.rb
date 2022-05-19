@@ -23,10 +23,12 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => 'homes#top'
     get '/about' => 'homes#about', as: 'about'
-    resource :customers, only: [:edit, :update] do
+    resource :customers, only: [] do
       get '/quit_check' => 'customers#quit_check', as: 'quit_check'
       patch '/withdraw' => 'customers#withdraw', as: 'withdraw'
       get '/my_page' => 'customers#show'
+      patch '/my_page' => 'customers#update'
+      get '/my_page/edit' => 'customers#edit'
     end
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :destroy, :update]
