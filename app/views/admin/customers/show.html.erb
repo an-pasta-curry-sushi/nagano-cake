@@ -10,9 +10,9 @@
           <tr><td>電話番号</td><td><%= @customer.phone_number %></td></tr>
           <tr><td>メールアドレス</td><td><%= @customer.email %></td></tr>
           <tr>
-            <td>会員ステータス</td>
+            <td>会員スータス</td>
             <td>
-              <% if @customer.is_active == ture %>
+              <% if @customer.is_active == true %>
                 有効
               <% else %>
                 無効
