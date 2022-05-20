@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
   end
-  
+
   def create
   end
 
