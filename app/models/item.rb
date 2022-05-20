@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :genre
-  has_many :order_detailsd
+  has_many :order_details
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 200 }
