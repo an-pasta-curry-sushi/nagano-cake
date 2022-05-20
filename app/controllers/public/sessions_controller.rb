@@ -28,4 +28,11 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     root_path
   end
+
+
+  protected
+
+  # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
+
+
 end
