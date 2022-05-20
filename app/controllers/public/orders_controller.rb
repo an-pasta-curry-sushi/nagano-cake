@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order = Oder.new
+    @order = Order.new
     @customer = current_customer
     @delivaries = @customer.deliveries
   end
