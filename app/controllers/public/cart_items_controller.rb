@@ -40,15 +40,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   private
-<<<<<<< HEAD
-
-  def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount)
-=======
 
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :customer_id, :amount)
->>>>>>> origin/develop
   end
 
 end
