@@ -12,10 +12,14 @@ class Item < ApplicationRecord
   def get_item_image
     (item_image.attached?) ? item_image : 'no_image.jpg'
   end
-  
+
   def get_taxin_price
     tax = 1.1
     taxin_price = no_tax_price * tax
     return taxin_price.round
+  end
+
+  def sum_of_price
+    item.get_taxin_price * amount
   end
 end
