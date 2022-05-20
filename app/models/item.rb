@@ -19,4 +19,8 @@ class Item < ApplicationRecord
     taxin_price = no_tax_price * tax
     return taxin_price.round
   end
+
+  def sum_of_price
+    item.get_taxin_price * amount
+  end
 end
