@@ -23,7 +23,7 @@ class Item < ApplicationRecord
 
   def sum_of_price(cart_item)
     
-    cart_item.item.get_taxin_price * amount
+    cart_item.item.get_taxin_price * cart_item.amount
     
   end
   
