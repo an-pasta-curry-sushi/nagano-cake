@@ -1,31 +1,57 @@
-<%= form_with model: @order, url: confirm_order_path, local: true do |f| %>
-<h2>注文情報入力</h2>
-<p>支払い方法</p>
-<div class='form-group'>
-  <%= f.radio_button :payment_method, "0" %>
-  <%= f.label "クレジットカード" %>
-  <%= f.radio_button :payment_method, "1" %>
-  <%= f.label "銀行振込" %>
-</div>
-<p>お届け先</p>
-<div class='form-group'>
-  <%= f.radio_button :delivery_number, 1 %>
-  <%= f.label :derivery_number_1, "ご自身の住所" %>
-  <%= current_customer.address %>
+<div class="ml-5">
+  <h2>注文情報入力</h2>
+  <p>支払い方法</p>
+  <%= form_with model: @order, url: confirm_order_path, method: :post do |f| %>
+  <div class='form-group'>
+  
+    <%= f.radio_button :payment_method, "0" %>
+    <%= f.label "クレジットカード" %>
+  
+    <%= f.radio_button :payment_method, "1" %>
+    <%= f.label "銀行振込" %>
+  
+  </div>
+  <p>お届け先</p>
+  <div class='form-group'>
+    <%= f.radio_button :delivery_number, "0" %>
+    <%= f.label :derivery_number_1, "ご自身の住所" %>
+    <%= current_customer.address %>
+  </div>
 
-  <%= f.radio_button :delivery_number, 2 %>
-  <%= f.label :delivery_number_2, "登録先の住所" %>
-  <%= f.collection_select(:registered, current_customer.deriveries, :id, :address %>
+  <div class='form-group'>
+    <%= f.radio_button :delivery_number, "1" %>
+    <%= f.label :delivery_number_2, "登録先の住所" %>
+    <%= f.select :delivery_id, options_from_collection_for_select(Delivery.all, :id, :address_display) %>
+  </div>
+  
 
+  <div class='form-group'>
+    <div>
+      <%= f.radio_button :address_number, "2" %>
+      <%= f.label :address_number_3, "新しいお届け先" %>
+    </div>
+    
+    <div>
+      <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
+　    <%= f.text_field :postal_code %>
+    </div>
+  
+    <div>
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address %>
+    </div>
+  
+    <div>
+      <%= f.label :name, "宛名" %>
+      <%= f.text_field :name %>
+    </div>
+  
+  </div>
 
-  <%= f.radio_button :address_number, 3 %>
-  <%= f.label :address_number_3, "新しいお届け先" %>
-  <%= f.label :address, "住所" %>
-  <%= f.text_field :address %>
-  <%= f.label :name, "宛名" %>
-  <%= f.text_field :name %>
-</div>
   <%= f.hidden_field :shipping_cost, :value => "800" %>
   <%= f.hidden_field :total_payment, :value => @total.to_s %>
   <%= f.submit "確認画面へ進む" %>
-<% end %>
+  
+  <% end %>
+</div>
+

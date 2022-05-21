@@ -1,13 +1,13 @@
 class Public::DeliveriesController < ApplicationController
   
   def index
-    @deriveries = current_customer.deriveries
-    @derivery = Derivery.new
+    @deliveries = current_customer.deliveries
+    @delivery = Delivery.new
   end
 
   def create
-    @derivery = Derivery.new(derivery_params)
-    if @derivery.save
+    @delivery = Delivery.new(derivery_params)
+    if @delivery.save
       redirect_to request.referer
     else
       render 'index'
@@ -15,28 +15,28 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def edit
-    @derivery = Derivery.find(params[:id])
+    @delivery = Delivery.find(params[:id])
   end
 
   def update
-    @derivery = Derivery.find(params[:id])
-    if @derivery.update(derivery_params)
-      redirect_to deriveries_path
+    @delivery = Delivery.find(params[:id])
+    if @delivery.update(delivery_params)
+      redirect_to derivelies_path
     else
       render 'edit'
     end
   end
 
   def destroy
-    @derivery = Derivery.find(params[:id])
-    @derivery.destroy
+    @delivery = Delivery.find(params[:id])
+    @delivery.destroy
     redirect_to request.referer
   end
 
   private
 
-  def derivery_params
-    params.require(:derivery).permit(:postal_code, :address, :name)
+  def delivery_params
+    params.require(:delivery).permit(:postal_code, :address, :name)
   end
 
 end
