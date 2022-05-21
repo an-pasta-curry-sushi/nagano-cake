@@ -1,2 +1,46 @@
-<h1>Public::Deliveries#index</h1>
-<p>Find me in app/views/public/deliveries/index.html.erb</p>
+<dvi class="container m">
+  <h2>配送先登録 / 一覧</h2>
+  <div class="row m-2 ">
+    <%= form_with model: @delivery, url: deliveries_path, method: :post do |f| %>
+    <div class="form_group" %>
+     <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+     <%= f.text_field :postal_code, class: "form-control postal_code" %>
+    </div>
+    <div class="form_group" %>
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address, :size => "54", class: "form-control address" %>
+    </div>
+    <div class="form_group" %>
+      <%= f.label :name, "宛名" %>
+      <%= f.text_field :name, class: "form-control name" %>
+      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+    </div>
+    <% end %>
+  </div>
+   <div class="row">
+     <div class="col m-5">
+     <table class="table">
+       <thead>
+         <tr>
+           <th style='width: 15%'>郵便番号</th>
+           <th style='width: 45%'>住所</th>
+           <th style='width: 10%'>宛名</th>
+           <th colspan="2" style='width: 30%'></th>
+         </tr>
+       </thead>
+       <tbody>
+         <% @deliveries.each do |delivery| %>
+         <tr>
+          <td><%= delivery.postal_code %></td>
+          <td><%= delivery.address %></td>
+          <td><%= delivery.name %></td>
+          <td><%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-success" %></td>
+          <td><%= link_to "削除する", delivery_path(delivery), method: :delete, data: {confirm: "本当に消しますか?" }, class: "btn btn-danger" %></td>
+         </tr>
+         <% end %>
+       </tbody>
+     </table>
+     </div>
+   </div>
+</dvi>
