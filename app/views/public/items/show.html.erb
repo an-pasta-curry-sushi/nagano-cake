@@ -15,9 +15,7 @@
 </div>
 
 <div class='container px-5 ms-5 mt-5'>
-
   <div class='row'>
-
     <!--商品画像-->
     <div class='col-md-5 text-center'>
       <%=image_tag @item.get_item_image, size: '250x250' %>
@@ -36,7 +34,6 @@
 
         <!--hidden_field-->
         <%= f.hidden_field :item_id, :value => @item.id %>
-
 
         <!--数量選択-->
         <div class="form-group d-inline-flex">
