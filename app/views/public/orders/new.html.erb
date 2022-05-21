@@ -19,15 +19,15 @@
   </div>
   <div class='form-group'>
     <%= f.radio_button :delivery_number, "1" %>
-    <%= f.label :delivery_number_1, "登録先の住所" %>
-    <%= f.collection_select(:registered, current_customer.deliveries, :id, :address_display) %>
+    <%= f.label :delivery_number, "登録先の住所" %>
+    <%= f.select :delivery_id, options_from_collection_for_select(current_customer.deliveries.all, :id, :address_display) %>
   </div>
 
 
   <div class='form-group'>
     <div>
       <%= f.radio_button :delivery_number, "2" %>
-      <%= f.label :delivery_number_2, "新しいお届け先" %>
+      <%= f.label :delivery_number, "新しいお届け先" %>
     </div>
 
     <div>
