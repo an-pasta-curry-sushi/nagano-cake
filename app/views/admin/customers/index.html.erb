@@ -20,7 +20,7 @@
             <tr>
               <td><%= customer.id %></td>
               <td>
-                <%= link_to admin_customer_path(customer) class: "text-dark" do %>
+                <%= link_to admin_customer_path(customer), class: "text-dark" do %>
                   <u><%= customer.last_name %><%= customer.first_name %></u>
                 <% end %>
               </td>

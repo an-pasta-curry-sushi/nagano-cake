@@ -1,4 +1,3 @@
-
 <!--ジャンル検索欄-->
 <div class='text-center m-5'>
   <div class="card" style="width: 12rem;">
@@ -16,14 +15,14 @@
 </div>
 
 <div class='container px-5 ms-5 mt-5'>
-  
+
   <div class='row'>
-    
+
     <!--商品画像-->
     <div class='col-md-5 text-center'>
       <%=image_tag @item.get_item_image, size: '250x250' %>
     </div>
-    
+
     <!--商品を数量選択欄-->
     <div class='col-md-6 offset-md-1 text-left'>
       <h3 class='font-weight-bold'><%= @item.name %></h3>
@@ -34,14 +33,15 @@
       </div>
       <div class='mt-5'>
         <%= form_with model: @cart_item do |f| %>
-        
+
         <!--hidden_field-->
         <%= f.hidden_field :item_id, :value => @item.id %>
-       
-        
+
+
         <!--数量選択-->
         <div class="form-group d-inline-flex">
-          <%= f.select :amount, *[1..10],{ include_blank: "個数選択" },{class: "form-control mr-3"} %>
+          <%= f.label :amount, '個数選択'%>
+          <%= f.number_field :amount, min: 1, :value =>1, :size => "30*30" %>
         </div>
         <div class="form-group d-inline-flex">
           <%= f.submit 'カートに入れる',class: 'btn btn-success' %>
@@ -49,6 +49,5 @@
         <% end %>
       </div>
     </div>
-    
   </div>
 </div>
