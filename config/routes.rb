@@ -32,12 +32,12 @@ Rails.application.routes.draw do
     end
     resources :items, only: [:index, :show]
 
+    get '/orders/thanks' => 'orders#thanks', as: 'thanks_order'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'cart_items_destroy_all'
     resources :cart_items, only: [:index, :create, :destroy, :update]
     resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
     resources :orders, only: [:index, :show, :new, :create]
     post '/orders/confirm' => 'orders#confirm', as: 'confirm_order'
-    get '/orders/thanks' => 'orders#thanks', as: 'thanks_order'
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
