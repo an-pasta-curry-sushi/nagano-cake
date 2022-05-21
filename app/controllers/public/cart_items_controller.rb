@@ -13,13 +13,11 @@ class Public::CartItemsController < ApplicationController
     if @cart_items = @cart_items.find_by(item_id: @cart_item.item_id)
       @cart_items.amount = @cart_item.amount.to_i + @cart_items.amount.to_i
       @cart_items.save
-
     else
       @cart_item.customer_id = current_customer.id
       @cart_item.save
     end
     redirect_to cart_items_path
-
   end
 
   def update

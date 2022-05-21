@@ -1,2 +1,31 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<%= form_with model: @order, url: confirm_order_path, local: true do |f| %>
+<h2>注文情報入力</h2>
+<p>支払い方法</p>
+<div class='form-group'>
+  <%= f.radio_button :payment_method, "0" %>
+  <%= f.label "クレジットカード" %>
+  <%= f.radio_button :payment_method, "1" %>
+  <%= f.label "銀行振込" %>
+</div>
+<p>お届け先</p>
+<div class='form-group'>
+  <%= f.radio_button :delivery_number, 1 %>
+  <%= f.label :derivery_number_1, "ご自身の住所" %>
+  <%= current_customer.address %>
+
+  <%= f.radio_button :delivery_number, 2 %>
+  <%= f.label :delivery_number_2, "登録先の住所" %>
+  <%= f.collection_select(:registered, current_customer.deriveries, :id, :address %>
+
+
+  <%= f.radio_button :address_number, 3 %>
+  <%= f.label :address_number_3, "新しいお届け先" %>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %>
+  <%= f.label :name, "宛名" %>
+  <%= f.text_field :name %>
+</div>
+  <%= f.hidden_field :shipping_cost, :value => "800" %>
+  <%= f.hidden_field :total_payment, :value => @total.to_s %>
+  <%= f.submit "確認画面へ進む" %>
+<% end %>
