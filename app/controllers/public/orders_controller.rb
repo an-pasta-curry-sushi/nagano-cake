@@ -12,6 +12,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    @total = @order_details.inject(0) { |sum, order_detail| sum + order_detail.sum_of_price }
   end
 
   def confirm
@@ -48,19 +49,19 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @items = current_customer.cart_items
+    @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
     if @order.save
-      @items.each do |item|
+      @cart_items.each do |cart_item|
         @order_detail = OrderDetail.new
         @order_detail.order_id = @order.id
-        @order_detail.item_id = item.id
-        @order_detail.price = item.get_taxin_price
-        @order_detail.amount = item.amount
+        @order_detail.item_id = cart_item.item.id
+        @order_detail.price = cart_item.item.get_taxin_price
+        @order_detail.amount = cart_item.item.amount
         @order_detail.save
       end
     redirect_to thanks_order_path
-    @items.destroy_all
+    @cart_items.destroy_all
     else
       render 'new'
     end

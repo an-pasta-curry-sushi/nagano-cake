@@ -1,7 +1,7 @@
 <div class='container'>
   <div class="row">
     <div class="col-md-3 offset-md-1 my-2">
-      <h5 class="text-center" style='background-color: #e6e6e6;'>マイページ</h5>
+      <h5 class="text-center" style='background-color: #e6eded;'>マイページ</h5>
     </div>
   </div>
   <div class="row my-2">
@@ -17,27 +17,27 @@
       <table class="table table-bordered">
         <tbody>
           <tr>
-            <td>氏名</td>
+            <td class="table-light">氏名</td>
             <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
           </tr>
           <tr>
-            <td>カナ</td>
+            <td class="table-light">カナ</td>
             <td><%= @customer.last_name_easy %>　<%= @customer.first_name_easy %></td>
           </tr>
           <tr>
-            <td>郵便番号</td>
+            <td class="table-light">郵便番号</td>
             <td><%= @customer.postal_code %></td>
           </tr>
           <tr>
-            <td>住所</td>
+            <td class="table-light">住所</td>
             <td><%= @customer.address %></td>
           </tr>
           <tr>
-            <td>電話番号</td>
+            <td class="table-light">電話番号</td>
             <td><%= @customer.phone_number %></td>
           </tr>
           <tr>
-            <td>メールアドレス</td>
+            <td class="table-light">メールアドレス</td>
             <td><%= @customer.email %></td>
           </tr>
         </tbody>

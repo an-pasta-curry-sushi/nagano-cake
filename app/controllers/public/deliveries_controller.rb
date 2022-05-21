@@ -1,14 +1,14 @@
 class Public::DeliveriesController < ApplicationController
-  
+
   def index
     @deliveries = current_customer.deliveries
     @delivery = Delivery.new
   end
 
   def create
-    @delivery = Delivery.new(derivery_params)
+    @delivery = Delivery.new(delivery_params)
     if @delivery.save
-      redirect_to request.referer
+      redirect_to deliveries_path
     else
       render 'index'
     end
@@ -21,7 +21,7 @@ class Public::DeliveriesController < ApplicationController
   def update
     @delivery = Delivery.find(params[:id])
     if @delivery.update(delivery_params)
-      redirect_to derivelies_path
+      redirect_to deliveries_path
     else
       render 'edit'
     end
@@ -36,7 +36,7 @@ class Public::DeliveriesController < ApplicationController
   private
 
   def delivery_params
-    params.require(:delivery).permit(:postal_code, :address, :name)
+    params.require(:delivery).permit(:postal_code, :address, :name, :customer_id)
   end
 
 end

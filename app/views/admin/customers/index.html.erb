@@ -1,7 +1,7 @@
 <div class='container'>
   <div class="row">
     <div class="col-md-2 offset-md-1 my-2">
-      <h5 class="text-center" style='background-color: #e6e6e6;'>会員一覧</h5>
+      <h5 class="text-center" style='background-color: #ededed;'>会員一覧</h5>
     </div>
   </div>
   <div class='row'>
@@ -19,8 +19,8 @@
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.id %></td>
-              <td class="text-dark">
-                <%= link_to admin_customer_path(customer) do %>
+              <td>
+                <%= link_to admin_customer_path(customer) class: "text-dark" do %>
                   <u><%= customer.last_name %><%= customer.first_name %></u>
                 <% end %>
               </td>

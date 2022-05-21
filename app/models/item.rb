@@ -20,6 +20,7 @@ class Item < ApplicationRecord
     return taxin_price.round
   end
 
+
   def sum_of_price(cart_item)
     
     cart_item.item.get_taxin_price * amount
@@ -35,4 +36,5 @@ class Item < ApplicationRecord
     return total_price
     
   end
+
 end
