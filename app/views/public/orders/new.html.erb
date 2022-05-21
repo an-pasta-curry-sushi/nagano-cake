@@ -4,10 +4,10 @@
   <%= form_with model: @order, url: confirm_order_path, method: :post do |f| %>
   <div class='form-group'>
   
-    <%= f.radio_button :payment_method, "0" %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
     <%= f.label "クレジットカード" %>
   
-    <%= f.radio_button :payment_method, "1" %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
     <%= f.label "銀行振込" %>
   
   </div>
@@ -17,18 +17,17 @@
     <%= f.label :derivery_number_1, "ご自身の住所" %>
     <%= current_customer.address %>
   </div>
-
   <div class='form-group'>
     <%= f.radio_button :delivery_number, "1" %>
     <%= f.label :delivery_number_2, "登録先の住所" %>
-    <%= f.select :delivery_id, options_from_collection_for_select(Delivery.all, :id, :address_display) %>
+    <%= f.collection_select(:registered, current_customer.deliveries, :id, :address_display) %>
   </div>
   
 
   <div class='form-group'>
     <div>
-      <%= f.radio_button :address_number, "2" %>
-      <%= f.label :address_number_3, "新しいお届け先" %>
+      <%= f.radio_button :delivery_number, "2" %>
+      <%= f.label :delivery_number_3, "新しいお届け先" %>
     </div>
     
     <div>

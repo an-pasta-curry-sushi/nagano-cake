@@ -24,11 +24,13 @@ class Public::OrdersController < ApplicationController
     
     @total_payment = @total.to_i + 800
     
-    if params[:order][:delivery_number] == "1"
-      @order.name = customer.get_full_name(current_customer)
+    if params[:order][:delivery_number] == "0"
+      @order.name = current_customer.get_full_name(current_customer)
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-    elsif params[:order][:delivery_number] == "2"
+      
+    elsif params[:order][:delivery_number] == "1"
+      
       if Delivery.exists?(name: params[:order][:registered])
         @order.name = Delivery.find(params[:order][:registered]).name
         @order.postal_code = Delivery.find(params[:order][:registered]).postal_code
@@ -36,7 +38,7 @@ class Public::OrdersController < ApplicationController
       else
         render 'new'
       end
-    elsif params[:order][:delivery_number] == "3"
+    elsif params[:order][:delivery_number] == "2"
       delivery_new = Delivery.new(delivery_params)
       delivery_new.customer_id = current_customer.id
       if delivery_new.save
@@ -73,7 +75,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+    params.require(:order).permit(:postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status, :delivery_number, :registered)
   end
 
   def delivery_params
