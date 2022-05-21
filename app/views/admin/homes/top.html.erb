@@ -1,7 +1,7 @@
 <div class='container'>
   <div class="row">
     <div class="col-md-3 offset-md-1 my-2">
-      <h5 class="text-center" style='background-color: #e6e6e6;'>注文履歴一覧</h5>
+      <h5 class="text-center" style='background-color: #ededed;'>注文履歴一覧</h5>
     </div>
   </div>
   <div class='row'>
@@ -18,8 +18,8 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td class="text-dark">
-                <%= link_to admin_order_path(order) do %>
+              <td>
+                <%= link_to admin_order_path(order) class: "text-dark" do %>
                   <u><%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></u>
                 <% end %>
               </td>
