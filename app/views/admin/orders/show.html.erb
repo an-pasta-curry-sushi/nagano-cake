@@ -2,14 +2,14 @@
   <h3>注文履歴詳細</h3>
   <div class='row'>
     <table class='table'>
-      <tr><td>購入者</td><td><%= @order.customer.name %></td></tr>
+      <tr><td>購入者</td><td><%= @order.customer.get_full_name(@order.customer) %></td></tr>
       <tr><td>注文日</td><td><%= @order.created_at %></td></tr>
       <tr><td>配送先</td><%= @order.address %></tr>
       <tr><td>支払い方法</td><td><%= @order.payment_method %></td></tr>
       <tr><td>注文ステータス</td>
         <td>
-          <%= form_with model: @order, url: admin_order_path method: :patch do |f| %>
-          <%= f.select :status options_from_collection_for_select(Order.all, :id, :status) %>
+          <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
+          <%= f.select :status, Order.statuses.keys %>
           <%= f.submit "更新", class: 'btn btn-success btn-sm' %>
           <% end %>
         </td>
@@ -33,11 +33,11 @@
           <tr>
             <td><%= order_detail.item.name %></td>
             <td><%= order_detail.price %></td>
-            <td><%= order_detail.ammount %></td>
+            <td><%= order_detail.amount %></td>
             <td><%= order_detail.sum_of_price %></td>
             <td>
-              <%= form_with model: @order_detail, url: admin_order_order_detail_path, method: :patch, do |f| %>
-                <%= f.select :making_status options_from_collection_for_select(OrderDetail.all, :id, :making_status) %>
+              <%= form_with model: order_detail, url: admin_order_order_detail_path(order_detail), method: :patch do |f| %>
+                <%= f.select :making_status, options_from_collection_for_select(OrderDetail.all, :id, :making_status) %>
                 <%= f.submit "更新", class: 'btn btn-success btn-sm' %>
               <% end %>
             </td>

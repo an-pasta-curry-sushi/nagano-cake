@@ -9,6 +9,8 @@ class Order < ApplicationRecord
   validates :postal_code, presence: true, format: { with: /\A\d{3}[-]?\d{4}\z/ }
   validates :name, length: { minimum: 2, maximum: 20 }
   validates :address, length: { minimum:2, maximum: 100 }
+  
+  scope :latest, -> {order(created_at: :desc)}
 
   def sum_of_price
     order_detail.price * order_detail.amount
