@@ -17,8 +17,13 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
+    
     @cart_items = current_customer.cart_items
+    
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    
+    @total_payment = @total.to_i + 800
+    
     if params[:order][:delivery_number] == "1"
       @order.name = customer.get_full_name(current_customer)
       @order.postal_code = current_customer.postal_code
