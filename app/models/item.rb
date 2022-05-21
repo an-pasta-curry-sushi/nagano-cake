@@ -20,7 +20,4 @@ class Item < ApplicationRecord
     return taxin_price.round
   end
 
-  def sum_of_price
-    item.get_taxin_price * amount
-  end
 end
