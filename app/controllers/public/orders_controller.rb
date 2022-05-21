@@ -12,6 +12,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    @total = @order_details.inject(0) { |sum, order_detail| sum + order_detail.sum_of_price }
   end
 
   def confirm
