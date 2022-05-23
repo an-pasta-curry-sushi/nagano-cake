@@ -8,8 +8,9 @@ class Public::DeliveriesController < Public::ApplicationController
   def create
     @delivery = Delivery.new(delivery_params)
     if @delivery.save
-      redirect_to deliveries_path
+      redirect_to deliveries_path, notice: "配送先登録しました"
     else
+      @deliveries = current_customer.deliveries
       render 'index'
     end
   end
