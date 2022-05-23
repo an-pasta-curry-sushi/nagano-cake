@@ -1,4 +1,4 @@
-class Admin::CustomersController < ApplicationController
+class Admin::CustomersController < Admin::ApplicationController
   def index
     @customers = Customer.page(params[:page])
   end
