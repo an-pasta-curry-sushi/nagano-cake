@@ -4,8 +4,8 @@
     <table class='table'>
       <tr><td>購入者</td><td><%= @order.customer.get_full_name(@order.customer) %></td></tr>
       <tr><td>注文日</td><td><%= @order.created_at %></td></tr>
-      <tr><td>配送先</td><%= @order.address %></tr>
-      <tr><td>支払い方法</td><td><%= @order.payment_method %></td></tr>
+      <tr><td>配送先</td><td><%= @order.address %></td></tr>
+      <tr><td>支払い方法</td><td><%= @order.payment_method_i18n %></td></tr>
       <tr><td>注文ステータス</td>
         <td>
           <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
@@ -36,7 +36,7 @@
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.sum_of_price %></td>
             <td>
-              <%= form_with model: order_detail, url: admin_order_order_detail_path(order_detail), method: :patch do |f| %>
+              <%= form_with model: order_detail, url: admin_order_order_detail_path(@order, order_detail), method: :patch do |f| %>
                 <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
                 <%= f.submit "更新", class: 'btn btn-success btn-sm' %>
               <% end %>
@@ -50,7 +50,7 @@
       <table class='table'>
         <tr><td>商品合計</td><td><%= @total.round.to_s %>円</td></tr>
         <tr><td>送料</td><td>800円</td></tr>
-        <tr><td>請求金額合計</td><td><%= (@total.round * 800).to_s %>円</td></tr>
+        <tr><td>請求金額合計</td><td><%= (@total.round + 800).to_s %>円</td></tr>
       </table>
     </div>
   </div>
