@@ -5,6 +5,7 @@ class Item < ApplicationRecord
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 200 }
+  validates :no_tax_price, presence: true, numericality: {only_integer: true}
 
   scope :latest, -> {order(created_at: :desc)}
 
@@ -22,19 +23,19 @@ class Item < ApplicationRecord
 
 
   def sum_of_price(cart_item)
-    
+
     cart_item.item.get_taxin_price * cart_item.amount
-    
+
   end
-  
+
   def get_total_price(cart_items)
     cart_items.each do |cart_item|
       total_price = 0
       total_price += (cart_item.item.get_taxin_price * amount)
     end
-    
+
     return total_price
-    
+
   end
 
 end

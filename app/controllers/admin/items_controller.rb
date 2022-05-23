@@ -10,7 +10,7 @@ class Admin::ItemsController < Admin::ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admin_item_path(@item)
+      redirect_to admin_item_path(@item), notice: "商品を追加しました(pasta)"
     else
       render "new"
     end
@@ -23,7 +23,7 @@ class Admin::ItemsController < Admin::ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to admin_item_path
+      redirect_to admin_item_path, notice: "商品を更新しました(pasta)"
     else
       render "edit"
     end
