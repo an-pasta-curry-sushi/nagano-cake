@@ -1,15 +1,18 @@
 <div class="container mt-5 px-5 px-sm-0">
   <div class="row">
-
-    <!-- ジャンル検索 -->
-    <div class="col-md-3">
-      <div class="px-4">
-        <div class="text-center mx-auto border border-dark">ジャンル検索</div>
-        <div class="border border-dark px-2">
-          <% @genres.each do |genre| %>
-            <li><%= genre.name %></li>
-          <% end %>
+<!--ジャンル検索欄-->
+    <div class='col-md-2 offset-md-1  text-center m-5'>
+      <div class="card" style="width: 12rem;">
+        <div class="card-header">
+          ジャンル一覧
         </div>
+      <ul class="list-group list-group-flush">
+        <% @genres.each do |genre| %>
+          <li class="list-group-item">
+            <%=link_to genre.name, '/', class: 'text-decoration-non' %>
+          </li>
+        <% end %>
+      </ul>
       </div>
     </div>
 
@@ -19,11 +22,11 @@
         <h2>商品一覧</h2>
         <h6 class="mt-auto">(全<%= @items.size %>件)</h6>
       </div>
-      <div class="row">
+      <div class="row mt-5">
         <% @items.each do |item| %>
-          <div class="col-3">
+          <div class="col-md-3 offset-md-1">
             <%= link_to item_path(item), class: "text-dark" do %>
-              <%= image_tag item.get_item_image, size: '200x100' %>
+              <%= image_tag item.get_item_image, size: '200x200' %>
               <p><%= item.name %></p>
             <% end %>
             <p>¥<%= item.get_taxin_price.to_s(:delimited) %></p>
