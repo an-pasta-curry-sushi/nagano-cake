@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :customer_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -31,8 +32,13 @@ class Public::SessionsController < Devise::SessionsController
 
 
   protected
-
-  # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
-
-
+  def customer_state
+  @customer = Customer.find_by(email: params[:customer][:email])
+    if @customer
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == false)
+      flash[:error] = "退会済みです。"
+      redirect_to new_customer_registration_path
+      end
+    end
+  end
 end
