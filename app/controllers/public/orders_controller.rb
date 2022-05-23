@@ -47,9 +47,7 @@ class Public::OrdersController < Public::ApplicationController
       if @delivery.save
         flash[:notice] = '新規お届け先を登録しました'
       else
-        @order = @delivery
         render 'new'
-
       end
     else
 
