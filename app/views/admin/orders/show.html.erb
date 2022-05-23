@@ -49,8 +49,8 @@
     <div class='col'>
       <table class='table'>
         <tr><td>商品合計</td><td><%= @total.round.to_s %>円</td></tr>
-        <tr><td>送料</td><td>800円</td></tr>
-        <tr><td>請求金額合計</td><td><%= (@total.round + 800).to_s %>円</td></tr>
+        <tr><td>送料</td><td><%= @order.shipping_cost %>円</td></tr>
+        <tr><td>請求金額合計</td><td><%= (@total.round + @order.shipping_cost).to_s %>円</td></tr>
       </table>
     </div>
   </div>
