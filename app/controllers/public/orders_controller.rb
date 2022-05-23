@@ -45,7 +45,7 @@ class Public::OrdersController < Public::ApplicationController
       delivery_new = Delivery.new(delivery_params)
       delivery_new.customer_id = current_customer.id
       if delivery_new.save
-        
+        flash[:notice] = '新規お届け先を登録'
       else
         
         render 'new'
