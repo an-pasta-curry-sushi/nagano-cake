@@ -16,7 +16,7 @@ class Admin::OrdersController < Admin::ApplicationController
       if @order.status == "confirm"
         @order.order_details.update(making_status: 1)
       end
-      redirect_to request.referer
+      redirect_to request.referer, notice: "注文ステータス更新しました"
     else
       @order_details = @order.order_details
       render 'show'
