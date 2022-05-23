@@ -10,7 +10,7 @@ class Public::CustomersController < Public::ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to my_page_customers_path
+      redirect_to my_page_customers_path, notice: "会員情報を編集しました"
     else
       render "edit"
     end
@@ -24,7 +24,7 @@ class Public::CustomersController < Public::ApplicationController
     @customer = current_customer
     if @customer.update(is_active: false)
       reset_session
-      redirect_to root_path
+      redirect_to root_path, notice: "退会しました"
     else
       render "quit_check"
     end
