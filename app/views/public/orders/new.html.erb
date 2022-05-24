@@ -1,9 +1,6 @@
 <div class="ml-5">
   <h2>注文情報入力</h2>
   <%= render "layouts/errors", obj: @order %>
-  <% if @delivery %>
-    <%= render "layouts/errors", obj: @delivery %>
-  <% end %>
   <p>支払い方法</p>
   <%= form_with model: @order, url: confirm_order_path, method: :post do |f| %>
   <div class='form-group'>
