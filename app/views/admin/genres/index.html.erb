@@ -6,7 +6,8 @@
   </div>
   <div class="row">
     <div class="col-md-8">
-      <%= form_with model: @genre, url: '/admin/genres', method: :post, local:false do |f| %>
+      <%= render 'layouts/errors', obj: @genre %>
+      <%= form_with model: @genre, url: '/admin/genres', method: :post do |f| %>
       <div class="row my-4">
         <div class="col-md-2 my-auto text-center">
           ジャンル名

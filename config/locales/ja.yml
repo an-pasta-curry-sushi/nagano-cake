@@ -17,6 +17,7 @@
           credit_card: "クレジットカード"
           transfer: "銀行振込"
 
+
     activerecord:
       errors:
         messages:
