@@ -2,7 +2,6 @@ class Public::OrdersController < Public::ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
-    @delivaries = @customer.deliveries
   end
 
   def index
