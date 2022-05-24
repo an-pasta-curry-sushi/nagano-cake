@@ -8,7 +8,7 @@ class Public::DeliveriesController < Public::ApplicationController
   def create
     @delivery = Delivery.new(delivery_params)
     if @delivery.save
-      redirect_to deliveries_path, notice: "配送先登録しました"
+      redirect_to deliveries_path, notice: "新しいお届け先を登録しました"
     else
       @deliveries = current_customer.deliveries
       render 'index'
@@ -22,7 +22,7 @@ class Public::DeliveriesController < Public::ApplicationController
   def update
     @delivery = Delivery.find(params[:id])
     if @delivery.update(delivery_params)
-      redirect_to deliveries_path, notice: "登録情報を更新しました。"
+      redirect_to deliveries_path, notice: "お届け先の情報を更新しました"
     else
       render 'edit'
     end
@@ -31,7 +31,7 @@ class Public::DeliveriesController < Public::ApplicationController
   def destroy
     @delivery = Delivery.find(params[:id])
     @delivery.destroy
-    redirect_to request.referer, notice: "一部配送先を削除しました。"
+    redirect_to request.referer, notice: "選択したお届け先を削除しました"
   end
 
   private

@@ -2,6 +2,11 @@ class Public::OrdersController < Public::ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
+    
+    unless @customer.cart_items.exists?
+      
+      redirect_to items_path, notice: "カートに商品を追加してください"
+    end
   end
 
   def index
@@ -45,7 +50,7 @@ class Public::OrdersController < Public::ApplicationController
       @delivery = Delivery.new(delivery_params)
       @delivery.customer_id = current_customer.id
       if @delivery.save
-        flash[:notice] = '新規お届け先を登録しました'
+        flash[:notice] = '新しいお届け先を登録しました'
       else
         render 'new'
       end
@@ -58,7 +63,7 @@ class Public::OrdersController < Public::ApplicationController
   end
 
   def create
-
+    
     @cart_items = current_customer.cart_items
     @order = current_customer.orders.new(order_params)
 
@@ -84,6 +89,7 @@ class Public::OrdersController < Public::ApplicationController
   end
 
   def thanks
+    flash[:notice] = ''
   end
 
   private
