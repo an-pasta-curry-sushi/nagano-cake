@@ -2,7 +2,6 @@ class Public::OrdersController < Public::ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
-    @delivaries = @customer.deliveries
   end
 
   def index
@@ -21,8 +20,9 @@ class Public::OrdersController < Public::ApplicationController
     @cart_items = current_customer.cart_items
 
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
-
-    @total_payment = @total.to_i + 800
+    #送料
+    @order.shipping_cost = 800
+    @total_payment = @total.to_i + @order.shipping_cost
     @order.total_payment = @total_payment
 
     if params[:order][:delivery_number] == "0"
@@ -42,14 +42,12 @@ class Public::OrdersController < Public::ApplicationController
       end
 
     elsif params[:order][:delivery_number] == "2"
-      delivery_new = Delivery.new(delivery_params)
-      delivery_new.customer_id = current_customer.id
-      if delivery_new.save
+      @delivery = Delivery.new(delivery_params)
+      @delivery.customer_id = current_customer.id
+      if @delivery.save
         flash[:notice] = '新規お届け先を登録しました'
       else
-
         render 'new'
-
       end
     else
 
