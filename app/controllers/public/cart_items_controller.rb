@@ -21,7 +21,7 @@ class Public::CartItemsController < Public::ApplicationController
     end
     
     if @cart_item.save
-      redirect_to cart_items_path, notice: "カートにアイテムを追加しました。"
+      redirect_to cart_items_path, notice: "カートに商品を追加しました"
     else
       
       redirect_to request.referer
@@ -34,18 +34,18 @@ class Public::CartItemsController < Public::ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
-    redirect_to request.referer, notice: "数量を変更しました。"
+    redirect_to request.referer, notice: "数量を変更しました"
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to cart_items_path, notice: "一部商品を削除しました。"
+    redirect_to cart_items_path, notice: "選択した商品を削除しました"
   end
 
   def destroy_all
     current_customer.cart_items.destroy_all
-    redirect_to request.referer, notice: "商品を全て削除しました。"
+    redirect_to request.referer, notice: "商品を全て削除しました"
   end
   
   private

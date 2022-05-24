@@ -12,7 +12,7 @@ class Admin::OrderDetailsController < Admin::ApplicationController
         @order.update(status: 3)
       end
 
-      redirect_to request.referer, notice: "製作ステータス更新しました"
+      redirect_to request.referer, notice: "製作ステータスを更新しました"
     else
       @order = Order.find(params[:order_id])
       @order_details = @order.order_details
