@@ -1,22 +1,48 @@
-<dvi class="container m">
-  <h2>配送先登録 / 一覧</h2>
+<div class="container">
+  <div class="row">
+    <div class="offset-md-1 my-2">
+      <h4 class="title">配送先編集</h4>
+    </div>
+  </div>
   <%= render 'layouts/errors', obj: @delivery %>
   <div class="row m-2 ">
     <%= form_with model: @delivery, url: delivery_path, method: :patch do |f| %>
-    <div class="form_group" %>
-     <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-     <%= f.text_field :postal_code, class: "form-control postal_code" %>
-    </div>
-    <div class="form_group" %>
-      <%= f.label :address, "住所" %>
-      <%= f.text_field :address, :size => "54", class: "form-control address" %>
-    </div>
-    <div class="form_group" %>
-      <%= f.label :name, "宛名" %>
-      <%= f.text_field :name, class: "form-control name" %>
-      <%= f.hidden_field :customer_id, :value => current_customer.id %>
-      <%= f.submit "変更内容を保存", class: "btn btn-success" %>
-    </div>
+    <table>
+
+        <tr>
+          <div class='mt-2'>
+            <td>郵便番号(ハイフン無し)</td>
+          </div>
+          <td>
+            <div class='field mt-2'>
+            <%= f.text_field :postal_code, autocomplete: 'off', class: 'ml-5 email' %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <div class='mt-2'>
+            <td>住所</td>
+          </div>
+          <td>
+            <div class='field mt-2'>
+            <%= f.text_field :address, autocomplete: 'off', :size =>"54", class: 'ml-5 postal_code' %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <div class='mt-2'>
+            <td>宛名</td>
+          </div>
+          <td>
+            <div class='field mt-2'>
+              <%= f.text_field :name, class: "ml-5 mr-5" %>
+              <%= f.hidden_field :customer_id, :value => current_customer.id %>
+              <%= f.submit "新規登録", class: "btn btn-success" %>
+            </div>
+          </td>
+        </tr>
+      </table>
     <% end %>
   </div>
 </div>
