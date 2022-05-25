@@ -1,4 +1,4 @@
-<div class="container mt-5 px-5 px-sm-0">
+<div class="container-fluid mt-5 px-5 px-sm-0">
   <div class="row">
 <!--ジャンル検索欄-->
     <div class='col-md-2 offset-md-1  text-center m-5'>
@@ -24,7 +24,7 @@
       </div>
       <div class="row mt-5">
         <% @items.each do |item| %>
-          <div class="col-md-3 offset-md-1">
+          <div class="item_box col-md-2">
             <%= link_to item_path(item), class: "text-dark" do %>
               <%= image_tag item.get_item_image, size: '200x200' %>
               <p><%= item.name %></p>
