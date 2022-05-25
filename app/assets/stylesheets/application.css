@@ -51,3 +51,7 @@ body {
 main {
   flex: 1;
 }
+
+.pagination {
+  justify-content: center;
+}
