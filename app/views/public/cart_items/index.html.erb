@@ -43,19 +43,27 @@
 
             <td>
               <%= form_with model: cart_item do |f| %>
-
                   <%= f.number_field :amount,min: 1, class: 'amount_field' %>
                   <%= f.submit '変更',class: 'btn btn-sm btn-success' %>
-
               <% end %>
             </td>
+
             <td>¥<%= cart_item.sum_of_price.to_s(:delimited) %></td>
-            <td><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+            <td>
+              <% if @favorite_id = current_customer.favorites.find_by(item_id: cart_item.item_id) %>
+                <%= link_to "欲しいものリストから外す", favorite_path(@favorite_id), method: :delete, data: { confirm: '本当に外しますか？' }, class: 'btn btn-danger btn-sm' %>
+                <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+              <% else %>
+                <%= form_with model: @favorite do |f| %>
+                  <%= f.hidden_field :item_id, :value => cart_item.item_id %>
+                  <%= f.submit '欲しいものリストに入れる',class: 'btn btn-success btn-sm' %>
+                  <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+                <% end %>
+              <% end %>
 
+            </td>
           </tr>
-
           <% end %>
-
         </tbody>
       </table>
     </div>

@@ -3,37 +3,43 @@ class Public::CartItemsController < Public::ApplicationController
   def index
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
-    
+
     items = Item.all.order('created_at DESC')
     @new_items = items.first(3)
-    
-    
+
+    @favorite = Favorite.new
+
+    if @favorite_id = current_customer.favorites.find_by(item_id: params[:id])
+      @favorites = true
+    else
+      @favorites = false
+    end
   end
 
   def create
-    
+
     @cart_items = current_customer.cart_items
-    
-    
+
+
     if @cart_item = @cart_items.find_by(item_id: params[:cart_item][:item_id])
       @cart_item.amount += params[:cart_item][:amount].to_i
-     
-      
+
+
     else
       @cart_item = CartItem.new(cart_item_params)
       @cart_item.customer_id = current_customer.id
-    
+
     end
-    
+
     if @cart_item.save
       redirect_to cart_items_path, notice: "カートに商品を追加しました"
     else
-      
+
       redirect_to request.referer
-      
+
     end
-      
-    
+
+
   end
 
   def update
@@ -52,9 +58,9 @@ class Public::CartItemsController < Public::ApplicationController
     current_customer.cart_items.destroy_all
     redirect_to request.referer, notice: "商品を全て削除しました"
   end
-  
+
   private
-  
+
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :customer_id, :amount)
   end

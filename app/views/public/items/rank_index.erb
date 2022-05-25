@@ -1,0 +1,41 @@
+<div class="container-fluid mt-5 px-5 px-sm-0">
+  <div class="row">
+<!--ジャンル検索欄-->
+    <div class='col-md-2 offset-md-1  text-center m-5'>
+      <div class="card" style="width: 12rem;">
+        <div class="card-header">
+          ジャンル一覧
+        </div>
+      <ul class="list-group list-group-flush">
+        <% @genres.each do |genre| %>
+          <li class="list-group-item">
+            <%=link_to genre.name, '/', class: 'text-decoration-non' %>
+          </li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+
+    <!-- 商品一覧 -->
+    <div class='col-md-9 px-2'>
+      <div class="row">
+        <h2>商品一覧（ランキング）</h2>
+        <h6 class="mt-auto">(全<%= @month_rank_items.size %>件)</h6>
+      </div>
+      <div class="row mt-5">
+        <% @month_rank_items.each.with_index(1) do |item, i| %>
+          <h6>第<%= i %>位</h6>
+          <div class="item_box col-md-2">
+            <%= link_to item_path(item), class: "text-dark" do %>
+              <%= image_tag item.get_item_image, size: '200x200' %>
+              <p><%= item.name %></p>
+            <% end %>
+            <p>¥<%= item.get_taxin_price.to_s(:delimited) %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
+  </div>
+</div>

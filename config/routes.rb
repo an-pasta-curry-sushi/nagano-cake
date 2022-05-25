@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       patch '/my_page' => 'customers#update'
       get '/my_page/edit' => 'customers#edit'
     end
+    get '/items/rank_index' => 'items#rank_index', as: 'items_ranks'
     resources :items, only: [:index, :show]
 
     get '/orders/thanks' => 'orders#thanks', as: 'thanks_order'
