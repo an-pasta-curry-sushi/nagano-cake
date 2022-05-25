@@ -29,15 +29,15 @@
         item: 商品
         genre: ジャンル
         delivery: 配送先
-        
+
       attributes:
         item:
           name: 商品名
           no_tax_price: 税抜価格
-        
+
         genre:
           name: ジャンル名
-          
+
         delivery:
           name: 宛名
           postal_code: 郵便番号
