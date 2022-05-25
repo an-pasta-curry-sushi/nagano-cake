@@ -1,0 +1,77 @@
+<%if @favorites.exists? %>
+<div class='container mt-5'>
+
+  <div class='row'>
+    <div class='offset-md-1 my-2'>
+      <h4 class='title text-center px-4'>欲しいものリスト</h4>
+    </div>
+    <div class='col-md-4 offset-md-4'>
+      <%= link_to '欲しいものリストを空にする', favorites_destroy_all_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+    </div>
+  </div>
+
+  <div class='row mt-5'>
+    <div class='col-md-12'>
+      <table class='table table-bordered'>
+
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量を選択し、カートに入れる</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <% @favorites.each do |favorite| %>
+
+            <tr>
+
+              <td>
+                <%= link_to item_path(favorite.item_id) do %>
+                  <%= image_tag favorite.item.get_item_image, size:'50x50' %>
+                  <%= favorite.item.name %>
+                <% end %>
+              </td>
+
+              <td>¥<%= favorite.item.get_taxin_price.to_s(:delimited) %></td>
+
+              <td>
+                <%= form_with model: @cart_item do |f| %>
+                  <%= f.hidden_field :item_id, :value => favorite.item_id %>
+                  <%= f.number_field :amount, min: 1, :value =>1,class: 'amount_field' %>
+                  <%= f.submit 'カートに入れる',class: 'btn btn-sm btn-success' %>
+                <% end %>
+              </td>
+              <td><%= link_to '削除する', favorite_path(favorite.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+
+            </tr>
+
+          <% end %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-4 offset-md-4'>
+      <%= link_to '買い物を続ける',root_path, class: "btn btn-primary btn-sm" %>
+    </div>
+  </div>
+
+</div>
+
+<%elsif%>
+<div class='container mt-5 mb-5'>
+
+  <div class='row'>
+    <div class='col-md-8 offset-md-2'>
+      <h1>欲しいものリストに商品がありません</h1>
+    </div>
+  </div>
+</div>
+<%end%>
+

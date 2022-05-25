@@ -1,6 +1,6 @@
 <%if @cart_items.exists? %>
 <div class='container mt-5'>
-  
+
   <!--ショッピングカートとカートを空にするボタン-->
   <div class='row'>
     <div class='offset-md-1 my-2'>
@@ -10,12 +10,12 @@
       <%= link_to 'カートを空にする', cart_items_destroy_all_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
     </div>
   </div>
-  
+
   <!--ショッピングカートのテーブル-->
   <div class='row mt-5'>
     <div class='col-md-12'>
       <table class='table table-bordered'>
-        
+
         <thead>
           <tr>
             <th>商品名</th>
@@ -25,42 +25,42 @@
             <th colspan="1"></th>
           </tr>
         </thead>
-        
+
         <tbody>
-          
+
           <% @cart_items.each do |cart_item| %>
-          
+
           <tr>
-            
+
             <td>
               <%= link_to item_path(cart_item.item_id) do %>
                 <%= image_tag cart_item.item.get_item_image, size:'50x50' %>
                 <%= cart_item.item.name %>
               <% end %>
             </td>
-            
+
             <td>¥<%= cart_item.item.get_taxin_price.to_s(:delimited) %></td>
-            
+
             <td>
               <%= form_with model: cart_item do |f| %>
-                
+
                   <%= f.number_field :amount,min: 1, class: 'amount_field' %>
                   <%= f.submit '変更',class: 'btn btn-sm btn-success' %>
-                
+
               <% end %>
             </td>
             <td>¥<%= cart_item.sum_of_price.to_s(:delimited) %></td>
             <td><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
-            
+
           </tr>
-          
+
           <% end %>
-          
+
         </tbody>
       </table>
     </div>
   </div>
-  
+
   <!--買い物続けるボタンと合計金額テーブル-->
   <div class='row'>
     <div class='col-md-3 offset-md-1'>
@@ -75,7 +75,7 @@
       </table>
     </div>
   </div>
-  
+
   <!--情報入力に進むボタン-->
   <div class='row'>
     <div class='col-md-4 offset-md-4'>
@@ -87,7 +87,7 @@
 
 <%elsif%>
 <div class='container mt-5 mb-5'>
-  
+
   <div class='row'>
     <div class='col-md-8 offset-md-2'>
       <h1><i class="fas fa-shopping-cart"></i>カートに商品がありません</h1>

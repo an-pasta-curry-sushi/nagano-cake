@@ -10,5 +10,13 @@ class Public::ItemsController < Public::ApplicationController
     @item = Item.find(params[:id])
     @genres = Genre.all
     @cart_item = CartItem.new
+    @favorite = Favorite.new
+
+
+    if current_customer.favorites.find_by(item_id: params[:id])
+      @favorites = true
+    else
+      @favorites = false
+    end
   end
 end
