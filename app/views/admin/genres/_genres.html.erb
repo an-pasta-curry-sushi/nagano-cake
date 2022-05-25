@@ -1,0 +1,10 @@
+<div>
+  ジャンル一覧
+</div>
+<ul class="list-group">
+  <% genres.each do |genre| %>
+    <li class="list-group-item ">
+      <%=link_to genre.name, '/', class: 'text-decoration-non' %>
+    </li>
+  <% end %>
+</ul>
