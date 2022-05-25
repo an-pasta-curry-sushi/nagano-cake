@@ -1,12 +1,12 @@
 <div class='container'>
   <div class="row">
-    <div class="col-md-3 offset-md-1 my-2">
-      <h5 class="text-center" style='background-color: #ededed;'>マイページ</h5>
+    <div class="offset-md-1 my-2">
+      <h4 class="text-center title px-4">マイページ</h4>
     </div>
   </div>
-  <div class="row my-2">
+  <div class="row my-3">
     <div class="col-md-2 my-auto">
-      <h4>登録情報</h4>
+      <h5 class="font-weight-bold">登録情報</h5>
     </div>
     <div class="col-md-2">
       <%= link_to "編集する", my_page_edit_customers_path, class: "btn btn-block btn-success" %>
@@ -17,7 +17,7 @@
       <table class="table table-bordered">
         <tbody>
           <tr>
-            <td class="table-light">氏名</td>
+            <td style="width: 20%" class="table-light">氏名</td>
             <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
           </tr>
           <tr>
@@ -46,7 +46,7 @@
   </div>
   <div class="row my-2">
     <div class="col-md-2 my-auto">
-      <h4>配送先</h4>
+      <h5 class="font-weight-bold">配送先</h5>
     </div>
     <div class="col-md-2">
       <%= link_to "一覧を見る", deliveries_path, class: "btn btn-block btn-primary" %>
@@ -54,7 +54,7 @@
   </div>
   <div class="row my-2">
     <div class="col-md-2 my-auto">
-      <h4>注文履歴</h4>
+      <h5 class="font-weight-bold">注文履歴</h5>
     </div>
     <div class="col-md-2">
       <%= link_to "一覧を見る", orders_path, class: "btn btn-block btn-primary" %>
