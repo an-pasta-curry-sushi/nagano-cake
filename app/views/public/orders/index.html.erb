@@ -1,7 +1,7 @@
-<div class='container'>
+<div class='container-fluid'>
   <div class="row">
-    <div class="col-md-3 offset-md-1 my-2">
-      <h5 class="text-center" style='background-color: #ededed;'>注文履歴一覧</h5>
+    <div class="offset-md-1 my-2">
+      <h4 class="title text-center">注文履歴一覧</h4>
     </div>
   </div>
   <div class='row'>
@@ -10,7 +10,7 @@
         <thead class='thead-light'>
           <tr>
             <th>注文日</th>
-            <th>配送先</th>
+            <th width="500">配送先</th>
             <th>注文商品</th>
             <th>支払い金額</th>
             <th>注文ステータス</th>
@@ -21,7 +21,7 @@
           <% @orders.each do |order| %>
             <tr>
               <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
-              <td>
+              <td width="250">
                 <p>〒<%= order.postal_code %></p>
                 <p><%= order.address %></p>
                 <p><%= order.name %></p>

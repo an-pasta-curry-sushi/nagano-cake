@@ -3,6 +3,11 @@ class Public::CartItemsController < Public::ApplicationController
   def index
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    
+    items = Item.all.order('created_at DESC')
+    @new_items = items.first(3)
+    
+    
   end
 
   def create

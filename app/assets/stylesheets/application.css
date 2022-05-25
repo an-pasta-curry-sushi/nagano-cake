@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+/*見出しのバックグランドカラー*/
+.title {
+  background-color: #ededed;
+}
+
+/*エラーメッセージ*/
+#notice{
+  color: green;
+  margin: 20px 20px;
+}
+
+/*商品一覧ページ*/
+.item_box {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+
+/*数量変更フィールド*/
+.amount_field {
+  width: 45px;
+}

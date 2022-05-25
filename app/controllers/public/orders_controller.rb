@@ -4,9 +4,9 @@ class Public::OrdersController < Public::ApplicationController
     @customer = current_customer
     
     unless @customer.cart_items.exists?
-      
       redirect_to items_path, notice: "カートに商品を追加してください"
     end
+    
   end
 
   def index

@@ -1,8 +1,9 @@
 <div class='container'>
-  <div class=" row mt-5">
-    <h5 style='background-color: #e6e6e6;'>注文履歴詳細</h5>
+  <div class="row">
+    <div class="offset-md-1 my-2">
+      <h4 class="title">注文詳細</h4>
+    </div>
   </div>
-
   <div class='row'>
     <div class="col-md-7">
     <p>注文情報</p>
@@ -46,7 +47,7 @@
           </tr>
           <tr>
             <td>ご請求額</td>
-            <td><%= @order.total_payment %></td>
+            <td><%= @order.total_payment.to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>

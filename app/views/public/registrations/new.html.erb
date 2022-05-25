@@ -1,56 +1,90 @@
-<div class='container'>
-  <h4 class='p-5 ml-3'>新規登録</h4>
-    <%= render "devise/shared/error_messages", resource: resource %>
-  <div class='row mx-auto'>
-    <div class='col-lg-3'>
-      <p>名前</p>
-      <p>フリガナ</p>
-      <p>メールアドレス</p>
-      <p>郵便番号(ハイフン無し)</p>
-      <p>住所</p>
-      <p>電話番号(ハイフン無し)</p>
-      <p>パスワード(6文字以上)</p>
-      <p>パスワード(確認用)</p>
-    </div>
-    <div class='col-lg-7'>
-      <%= form_with model: @customer, url: customer_registration_path, method: :post do |f| %>
-        <div class='mt-2'>
-          <span class='mr-3'>(姓)</span>
-          <%= f.text_field :last_name, autofocus: true, class: 'last_name' %>
-          <span class='mr-3 ml-5'>(名)</span>
-          <%= f.text_field :first_name, autocomplete: "off", class: 'first_name' %>
-        </div>
-        <div class='field mt-2'>
-          <span>(セイ)</span>
-          <%= f.text_field :last_name_easy, autocomplete: 'off', class: 'last_name_easy' %>
-          <span class='ml-5'>(メイ)</span>
-          <%= f.text_field :first_name_easy, autocomplete: 'off', class: 'first_name_easy' %>
-        </div>
-        <div class='field mt-2'>
-          <%= f.email_field :email, autocomplete: 'off', class: 'ml-5 email' %>
-        </div>
-        <div class='field mt-2'>
-          <%= f.text_field :postal_code, autocomplete: 'off', class: 'ml-5 postal_code' %>
-        </div>
-        <div class='field mt-2'>
-          <%= f.text_field :address, autocomplete: 'off', :size =>"54", class: 'ml-5 address' %>
-        </div>
-        <div class='field mt-2' >
-          <%= f.text_field :phone_number, autocomplete: 'off', class: 'ml-5 phone_number' %>
-        </div>
-        <div class='field mt-2'>
-          <%= f.text_field :password, autocomplete: 'off', class: "ml-5 new-password" %>
-        </div>
-        <div class='field mt-2'>
-          <%= f.text_field :password_confirmation, autocomplete: 'off', class: "ml-5 new-password" %>
-        </div>
-        <div class="actions mt-2 d-grid gap-2">
-          <%= f.submit "新規登録", class: "col-3 ml-5 btn btn-success"%>
-        </div>
-      <% end %>
-
+<div class='container_fuild px-5 px-sm-0'>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="row">
+    <div class="offset-md-1 my-2">
+      <h4 class="title text-center px-4">新規会員登録</h4>
     </div>
   </div>
-    <h4 class='pl-5 pt-2 pb-2 ml-3'>既に登録済みの方</h4>
-    <p class='ml-5 pl-5'><%= render "public/shared/links" %>　からログインしてください</p>
+  
+  <div class='row'>
+    <div class="col-md-10 offset-md-1">
+      <%= form_with model: @customer, url: customer_registration_path, method: :post do |f| %>
+      <table class="table table-borderless row_table">
+        
+        <tr class='mt-2'>
+          <td>名前</td>
+          <td>
+            <span class='mr-3'>(姓)</span>
+              <%= f.text_field :last_name, autofocus: true, class: 'last_name' %>
+            <span class='mr-3 ml-5'>(名)</span>
+              <%= f.text_field :first_name, autocomplete: "off", class: 'first_name' %>
+          </td>
+        </tr>
+        
+        <tr class='mt-2'>
+          <td>フリガナ</td>
+          <td>
+            <span>(セイ)</span>
+              <%= f.text_field :last_name_easy, autocomplete: 'off', class: 'last_name_easy' %>
+            <span class='ml-5'>(メイ)</span>
+              <%= f.text_field :first_name_easy, autocomplete: 'off', class: 'first_name_easy' %>
+          </td>
+        </tr>
+        
+        <tr class='mt-2'>
+          <td>メールアドレス</td>
+          <td>
+            <%= f.email_field :email, autocomplete: 'off', class: 'ml-5 email' %>
+          </td>
+        </tr>
+        
+        <tr class='mt-2'>
+          <td>郵便番号(ハイフン無し)</td>
+          <td>
+            <%= f.text_field :postal_code, autocomplete: 'off', class: 'ml-5 postal_code' %>
+          </td>
+        </tr>
+        
+        <tr class='mt-2'>
+          <td>住所</td>
+          <td>
+            <%= f.text_field :address, autocomplete: 'off', :size =>"54", class: 'ml-5 address' %>
+          </td>
+        </tr>
+        
+        <tr class='mt-2'>
+          <td>電話番号(ハイフン無し)</td>
+          <td>
+            <%= f.text_field :phone_number, autocomplete: 'off', class: 'ml-5 phone_number' %>
+          </td>
+        </tr>
+        
+        <tr class='mt-2'>
+          <td>パスワード(6文字以上)</td>
+          <td>
+            <%= f.text_field :password, autocomplete: 'off', class: "ml-5 new-password" %>
+          </td>
+        </tr>
+        
+        <tr class='mt-2'>
+          <td>パスワード(確認用)</td>
+          <td>
+            <%= f.text_field :password_confirmation, autocomplete: 'off', class: "ml-5 new-password" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+    
+  <div class='text-center'>
+    <%= f.submit "新規登録", class: "col-3 ml-5 btn btn-success"%>
+  </div>
+  <% end %>
+  
 </div>
+<div class='mt-5 ml-5'>
+  <h4 class=>既に登録済みの方</h4>
+  <p><%= render "public/shared/links" %>　からログインしてください</p>
+</div>
+
