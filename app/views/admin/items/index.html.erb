@@ -1,39 +1,53 @@
 <div class='container'>
-  <div class='row mt-4 mb-4'>
-    <div class='col'>
-      <h3>商品一覧</h3>
+  <div class="row">
+    <div class="offset-md-1 my-2">
+      <h4 class="text-center title">商品一覧</h4>
     </div>
-    <div class='col'>
-      <h2 class='text-right'><%= link_to '+', new_admin_item_path, class: 'btn btn-light btn-lg shadow rounded-circle ' %></h2>
+    <div class="col-sm-1"></div>
+    <div class='col-md-7 pull-right'>
+      <h2 class='text-right'><%= link_to '+', new_admin_item_path, class: 'btn btn-light btn-lg shadow rounded-circle' %></h2>
     </div>
   </div>
-  <div class='row'>
-    <table class='table table-hover table-inverse'>
-      <thead class='thead-light'>
-        <tr>
-          <th>商品ID</th>
-          <th>商品名</th>
-          <th>税抜価格</th>
-          <th>ジャンル</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @items.each do |item| %>
-        <tr>
-          <td><%= item.id %></td>
-          <td>
-            <%= link_to admin_item_path(item) do %>
-              <%= item.name %>
-            <% end %>
-          </td>
-          <td><%= item.no_tax_price %></td>
-          <td><%= item.genre.name %></td>
-          <td><%= item.salling_status %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-    <%= paginate @items %>
+  <div class='row mt-3'>
+    <div class="col-md-10 mx-auto">
+      <table class='table table-borderless'>
+        <thead class='thead-light'>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <td style='width: 10%'><%= item.id %></td>
+            <td style='width: 30%'>
+              <%= link_to admin_item_path(item), class: "text-dark" do %>
+                <u><%= item.name %></u>
+              <% end %>
+            </td>
+            <td style='width: 10%'><%= (item.no_tax_price).to_s(:delimited) %></td>
+            <td style='width: 30%'><%= item.genre.name %></td>
+            <td style='width: 20%'>
+                <% if item.salling_status == true %>
+                  <p class="text-success font-weight-bold">販売中</p>
+                <% else %>
+                  <p class="text-secondary font-weight-bold">販売停止中</p>
+                <% end %>
+              </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-5 mx-auto">
+      <%= paginate @items %>
+    </div>
   </div>
 </div>

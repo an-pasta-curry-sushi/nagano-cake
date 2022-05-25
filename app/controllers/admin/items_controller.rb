@@ -1,6 +1,6 @@
 class Admin::ItemsController < Admin::ApplicationController
   def index
-    @items = Item.page(params[:page])
+    @items = Item.page(params[:page]).latest
   end
 
   def new

@@ -1,28 +1,37 @@
 <div class='container'>
-  <h3 class='mt-4 mb-4'>商品詳細</h3>
-  <div class='row'>
-    <div class='col-md-3'>
-      <%= image_tag @item.get_item_image, size: '200x200' %>
+  <div class="row">
+    <div class="offset-md-1 my-2">
+      <h4 class="text-center title">商品詳細</h4>
     </div>
-    <div class='col'>
-      <div class='table'>
+  </div>
+  <div class="row mt-2">
+    <div class='col-md-4'>
+      <%= image_tag @item.get_item_image, size: '300' %>
+    </div>
+    <div class='col-md-7'>
+      <div class='table table-borderless'>
         <table>
-          <tr><td style='width: 40%'>商品名</td><td><%= @item.name %></td></tr>
-          <tr><td style='width: 40%'>商品説明</td><td><%= @item.introduction %></td></tr>
-          <tr><td style='width: 40%'>ジャンル</td><td><%= @item.genre.name %></td></tr>
-          <tr><td style='width: 40%'>税込価格<br>(税抜価格)</td><td><%= @item.no_tax_price %>(<%=@item.no_tax_price * 1.1 %>)</td></tr>
-          <tr><td style='width: 40%'>販売ステータス</td>
+          <tr><td style='width: 25%'>商品名</td><td><h5><%= @item.name %></h5></td></tr>
+          <tr><td style='width: 25%'>商品説明</td><td><h5><%= @item.introduction %></h5></td></tr>
+          <tr><td style='width: 25%'>ジャンル</td><td><h5><%= @item.genre.name %></h5></td></tr>
+          <tr><td style='width: 25%'>税込価格<br>(税抜価格)</td><td class="align-middle"><h5><%= (@item.no_tax_price).round.to_s(:delimited) %> (<%= (@item.no_tax_price * 1.1).round.to_s(:delimited) %>) 円</h5></td></tr>
+          <tr><td style='width: 25%'>販売ステータス</td>
             <td>
               <% if @item.salling_status == true %>
-                販売可能
+                <h5 class="text-success font-weight-bold">販売中</h5>
               <% else %>
-                売り切れ
+                <h5 class="text-secondary font-weight-bold">販売停止中</h5>
               <% end %>
             </td>
           </tr>
         </table>
       </div>
-    <p><%= link_to '編集する', edit_admin_item_path, class: 'btn btn-success'%></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class='col-md-4'></div>
+    <div class="col-md-7 mx-auto">
+      <p class="ml-lg-5"><%= link_to '編集する', edit_admin_item_path, class: 'btn btn-success w-25'%></p>
     </div>
   </div>
 </div>
