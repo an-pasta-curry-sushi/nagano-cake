@@ -5,12 +5,12 @@
       <h4 class="title text-center px-4">新規会員登録</h4>
     </div>
   </div>
-  
+
   <div class='row'>
     <div class="col-md-10 offset-md-1">
-      <%= form_with model: @customer, url: customer_registration_path, method: :post do |f| %>
+      <%= form_with model: @customer, url: customer_registration_path, local: true, method: :post do |f| %>
       <table class="table table-borderless row_table">
-        
+
         <tr class='mt-2'>
           <td>名前</td>
           <td>
@@ -20,7 +20,7 @@
               <%= f.text_field :first_name, autocomplete: "off", class: 'first_name' %>
           </td>
         </tr>
-        
+
         <tr class='mt-2'>
           <td>フリガナ</td>
           <td>
@@ -30,42 +30,42 @@
               <%= f.text_field :first_name_easy, autocomplete: 'off', class: 'first_name_easy' %>
           </td>
         </tr>
-        
+
         <tr class='mt-2'>
           <td>メールアドレス</td>
           <td>
             <%= f.email_field :email, autocomplete: 'off', class: 'ml-5 email' %>
           </td>
         </tr>
-        
+
         <tr class='mt-2'>
           <td>郵便番号(ハイフン無し)</td>
           <td>
             <%= f.text_field :postal_code, autocomplete: 'off', class: 'ml-5 postal_code' %>
           </td>
         </tr>
-        
+
         <tr class='mt-2'>
           <td>住所</td>
           <td>
             <%= f.text_field :address, autocomplete: 'off', :size =>"54", class: 'ml-5 address' %>
           </td>
         </tr>
-        
+
         <tr class='mt-2'>
           <td>電話番号(ハイフン無し)</td>
           <td>
             <%= f.text_field :phone_number, autocomplete: 'off', class: 'ml-5 phone_number' %>
           </td>
         </tr>
-        
+
         <tr class='mt-2'>
           <td>パスワード(6文字以上)</td>
           <td>
             <%= f.text_field :password, autocomplete: 'off', class: "ml-5 new-password" %>
           </td>
         </tr>
-        
+
         <tr class='mt-2'>
           <td>パスワード(確認用)</td>
           <td>
@@ -73,18 +73,16 @@
           </td>
         </tr>
       </table>
+      <div class='text-center'>
+        <%= f.submit "新規登録", class: "col-3 ml-5 btn btn-success"%>
+      </div>
+      <% end %>
     </div>
   </div>
-  
-    
-  <div class='text-center'>
-    <%= f.submit "新規登録", class: "col-3 ml-5 btn btn-success"%>
+  <div class="row">
+    <div class="offset-md-1 my-2">
+      <h4 class="title text-center px-4">既に登録済みの方</h4>
+      <p class="ml-5 mt-2"><%= render "public/shared/links" %>　からログインしてください</p>
+    </div>
   </div>
-  <% end %>
-  
 </div>
-<div class='mt-5 ml-5'>
-  <h4 class=>既に登録済みの方</h4>
-  <p><%= render "public/shared/links" %>　からログインしてください</p>
-</div>
-
