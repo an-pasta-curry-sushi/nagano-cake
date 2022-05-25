@@ -87,15 +87,15 @@
       <table class='table table-borderless'>
         <tr>
           <td><h5 class="font-weight-bold">商品合計</h5></td>
-          <td><h5><%= @total.round.to_s(:delimited) %>円</h5></td>
+          <td><h5 class="text-right"><%= @total.round.to_s(:delimited) %> 円</h5></td>
         </tr>
         <tr>
           <td><h5 class="font-weight-bold">送料</h5></td>
-          <td><h5><%= @order.shipping_cost %>円</h5></td>
+          <td><h5 class="text-right"><%= @order.shipping_cost %> 円</h5></td>
         </tr>
         <tr>
           <td><h5 class="font-weight-bold">請求金額合計</h5></td>
-          <td><h5><%= (@total.round + @order.shipping_cost).to_s(:delimited) %>円</h5></td>
+          <td><h5 class="text-right"><%= (@total.round + @order.shipping_cost).to_s(:delimited) %> 円</h5></td>
         </tr>
       </table>
     </div>
