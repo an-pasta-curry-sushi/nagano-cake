@@ -1,47 +1,73 @@
-<dvi class="container m">
-  <h2>配送先登録 / 一覧</h2>
+<div class="container">
+  <div class="row">
+    <div class="offset-md-1 my-2">
+      <h4 class="title">配送先登録 / 一覧</h4>
+    </div>
+  </div>
     <%= render 'layouts/errors', obj: @delivery %>
-  <div class="row m-2 ">
+  <div class="row">
     <%= form_with model: @delivery, url: deliveries_path, method: :post do |f| %>
-    <div class="form_group" %>
-     <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-     <%= f.text_field :postal_code, class: "form-control postal_code" %>
-    </div>
-    <div class="form_group" %>
-      <%= f.label :address, "住所" %>
-      <%= f.text_field :address, :size => "54", class: "form-control address" %>
-    </div>
-    <div class="form_group" %>
-      <%= f.label :name, "宛名" %>
-      <%= f.text_field :name, class: "form-control name" %>
-      <%= f.hidden_field :customer_id, :value => current_customer.id %>
-      <%= f.submit "新規登録", class: "btn btn-success" %>
-    </div>
+    <table>
+
+        <tr>
+          <div class='mt-2'>
+            <td>郵便番号(ハイフン無し)</td>
+          </div>
+          <td>
+            <div class='field mt-2'>
+            <%= f.text_field :postal_code, autocomplete: 'off', class: 'ml-5 email' %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <div class='mt-2'>
+            <td>住所</td>
+          </div>
+          <td>
+            <div class='field mt-2'>
+            <%= f.text_field :address, autocomplete: 'off', :size =>"54", class: 'ml-5 postal_code' %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <div class='mt-2'>
+            <td>宛名</td>
+          </div>
+          <td>
+            <div class='field mt-2'>
+              <%= f.text_field :name, class: "ml-5 mr-5" %>
+              <%= f.hidden_field :customer_id, :value => current_customer.id %>
+              <%= f.submit "新規登録", class: "btn btn-success" %>
+            </div>
+          </td>
+        </tr>
+      </table>
     <% end %>
   </div>
    <div class="row">
-     <div class="col m-5">
-     <table class="table">
-       <thead>
-         <tr>
-           <th style='width: 15%'>郵便番号</th>
-           <th style='width: 45%'>住所</th>
-           <th style='width: 10%'>宛名</th>
-           <th colspan="2" style='width: 30%'></th>
-         </tr>
-       </thead>
-       <tbody>
-         <% @deliveries.each do |delivery| %>
-         <tr>
-          <td><%= delivery.postal_code %></td>
-          <td><%= delivery.address %></td>
-          <td><%= delivery.name %></td>
-          <td><%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-success" %></td>
-          <td><%= link_to "削除する", delivery_path(delivery), method: :delete, data: {confirm: "本当に消しますか?" }, class: "btn btn-danger" %></td>
-         </tr>
-         <% end %>
-       </tbody>
-     </table>
-     </div>
-   </div>
-</dvi>
+     <div class="col mt-5">
+
+       <table class='table table-hover table-inverse' style="width: 80%">
+        <thead class='thead-light'>
+          <tr>
+            <th class="text-center">郵便番号</th>
+            <th style="width: 30%" class="text-center">住所</th>
+            <th class="text-center">宛名</th>
+            <th style="width: 30%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @deliveries.each do |delivery| %>
+            <tr>
+              <td class="align-middle text-center">〒<%= delivery.postal_code %></td>
+              <td class="align-middle text-center"><%= delivery.address %></td>
+              <td class="align-middle text-center"><%= delivery.name %></td>
+              <td>
+              <%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-success mr-3" %>
+              <%= link_to "削除する", delivery_path(delivery), method: :delete, data: {confirm: "本当に消しますか?" }, class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
