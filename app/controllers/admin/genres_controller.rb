@@ -5,12 +5,10 @@ class Admin::GenresController < Admin::ApplicationController
   end
 
   def create
+    @genres = Genre.all
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to admin_genres_path, notice: "ジャンルを追加しました"
-    else
-      @genres = Genre.all
-      render "index"
+      flash[:notice] = "ジャンルを追加しました"
     end
   end
 

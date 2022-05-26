@@ -1,0 +1,3 @@
+$("#admin_genres_index").html("<%= j(render 'index', genres: @genres) %>")
+$("#genre_errors").html("<%= j(render 'layouts/errors', obj: @genre) %>")
+$("#genre_field").val("")
