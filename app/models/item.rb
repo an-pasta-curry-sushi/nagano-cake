@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :order_details
   has_many :cart_items
+  has_many :favorites
 
   validates :name, length: { minimum: 2, maximum: 15 }, uniqueness: true
   validates :introduction, length: { maximum: 200 }

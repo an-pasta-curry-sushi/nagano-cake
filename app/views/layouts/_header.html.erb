@@ -38,6 +38,9 @@
                 <%= link_to 'マイページ', my_page_customers_path, class: 'ml-4 text-light btn btn-outline-light' %>
               </li>
               <li>
+                <%= link_to '欲しいものリスト', favorites_path, class: 'ml-4 text-light btn btn-outline-light' %>
+              </li>
+              <li>
                 <%= link_to '商品一覧', items_path, class: 'ml-4 text-light btn btn-outline-light' %>
               </li>
               <li>
@@ -45,7 +48,7 @@
               </li>
               <li>
                 <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'ml-4 text-light btn btn-outline-light' %>
-              </li>
+              </li>  
             </ul>
 
             <!-- 検索欄 -->

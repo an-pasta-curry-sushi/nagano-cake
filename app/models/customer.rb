@@ -15,6 +15,7 @@ class Customer < ApplicationRecord
   has_many :deliveries
   has_many :orders
   has_many :cart_items
+  has_many :favorites
 
   def active_for_authentication?
     super && (is_active == true)

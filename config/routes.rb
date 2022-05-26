@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       patch '/my_page' => 'customers#update'
       get '/my_page/edit' => 'customers#edit'
     end
+    get '/items/rank_index' => 'items#rank_index', as: 'items_ranks'
     resources :items, only: [:index, :show]
 
     get '/orders/thanks' => 'orders#thanks', as: 'thanks_order'
@@ -41,6 +42,8 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
     resources :orders, only: [:index, :show, :new, :create]
     post '/orders/confirm' => 'orders#confirm', as: 'confirm_order'
+    delete '/favorite/destroy_all' => 'favorites#destroy_all', as: 'favorites_destroy_all'
+    resources :favorites, only: [:index, :create, :destroy]
 
     get "search"=>"items#search"
     get "sort"=>"items#sort"
