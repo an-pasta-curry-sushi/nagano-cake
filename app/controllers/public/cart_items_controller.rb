@@ -50,8 +50,8 @@ class Public::CartItemsController < Public::ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    flash.now[:alert] = "数量を変更しました"
-    @cart_items = current_customer.cart_items.all
+    flash.now[:alert] = "選択した商品を削除しました"
+    @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
     @favorite = Favorite.new
     render :create_favorite
@@ -59,7 +59,7 @@ class Public::CartItemsController < Public::ApplicationController
 
   def destroy_all
     current_customer.cart_items.destroy_all
-    redirect_to request.referer, notice: "商品を全て削除しました"
+    redirect_to request.referer, alert: "商品を全て削除しました"
   end
 
   private

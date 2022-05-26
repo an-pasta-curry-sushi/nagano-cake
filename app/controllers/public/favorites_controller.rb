@@ -1,7 +1,7 @@
 class Public::FavoritesController < Public::ApplicationController
 
   def index
-    @favorites = current_customer.favorites.page(params[:page]).per(5)
+    @favorites_all = current_customer.favorites.page(params[:page]).per(5)
     @cart_item = CartItem.new
   end
 
@@ -33,13 +33,13 @@ class Public::FavoritesController < Public::ApplicationController
     @item = Item.find(@favorite.item_id)
     @favorite_id = current_customer.favorites.find_by(item_id: @favorite.item_id)
     @favorite.destroy
-    flash.now[:alert] = "選択した商品を削除しました"
+    flash.now[:alert] = "欲しいものリストから商品を削除しました"
 
     @favorites = false
     @favorite = Favorite.new
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
-    @favorites_all = current_customer.favorites
+    @favorites_all = current_customer.favorites.page(params[:page]).per(5)
     @cart_item = CartItem.new
     render :destroy_favorite
   end
