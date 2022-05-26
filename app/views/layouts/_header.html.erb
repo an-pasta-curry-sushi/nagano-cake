@@ -77,12 +77,9 @@
   </nav>
 
   <!-- フラッシュメッセージ -->
-  <div>
-    <% if flash[:notice] %>
-      <p id='notice'><%= notice %></p>
-      <% elsif flash[:alert] %>
-      <span class='alert'><%= alert %></span>
-    <% end %>
+
+  <div id="flash_message">
+    <%= render 'layouts/flash_message' %>
   </div>
 
 </header>
