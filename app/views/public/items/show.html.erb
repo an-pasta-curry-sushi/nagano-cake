@@ -32,12 +32,14 @@
             <% end %>
           </div>
           <div class="form-group d-inline-flex">
-          <% if @favorites %>
-            <%= link_to "欲しいものリストから外す", favorite_path(@favorite_id), method: :delete, data: { confirm: '本当に外しますか？' }, class: 'btn btn-danger ml-2' %>
-          <% else %>
+          <% if customer_signed_in? %>
+            <% if @favorites %>
+              <%= link_to "欲しいものリストから外す", favorite_path(@favorite_id), method: :delete, data: { confirm: '本当に外しますか？' }, class: 'btn btn-danger ml-2' %>
+            <% else %>
             <%= form_with model: @favorite do |f| %>
               <%= f.hidden_field :item_id, :value => @item.id %>
               <%= f.submit '欲しいものリストに入れる',class: 'btn btn-success ml-2' %>
+            <% end %>
             <% end %>
           <% end %>
           </div>
