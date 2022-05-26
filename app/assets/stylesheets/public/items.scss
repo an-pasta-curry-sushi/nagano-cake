@@ -2,46 +2,78 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.items-main {
+.item-index-page{
+  background-image: url('item-bg.jpg');
+  height: 800px;
+  padding: 10px;
 }
 
-.main-contents{
+.index-main {
   width: 85%;
   margin: 0 auto;
 }
-.item-title {
+
+.index-item-title {
+  width: 180px;
   display: flex;
-  margin: 2%;
-  align-items: flex-end
+  padding: 5px 10px;
+  align-items: flex-end;
+  background-color: rgba(128,128,128,0.3);
 }
 
-.sidebar {
-  width: 15%;
-  margin-left: 5%;
-}
-
-.content-items {
+.index-item-contents {
   display: flex;
   flex-wrap: wrap;
 }
 
-.content{
+.index-content{
   width: 23%;
   height: 300px;
-  text-align: center;
   margin: 1%;
+  padding: 0.5%;
+  background-color: rgba(128,128,128,0.5);
 }
 
-.image-box {
+.index-item-image {
   width: 100%;
   height: 230px;
+  text-align: center;
 }
 
-img {
+.index-item-image img {
   width: 95%;
   height: 95%;
   object-fit: cover;
   border-radius: 30px;
 }
 
+.show-item-info {
+  background-color: rgba(128,128,128,0.5);
+
+}
+
+.show-item-image {
+  widows: 100%;
+  height: 400px;
+}
+
+.show-item-image img {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.show-item-introduction {
+  height: 150px;
+}
+
+.show-item-price {
+  align-items: flex-end
+}
+
+.items-show-page {
+  background-image: url('item-bg.jpg');
+  height: 600px;
+}
 

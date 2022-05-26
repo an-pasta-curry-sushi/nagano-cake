@@ -1,24 +1,26 @@
-<div class="items-main">
-  <div class="main-contents">
-    <div class="item-title">
-      <h4>商品一覧</h4>
-      <h6>(全<%= @items.size %>件)</h6>
-    </div>
-    <div class="content-items">
-      <% @items.each do |item| %>
-      <div class="content">
-        <%= link_to item_path(item), class: "text-dark link" do %>
-          <div class="image-box">
-            <%= image_tag item.get_item_image%>
-          </div>
-          <div class="tag">
-            <p><%= item.name %></p>
-            <p>¥<%= item.get_taxin_price.to_s(:delimited) %></p>
-          </div>
+<section>
+  <div class="item-index-page">
+    <div class="index-main">
+      <div class="index-item-title text-light">
+        <h4 class="font-weight-bold">商品一覧</h4>
+        <h6 class="font-weight-bold">(全<%= @items.size %>件)</h6>
+      </div>
+      <div class="index-item-contents">
+        <% @items.each do |item| %>
+        <div class="index-content">
+          <%= link_to item_path(item), class: "text-light" do %>
+            <div class="index-item-image">
+              <%= image_tag item.get_item_image%>
+            </div>
+            <div class="tag">
+              <h6 class="font-weight-bold"><%= item.name %></h6>
+              <p class="font-weight-bold">¥<%= item.get_taxin_price.to_s(:delimited) %></p>
+            </div>
+          <% end %>
+        </div>
         <% end %>
       </div>
-      <% end %>
     </div>
+    <%= paginate @items %>
   </div>
-</div>
-<%= paginate @items %>
+</section>
