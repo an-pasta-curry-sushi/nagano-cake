@@ -6,14 +6,16 @@
   </div>
   <div class="row">
     <div class="col-md-8">
-      <%= render 'layouts/errors', obj: @genre %>
-      <%= form_with model: @genre, url: '/admin/genres', method: :post do |f| %>
+      <div id="genre_errors">
+        <%= render 'layouts/errors', obj: @genre %>
+      </div>
+      <%= form_with model: @genre, url: '/admin/genres', method: :post, local: false do |f| %>
       <div class="row my-4">
         <div class="col-md-2 offset-md-1 my-auto text-center">
           ジャンル名
         </div>
         <div class="col-md-4 my-auto">
-          <%= f.text_field :name, class: 'form-control', placeholder: "ジャンル名" %>
+          <%= f.text_field :name, id: 'genre_field', class: 'form-control', placeholder: "ジャンル名" %>
         </div>
         <div class="col-md-3">
           <%= f.submit "新規登録", class: 'btn btn-success w-75' %>
@@ -31,15 +33,8 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <% @genres.each do |genre| %>
-           <tr>
-             <td class="align-middle" style="width 20%"><h5 class="ml-2"><%= genre.name %></h5></td>
-             <td class="text-right">
-               <%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success" %>
-              </td>
-           </tr>
-          <% end %>
+        <tbody id="admin_genres_index">
+          <%= render 'index', genres: @genres %>
         </tbody>
       </table>
     </div>
