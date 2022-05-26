@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -15,16 +15,7 @@
   <body>
     <%= render 'layouts/header' %>
     <main>
-      <div class='flash_messeage'>
-        <% if flash[:notice] %>
-          <p id="notice"><%= notice %></p>
-        <% elsif flash[:alert] %>
-          <p class="alert"><%= alert %></p>
-        <% end %>
-        
       <%= yield %>
-      
-      </div>
     </main>
     <%= render 'layouts/footer' %>
   </body>
