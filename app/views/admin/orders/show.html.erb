@@ -1,4 +1,5 @@
-<div class='container'>
+<div class="bg-image">
+  <div class='container'>
   <div class="row">
     <div class="offset-md-1 my-2">
       <h4 class="text-center title">注文履歴詳細</h4>
@@ -6,7 +7,7 @@
   </div>
   <div class="row mt-2">
     <div style="width: 100%" class="mx-5">
-      <table class='table table-borderless'>
+      <table class='table table-borderless text-light'>
         <tr>
           <td style="width: 15%">
             <h5 class="font-weight-bold">購入者</h5>
@@ -62,8 +63,8 @@
   </div>
   <div class='row'>
     <div class='col-md-8 mx-4'>
-      <table class='table table-borderless border-bottom'>
-        <thead class='thead-light'>
+      <table class='table table-borderless border-bottom text-light'>
+        <thead class='border-top border-bottom'>
           <tr>
             <th style="width: 40%" class="font-weight-bold">商品名</th>
             <th style="width: 15%" class="font-weight-bold">単価(税込)</th>
@@ -91,7 +92,7 @@
       </table>
     </div>
     <div class='col-md-3 d-flex align-items-end'>
-      <table class='table table-borderless'>
+      <table class='table table-borderless text-light'>
         <tr>
           <td><h5 class="font-weight-bold">商品合計</h5></td>
           <td><h5 class="text-right"><%= @total.round.to_s(:delimited) %> 円</h5></td>
@@ -107,4 +108,5 @@
       </table>
     </div>
   </div>
+</div>
 </div>

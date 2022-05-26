@@ -85,17 +85,13 @@
           </td>
         </td>
 
-        <tr>
-          <td></td>
-          <td>
-            <%= f.radio_button :is_active, true, class: "ml-5" %>
-            <%= f.label :is_active, "有効", class: "text-light" %>
-            <%= f.radio_button :is_active, false, class: "ml-2" %>
-            <%= f.label :is_active, "退会", class: "text-light" %>
-          </td>
-        </tr>
-
       </table>
+        <div class='field mt-3 ml-5' >
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :is_active, "有効"%>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :is_active, "退会"%>
+        </div>
       </div>
       <div class="actions mt-5 d-grid gap-2">
           <%= f.submit "編集内容を保存する", class: "col-5 ml-5 btn btn-success"%>
