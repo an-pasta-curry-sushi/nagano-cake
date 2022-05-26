@@ -8,10 +8,13 @@ class Public::DeliveriesController < Public::ApplicationController
   def create
     @delivery = Delivery.new(delivery_params)
     if @delivery.save
-      redirect_to deliveries_path, notice: "新しいお届け先を登録しました"
+      @deliveries = current_customer.deliveries
+      @delivery = Delivery.new
+      flash[:notice] = '新しいお届け先を登録しました'
+      render :create_delivery
     else
       @deliveries = current_customer.deliveries
-      render 'index'
+      render :error
     end
   end
 
@@ -31,7 +34,10 @@ class Public::DeliveriesController < Public::ApplicationController
   def destroy
     @delivery = Delivery.find(params[:id])
     @delivery.destroy
-    redirect_to request.referer, notice: "選択したお届け先を削除しました"
+    @deliveries = current_customer.deliveries
+    @delivery = Delivery.new
+    flash[:alert] = '選択したお届け先を削除しました'
+    render :create_delivery
   end
 
   private
