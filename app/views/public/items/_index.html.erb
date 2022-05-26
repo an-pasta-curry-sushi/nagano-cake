@@ -1,8 +1,8 @@
-<div class="index-item-contents">
+<div class="index-item-contents item">
   <% items.each do |item| %>
     <div class="index-content">
       <%= link_to item_path(item), class: "text-light" do %>
-        <div class="index-item-image">
+        <div class="item-image">
           <%= image_tag item.get_item_image%>
         </div>
         <div class="tag">
