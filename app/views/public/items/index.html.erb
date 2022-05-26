@@ -20,7 +20,49 @@
         </div>
         <% end %>
       </div>
+      <%= paginate @items %>
     </div>
     <%= paginate @items %>
   </div>
 </section>
+
+
+
+<div class="container-fluid mt-5 px-5 px-sm-0">
+  <div class="row">
+<!--ジャンル検索欄-->
+    <div class='col-md-2 offset-md-1  text-center m-5'>
+      <div class="card" style="width: 12rem;">
+        <div class="card-header">
+          ジャンル一覧
+        </div>
+      <ul class="list-group list-group-flush">
+        <% @genres.each do |genre| %>
+          <li class="list-group-item">
+            <%= form_with url: search_path, local: true, method: :get do |f| %>
+              <%= f.hidden_field :genre, :value => genre.id %>
+              <%= f.submit genre.name, class: "btn btn-link" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+
+    <!-- 商品一覧 -->
+    <div class='col-md-9 px-2'>
+      <div class="row">
+        <% if @word != nil %>
+          <h2>検索結果:"<%= @word %>"</h2>
+        <% elsif @genre != nil %>
+          <h2><%= @genre.name %>一覧</h2>
+        <% else %>
+          <h2>商品一覧</h2>
+        <% end %>
+        <h6 class="mt-auto">(全<%= @total_items.size %>件)</h6>
+      </div>
+
+      <!-- 並び替え用フォーム -->
+      <%= render 'layouts/sort_item', link: sort_path %>
+
+      <div class="row mt-5">

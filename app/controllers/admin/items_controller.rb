@@ -1,6 +1,6 @@
 class Admin::ItemsController < Admin::ApplicationController
   def index
-    @items = Item.page(params[:page]).latest
+    @items = Item.latest.page(params[:page])
   end
 
   def new
@@ -31,6 +31,27 @@ class Admin::ItemsController < Admin::ApplicationController
 
   def show
     @item = Item.find(params[:id])
+  end
+
+  def search
+    @word = params[:word]
+    @total_items = Item.where("name LIKE?","%#{@word}%")
+    @items = @total_items.page(params[:page])
+    render "index"
+  end
+
+  def sort
+    case params[:sort_items]
+    when "old"
+      @items = Item.page(params[:page])
+    when "high_price"
+      @items = Item.order(no_tax_price: "DESC").page(params[:page])
+    when "low_price"
+      @items = Item.order(:no_tax_price).page(params[:page])
+    else # default(new)
+      @items = Item.latest.page(params[:page])
+    end
+    render "index"
   end
 
 

@@ -1,3 +1,40 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+// トップページ、アバウトページ関連
+.top_page {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('cake-3.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative; 
+}
+
+// トップページテキスト
+.main_text {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 55%;
+  left: 5%;
+  padding: 1%;
+  background-color:rgba(128,128,128,0.3);
+}
+
+.top_items {
+  color: black;
+}
+
+.link {
+  color: black;
+}
+
+.about_text {
+  margin-top: 10%;
+}
+
+

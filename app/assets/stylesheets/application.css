@@ -13,16 +13,33 @@
  *= require_tree .
  *= require_self
  */
+*{
+  font-family: Georgia, serif;
+}
+
+.flash_messeage {
+  position: relative;
+}
 
 /*見出しのバックグランドカラー*/
 .title {
   background-color: #ededed;
 }
-
 /*エラーメッセージ*/
 #notice{
-  color: green;
-  margin: 20px 20px;
+  color: green; 
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  z-index: 1;
+}
+
+.alert {
+  color: red; 
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  z-index: 1;
 }
 
 /*商品一覧ページ*/
@@ -55,3 +72,5 @@ main {
 .pagination {
   justify-content: center;
 }
+
+

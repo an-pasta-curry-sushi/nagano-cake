@@ -32,8 +32,6 @@
         </tbody>
       </table>
     </div>
-
-
   <div class="row col-md-10 offset-md-1 mx-auto">
     <div class="col-md-9">
       <p class="font-weight-bold">注文内容</p>
@@ -79,6 +77,35 @@
             <td><%= @order.total_payment.to_s(:delimited) %></td>
           </tr>
         </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <p>注文内容</p>
+      <table class="table table-bordered">
+        <thead>
+    <tr>
+      <th>商品</th>
+      <th>単価（税込）</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_details.each do |order_detail| %>
+      <tr>
+        <td>
+          <%= link_to item_path(order_detail.item_id) do %>
+            <%= order_detail.item.name %>
+          <% end %>
+        </td>
+        <td><%= order_detail.price.to_s(:delimited) %></td>
+        <td><%= order_detail.amount %></td>
+        <td><%= order_detail.sum_of_price.to_s(:delimited) %></td>
+      </tr>
+    <% end %>
+  </tbody>
       </table>
     </div>
   </div>

@@ -1,0 +1,21 @@
+<div class='container mt-5'>
+    
+  <div class='row'>
+    <div class='col-12 text-center'>
+      <h2>Menu</h2>
+      <span>新着商品ラインナップ</span>
+      <div class='top-items row mt-5'>
+        <% items.each do |item| %>
+          <div class='col-3'>
+            <%=link_to item_path(item), class: 'link text-decoration-none'  do %>
+              <%= image_tag item.get_item_image, size:"200x200" %>
+              <p class='mt-2'><%=item.name%></p>
+            <%end%>
+          </div>
+        <%end%>
+      </div>
+      <p class="text-right"><%= link_to "すべての商品を見る 👉", items_path, class: 'link text-decoration-none' %></p>
+    </div>
+  </div>
+    
+</div>
