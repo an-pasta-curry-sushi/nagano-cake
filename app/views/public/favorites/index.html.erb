@@ -11,34 +11,8 @@
     </div>
     <div class='row mt-3'>
       <div class='col-md-12 mx-auto'>
-        <div class="contents">
-        <% @favorites.each do |favorite| %>
-          <div class="favorite-content mt-2 mb-1">
-            <div class="favorite-item-image">
-              <%= link_to item_path(favorite.item_id) do %>
-                  <%= image_tag favorite.item.get_item_image %>
-              <% end %>
-            </div>
-            <div class="col-md-3 mt-5 ml-4 text-end text-light favorite-item-tag">
-              <%= link_to item_path(favorite.item_id), class: "text-light" do %>
-                <h4><%= favorite.item.name %></h4>
-              <% end %>
-              <h5 class="mt-5">
-                ¥<%= favorite.item.get_taxin_price.to_s(:delimited) %>
-              </h5>
-            </div>
-            <div class="button col-md-3 offset-md-1">
-              <div class="cart-button mt-5">
-                <%= form_with model: @cart_item do |f| %>
-                  <%= f.hidden_field :item_id, :value => favorite.item_id %>
-                  <%= f.number_field :amount, min: 1, :value =>1,class: 'amount_field' %>
-                  <%= f.submit 'カートに入れる',class: 'btn btn-success' %>
-                <% end %>
-              </div>
-              <%= link_to '削除する', favorite_path(favorite.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger ml-5 mt-1"%>
-            </div>
-          </div>
-        <% end %>
+        <div id="favorite_index_area" class="contents">
+           <%= render 'public/favorites/index', favorites: @favorites, cart_item: @cart_item %>
         </div>
       </div>
     </div>
@@ -60,8 +34,5 @@
     </div>
   </div>
 </div>
-            <tbody id="favorite_index_area">
-          <%= render 'public/favorites/index', favorites: @favorites, cart_item: @cart_item %>
-        </tbody>
 <%end%>
 

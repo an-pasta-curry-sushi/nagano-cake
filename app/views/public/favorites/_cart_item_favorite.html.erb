@@ -1,34 +1,41 @@
 <% cart_items.each do |cart_item| %>
-  <tr>
-    <td>
+  <div class="cart-item-contents">
+    <div class="cart-item-image">
       <%= link_to item_path(cart_item.item_id) do %>
         <%= image_tag cart_item.item.get_item_image, size:'50x50' %>
+      <% end %>
+    </div>
+    <div class="col-md-2 ml-2 mt-4 text-light d-inline-flex favorite-item-name">
+      <%= link_to item_path(cart_item.item_id), class: "text-light" do %>
         <%= cart_item.item.name %>
       <% end %>
-    </td>
-
-    <td>¥<%= cart_item.item.get_taxin_price.to_s(:delimited) %></td>
-
-    <td>
+    </div>
+    <div class="col-md-2 mt-4 ml-2 text-light favorite-item-name">
+      <h5>
+        ¥<%= cart_item.item.get_taxin_price.to_s(:delimited) %>
+      </h5>
+    </div>
+    <div class="cart-item-ammount mt-4 ml-4">
       <%= form_with model: cart_item do |f| %>
         <%= f.number_field :amount,min: 1, class: 'amount_field' %>
         <%= f.submit '変更',class: 'btn btn-sm btn-success' %>
       <% end %>
-    </td>
-
-    <td>¥<%= cart_item.sum_of_price.to_s(:delimited) %></td>
-    <td>
+    </div>
+    <div class="cart-item-total mt-4 ml-4 text-light">
+      <h5>¥<%= cart_item.sum_of_price.to_s(:delimited) %></h5>
+    </div>
+    <div class="cart-item-buttons mt-4 ml-4">
       <% if favorite_id = current_customer.favorites.find_by(item_id: cart_item.item_id) %>
         <%= link_to "欲しいものリストから外す", favorite_path(favorite_id), method: :delete,remote: true, data: { confirm: '本当に外しますか？' }, class: 'btn btn-danger btn-sm' %>
         <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
       <% else %>
-        <%= form_with model: favorite, local:false do |f| %>
+        <%= form_with model: favorite,local:false do |f| %>
           <%= f.hidden_field :item_id, :value => cart_item.item_id %>
           <%= f.submit '欲しいものリストに入れる',class: 'btn btn-success btn-sm' %>
-          <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+          <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-4"%>
         <% end %>
       <% end %>
-
-    </td>
-  </tr>
+    </div>
+  </div>
 <% end %>
+
