@@ -11,7 +11,7 @@
           <td style="width: 15%">
             <h5 class="font-weight-bold">購入者</h5>
           </td>
-          <td>
+          <td colspan="2">
             <h5><u><%= @order.customer.get_full_name(@order.customer) %></u></h5>
           </td>
         </tr>
@@ -19,7 +19,7 @@
           <td style="width: 20%" class="font-weight-bold">
             <h5 class="font-weight-bold">注文日</h5>
           </td>
-          <td>
+          <td colspan="2">
             <h5><%= @order.created_at.strftime('%Y/%m/%d') %></h5>
           </td>
         </tr>
@@ -27,15 +27,22 @@
           <td style="width: 20%" class="font-weight-bold">
             <h5 class="font-weight-bold">配送先</h5>
           </td>
-          <td>
-            <h5><%= @order.address %></h5>
+          <td style="width: 13%">
+            <h5>〒 <%= @order.postal_code %></h5>
+          </td>
+          <td><h5><%= @order.address %></h5></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td colspan="2" style="width 10%">
+            <h5><%= @order.name %></h5>
           </td>
         </tr>
         <tr>
           <td style="width: 20%" class="font-weight-bold">
             <h5 class="font-weight-bold">支払い方法</h5>
           </td>
-          <td>
+          <td colspan="2">
             <h5><%= @order.payment_method_i18n %></h5>
           </td>
         </tr>
@@ -43,7 +50,7 @@
           <td style="width: 20%" class="font-weight-bold">
             <h5 class="font-weight-bold">注文ステータス</h5>
           </td>
-          <td>
+          <td colspan="2">
             <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
             <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
             <%= f.submit "更新", class: 'btn btn-success btn-sm ml-2' %>
@@ -58,11 +65,11 @@
       <table class='table table-borderless border-bottom'>
         <thead class='thead-light'>
           <tr>
-            <th style="width: 30%" class="font-weight-bold">商品名</th>
-            <th style="width: 20%" class="font-weight-bold">単価(税込)</th>
+            <th style="width: 40%" class="font-weight-bold">商品名</th>
+            <th style="width: 15%" class="font-weight-bold">単価(税込)</th>
             <th style="width: 10%" class="font-weight-bold">数量</th>
             <th style="width: 10%" class="font-weight-bold">小計</th>
-            <th style="width: 30%" class="font-weight-bold">製作ステータス</th>
+            <th style="width: 25%" class="font-weight-bold">製作ステータス</th>
           </tr>
         </thead>
         <tbody>

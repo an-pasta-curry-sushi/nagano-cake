@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_many :cart_items
   has_many :favorites
 
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :name, length: { minimum: 2, maximum: 15 }, uniqueness: true
   validates :introduction, length: { maximum: 200 }
   validates :no_tax_price, presence: true, numericality: {only_integer: true}
 

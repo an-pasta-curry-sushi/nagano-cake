@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="offset-md-1 my-2">
-      <h4 class="title">配送先登録 / 一覧</h4>
+      <h4 class="title text-center px-4">配送先登録 / 一覧</h4>
     </div>
   </div>
     <%= render 'layouts/errors', obj: @delivery %>
@@ -45,25 +45,24 @@
       </table>
     <% end %>
   </div>
-   <div class="row">
-     <div class="col mt-5">
-
-       <table class='table table-hover table-inverse' style="width: 80%">
+  <div class="row">
+    <div class="col-md-12 mt-5">
+      <table class='table table-bordered' style="width: 80%">
         <thead class='thead-light'>
           <tr>
-            <th class="text-center">郵便番号</th>
-            <th style="width: 30%" class="text-center">住所</th>
+            <th class="text-center" style="width: 10%">郵便番号</th>
+            <th style="width: 50%" class="text-center">住所</th>
             <th class="text-center">宛名</th>
-            <th style="width: 30%"></th>
+            <th style="width: 26%"></th>
           </tr>
         </thead>
         <tbody>
           <% @deliveries.each do |delivery| %>
             <tr>
-              <td class="align-middle text-center">〒<%= delivery.postal_code %></td>
-              <td class="align-middle text-center"><%= delivery.address %></td>
-              <td class="align-middle text-center"><%= delivery.name %></td>
-              <td>
+              <td class="align-middle"><%= delivery.postal_code %></td>
+              <td class="align-middle"><%= delivery.address %></td>
+              <td class="align-middle"><%= delivery.name %></td>
+              <td class="align-middle">
               <%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-success mr-3" %>
               <%= link_to "削除する", delivery_path(delivery), method: :delete, data: {confirm: "本当に消しますか?" }, class: "btn btn-danger" %>
               </td>

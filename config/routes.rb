@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update] do
       resources :order_details, only: [:update]
     end
+
+    get "search"=>"items#search"
+    get "sort"=>"items#sort"
   end
 
   scope module: :public do
@@ -41,6 +44,9 @@ Rails.application.routes.draw do
     post '/orders/confirm' => 'orders#confirm', as: 'confirm_order'
     delete '/favorite/destroy_all' => 'favorites#destroy_all', as: 'favorites_destroy_all'
     resources :favorites, only: [:index, :create, :destroy]
+
+    get "search"=>"items#search"
+    get "sort"=>"items#sort"
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

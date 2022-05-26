@@ -1,49 +1,15 @@
-<dvi class='container'>
-  <div class='row'>
-    <div class='text-center ml-5'>
-      <div class="card" style="width: 12rem;">
-        <div class="card-header">
-          ジャンル一覧
-        </div>
-        <ul class="list-group list-group-flush">
-          <% @genres.each do |genre| %>
-            <li class="list-group-item">
-              <%=link_to genre.name, '/', class: 'text-decoration-non' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-    <div class= "col mr-5 d-flex align-items-center justify-content-center">
-      <p class='text-center'>
-        ようこそ、ながのCAKEへ</br>
-        このサイトは、ケーキ販売のECサイトになります。</br>
-        会員でない方も商品の閲覧はできますが、</br>
-        購入には会員登録が必要になります。
-      </p>
-    </div>
+<section>
+  <div class='top_page'>
+    <h2 class='main_text'>
+      ようこそ、ながのCAKEへ</br>
+      このサイトは、ケーキ販売のECサイトになります。</br>
+      会員でない方も商品の閲覧はできますが、</br>
+      購入には会員登録が必要になります。
+    </h2>
   </div>
-  <div class = "row mt-3 ml-5 d-flex justify-content-center">
-    <div class="col-md-8">
-      <h2 class="text-left">新着商品</h2>
-    </div>
-  </div>
-    <div class = "row ml-5 d-flex justify-content-center">
-      <% @items.each do |item| %>
-        <div class = "col-md-2">
-          <%= link_to item_path(item) do %>
-            <p><%= image_tag item.get_item_image, size:"100x100" %></p>
-            <p><%= item.name %></p>
-          <% end %>
-          <p>￥<%= item.get_taxin_price.to_s(:delimited) %></p>
-        </div>
-      <% end %>
-    </div>
-    <div class = "row d-flex justify-content-center">
-      <div class="col-md-8">
-        <p  class="text-right"><%= link_to "すべての商品を見る 👉", items_path %></p>
-        <p  class="text-right"><%= link_to "ランキング順を見る 👉", items_ranks_path %></p>
-      </div>
-    </div>
-  </dvi>
-</dvi>
+</section>
+<section>
+  <%= render "new_items", items: @items %>
+</section>
+<p  class="text-right"><%= link_to "ランキング順を見る 👉", items_ranks_path %></p>
+

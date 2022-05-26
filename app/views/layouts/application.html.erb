@@ -15,7 +15,16 @@
   <body>
     <%= render 'layouts/header' %>
     <main>
+      <div class='flash_messeage'>
+        <% if flash[:notice] %>
+          <p id="notice"><%= notice %></p>
+        <% elsif flash[:alert] %>
+          <p class="alert"><%= alert %></p>
+        <% end %>
+        
       <%= yield %>
+      
+      </div>
     </main>
     <%= render 'layouts/footer' %>
   </body>

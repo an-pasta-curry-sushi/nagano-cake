@@ -1,3 +1,33 @@
+<section>
+  <div class="item-index-page">
+    <div class="index-main">
+      <div class="index-item-title text-light">
+        <h4 class="font-weight-bold">商品一覧</h4>
+        <h6 class="font-weight-bold">(全<%= @items.size %>件)</h6>
+      </div>
+      <div class="index-item-contents">
+        <% @items.each do |item| %>
+        <div class="index-content">
+          <%= link_to item_path(item), class: "text-light" do %>
+            <div class="index-item-image">
+              <%= image_tag item.get_item_image%>
+            </div>
+            <div class="tag">
+              <h6 class="font-weight-bold"><%= item.name %></h6>
+              <p class="font-weight-bold">¥<%= item.get_taxin_price.to_s(:delimited) %></p>
+            </div>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <%= paginate @items %>
+    </div>
+    <%= paginate @items %>
+  </div>
+</section>
+
+
+
 <div class="container-fluid mt-5 px-5 px-sm-0">
   <div class="row">
 <!--ジャンル検索欄-->
@@ -9,7 +39,10 @@
       <ul class="list-group list-group-flush">
         <% @genres.each do |genre| %>
           <li class="list-group-item">
-            <%=link_to genre.name, '/', class: 'text-decoration-non' %>
+            <%= form_with url: search_path, local: true, method: :get do |f| %>
+              <%= f.hidden_field :genre, :value => genre.id %>
+              <%= f.submit genre.name, class: "btn btn-link" %>
+            <% end %>
           </li>
         <% end %>
       </ul>
@@ -19,20 +52,17 @@
     <!-- 商品一覧 -->
     <div class='col-md-9 px-2'>
       <div class="row">
-        <h2>商品一覧</h2>
-        <h6 class="mt-auto">(全<%= @items.size %>件)</h6>
-      </div>
-      <div class="row mt-5">
-        <% @items.each do |item| %>
-          <div class="item_box col-md-2">
-            <%= link_to item_path(item), class: "text-dark" do %>
-              <%= image_tag item.get_item_image, size: '200x200' %>
-              <p><%= item.name %></p>
-            <% end %>
-            <p>¥<%= item.get_taxin_price.to_s(:delimited) %></p>
-          </div>
+        <% if @word != nil %>
+          <h2>検索結果:"<%= @word %>"</h2>
+        <% elsif @genre != nil %>
+          <h2><%= @genre.name %>一覧</h2>
+        <% else %>
+          <h2>商品一覧</h2>
         <% end %>
+        <h6 class="mt-auto">(全<%= @total_items.size %>件)</h6>
       </div>
-    </div>
-  </div>
-</div>
+
+      <!-- 並び替え用フォーム -->
+      <%= render 'layouts/sort_item', link: sort_path %>
+
+      <div class="row mt-5">

@@ -1,7 +1,12 @@
 <div class='container'>
   <div class="row">
     <div class="offset-md-1 my-2">
-      <h4 class="text-center title">会員ログイン</h4>
+      <h4 class="text-center title px-4">会員ログイン</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-md-2 my-2">
+      <h5 class="text-center title px-4">会員の方はこちらからログイン</h5>
     </div>
   </div>
   <div class="row mt-2">
@@ -9,15 +14,15 @@
       <%= form_with model: @customer, url: customer_session_path do |f| %>
         <table class="table table-borderless" >
           <tr>
-            <td style= "width: 20%"><%= f.label :email, "メールアドレス" %></td>
+            <td style= "width: 25%"><%= f.label :email, "メールアドレス" %></td>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email form-control", size: "40" %></td>
           </tr>
           <tr>
-            <td style= "width: 20%"><%= f.label :password, "パスワード" %></td>
+            <td style= "width: 25%"><%= f.label :password, "パスワード" %></td>
             <td><%= f.password_field :password, autocomplete: "current-password form-control", size: "40"  %></td>
           </tr>
           <tr>
-            <td style= "width: 20%"></td>
+            <td style= "width: 25%"></td>
             <td><%= f.submit "ログイン", class: "btn btn-primary w-25" %></td>
           </tr>
         </table>
@@ -25,10 +30,14 @@
       <% end %>
     </div>
   </div>
-    <div class="row">
-    <div class="offset-md-1 my-2">
-      <h4 class="text-center title">会員登録がお済みでない方</h4>
-      <p><%= render "public/shared/links" %> から新規登録を行ってください。</p>
+  <div class="row">
+    <div class="offset-md-2 my-2">
+      <h5 class="text-center title px-4">会員登録がお済みでない方</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 offset-md-2 my-2">
+      <p class="ml-5 mt-2"><%= render "public/shared/links" %> から新規登録を行ってください。</p>
     </div>
   </div>
 </div>
