@@ -51,7 +51,6 @@ class Admin::ItemsController < Admin::ApplicationController
     else # default(new)
       @items = Item.latest.page(params[:page])
     end
-    render "index"
   end
 
 
