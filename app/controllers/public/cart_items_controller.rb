@@ -9,11 +9,6 @@ class Public::CartItemsController < Public::ApplicationController
 
     @favorite = Favorite.new
 
-    if @favorite_id = current_customer.favorites.find_by(item_id: params[:id])
-      @favorites = true
-    else
-      @favorites = false
-    end
   end
 
   def create
