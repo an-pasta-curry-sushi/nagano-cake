@@ -1,13 +1,14 @@
-<div class="container">
-  <div class="row">
-    <div class="offset-md-1 my-2">
-      <h4 class="title text-center px-4">配送先登録 / 一覧</h4>
+<div class="delivery-page">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-1 my-2">
+        <h4 class="title text-center px-4 text-light">配送先登録 / 一覧</h4>
+      </div>
     </div>
-  </div>
-    <%= render 'layouts/errors', obj: @delivery %>
-  <div class="row">
-    <%= form_with model: @delivery, url: deliveries_path, method: :post do |f| %>
-    <table>
+      <%= render 'layouts/errors', obj: @delivery %>
+    <div class="row form-area col-md-10">
+      <%= form_with model: @delivery, url: deliveries_path, method: :post do |f| %>
+      <table class="text-light">
 
         <tr>
           <div class='mt-2'>
@@ -47,11 +48,11 @@
   </div>
   <div class="row">
     <div class="col-md-12 mt-5">
-      <table class='table table-bordered' style="width: 80%">
-        <thead class='thead-light'>
+      <table class='table table-bordered text-light' style="width: 80%">
+        <thead>
           <tr>
-            <th class="text-center" style="width: 10%">郵便番号</th>
-            <th style="width: 50%" class="text-center">住所</th>
+            <th class="text-center" style="width: 15%">郵便番号</th>
+            <th style="width: 45%" class="text-center">住所</th>
             <th class="text-center">宛名</th>
             <th style="width: 26%"></th>
           </tr>
@@ -70,3 +71,6 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>

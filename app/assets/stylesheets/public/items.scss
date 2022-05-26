@@ -15,10 +15,11 @@
 }
 
 .index-item-title {
-  width: 220px;
   display: flex;
   padding: 5px 10px;
   align-items: flex-end;
+}
+.index-item-title h4 {
   background-color: rgba(128,128,128,0.3);
 }
 
@@ -79,4 +80,5 @@
   height: 100vh;
   background-size: cover;
 }
+
 

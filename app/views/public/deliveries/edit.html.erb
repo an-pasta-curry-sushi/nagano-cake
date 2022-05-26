@@ -1,13 +1,15 @@
+<div class="delivery-page">
+
 <div class="container">
   <div class="row">
     <div class="offset-md-1 my-2">
-      <h4 class="title text-center px-4">配送先編集</h4>
+      <h4 class="title text-center px-4 text-light">配送先編集</h4>
     </div>
   </div>
   <%= render 'layouts/errors', obj: @delivery %>
   <div class="row">
     <%= form_with model: @delivery, url: delivery_path, method: :patch do |f| %>
-    <table>
+    <table class="table text-light table-borderless">
 
         <tr>
           <div class='mt-2'>
@@ -38,11 +40,13 @@
             <div class='field mt-2'>
               <%= f.text_field :name, class: "ml-5 mr-5" %>
               <%= f.hidden_field :customer_id, :value => current_customer.id %>
-              <%= f.submit "新規登録", class: "btn btn-success" %>
+              <%= f.submit "変更を保存", class: "btn btn-success" %>
             </div>
           </td>
         </tr>
       </table>
     <% end %>
   </div>
+</div>
+
 </div>
