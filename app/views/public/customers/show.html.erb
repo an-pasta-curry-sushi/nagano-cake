@@ -1,43 +1,45 @@
+<div class="my-page">
+
 <div class='container'>
   <div class="row">
-    <div class="offset-md-1 my-2">
-      <h4 class="text-center title px-4">マイページ</h4>
+    <div class="offset-md-1 my-2 my-page-title">
+      <h4 class="text-center px-4 text-light">マイページ</h4>
     </div>
   </div>
   <div class="row my-3">
-    <div class="col-md-2 my-auto">
-      <h5 class="font-weight-bold">登録情報</h5>
+    <div class="col-md-2 my-auto table-title">
+      <h5 class="font-weight-bold text-light">登録情報</h5>
     </div>
     <div class="col-md-2">
       <%= link_to "編集する", my_page_edit_customers_path, class: "btn btn-block btn-success" %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8">
-      <table class="table table-bordered">
+    <div class="col-md-8 my-page-table">
+      <table class="table table-bordered text-light text-weight-bold">
         <tbody>
           <tr>
-            <td style="width: 20%" class="table-light">氏名</td>
+            <td style="width: 20%">氏名</td>
             <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
           </tr>
           <tr>
-            <td class="table-light">カナ</td>
+            <td>カナ</td>
             <td><%= @customer.last_name_easy %>　<%= @customer.first_name_easy %></td>
           </tr>
           <tr>
-            <td class="table-light">郵便番号</td>
+            <td>郵便番号</td>
             <td><%= @customer.postal_code %></td>
           </tr>
           <tr>
-            <td class="table-light">住所</td>
+            <td>住所</td>
             <td><%= @customer.address %></td>
           </tr>
           <tr>
-            <td class="table-light">電話番号</td>
+            <td>電話番号</td>
             <td><%= @customer.phone_number %></td>
           </tr>
           <tr>
-            <td class="table-light">メールアドレス</td>
+            <td>メールアドレス</td>
             <td><%= @customer.email %></td>
           </tr>
         </tbody>
@@ -45,16 +47,16 @@
     </div>
   </div>
   <div class="row my-2">
-    <div class="col-md-2 my-auto">
-      <h5 class="font-weight-bold">配送先</h5>
+    <div class="col-md-2 my-auto delivery-link">
+      <h5 class="font-weight-bold text-light">配送先</h5>
     </div>
     <div class="col-md-2">
       <%= link_to "一覧を見る", deliveries_path, class: "btn btn-block btn-primary" %>
     </div>
   </div>
   <div class="row my-2">
-    <div class="col-md-2 my-auto">
-      <h5 class="font-weight-bold">注文履歴</h5>
+    <div class="col-md-2 my-auto order-link">
+      <h5 class="font-weight-bold text-light">注文履歴</h5>
     </div>
     <div class="col-md-2">
       <%= link_to "一覧を見る", orders_path, class: "btn btn-block btn-primary" %>
@@ -62,3 +64,5 @@
   </div>
 </div>
 
+
+</div>
