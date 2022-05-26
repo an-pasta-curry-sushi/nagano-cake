@@ -1,5 +1,5 @@
 class Public::ItemsController < Public::ApplicationController
-  before_action :authenticate_customer!, except: [:index, :show, :search, :sort]
+  before_action :authenticate_customer!, except: [:index, :show, :search, :sort, :rank_index]
 
   def index
     @total_items = Item.all
@@ -22,10 +22,12 @@ class Public::ItemsController < Public::ApplicationController
     @cart_item = CartItem.new
     @favorite = Favorite.new
 
-    if @favorite_id = current_customer.favorites.find_by(item_id: params[:id])
+    if customer_signed_in?
+      if @favorite_id = current_customer.favorites.find_by(item_id: params[:id])
       @favorites = true
-    else
+      else
       @favorites = false
+      end
     end
   end
 
