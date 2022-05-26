@@ -1,0 +1,10 @@
+<%= form_with url: link, local: true, method: :get do |f| %>
+  <div class="row">
+    <div>
+      <%= f.select :sort_items, [["新着順(Default)", "new"], ["古い順", "old"], ["価格順(降順)", "high_price"], ["価格順(昇順)", "low_price"]], {}, class: "form-control" %>
+    </div>
+    <div>
+      <%= f.submit "並び替える", class: "btn btn-secondary text-white" %>
+    </div>
+  </div>
+<% end %>

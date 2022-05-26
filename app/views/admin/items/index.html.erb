@@ -8,6 +8,18 @@
       <h2 class='text-right'><%= link_to '+', new_admin_item_path, class: 'btn btn-light btn-lg shadow rounded-circle' %></h2>
     </div>
   </div>
+  <div class="row">
+    <% if @word != nil %>
+      <h2 class="offset-md-1">検索結果:"<%= @word %>"</h2>
+      <h6 class="mt-auto">(全<%= @total_items.size %>件)</h6>
+    <% end %>
+  </div>
+
+  <div class="offset-md-1">
+    <!-- 並び替え用フォーム -->
+    <%= render 'layouts/sort_item', link: admin_sort_path %>
+  </div>
+
   <div class='row mt-3'>
     <div class="col-md-10 mx-auto">
       <table class='table table-borderless'>

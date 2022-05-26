@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update] do
       resources :order_details, only: [:update]
     end
+
+    get "search"=>"items#search"
+    get "sort"=>"items#sort"
   end
 
   scope module: :public do
@@ -38,6 +41,9 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
     resources :orders, only: [:index, :show, :new, :create]
     post '/orders/confirm' => 'orders#confirm', as: 'confirm_order'
+
+    get "search"=>"items#search"
+    get "sort"=>"items#sort"
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
