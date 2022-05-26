@@ -1,0 +1,19 @@
+<% favorites.each do |favorite| %>
+  <tr>
+    <td>
+      <%= link_to item_path(favorite.item_id) do %>
+        <%= image_tag favorite.item.get_item_image, size:'50x50' %>
+        <%= favorite.item.name %>
+      <% end %>
+    </td>
+    <td>¥<%= favorite.item.get_taxin_price.to_s(:delimited) %></td>
+    <td>
+      <%= form_with model: cart_item do |f| %>
+        <%= f.hidden_field :item_id, :value => favorite.item_id %>
+        <%= f.number_field :amount, min: 1, :value =>1,class: 'amount_field' %>
+        <%= f.submit 'カートに入れる',class: 'btn btn-sm btn-success' %>
+      <% end %>
+    </td>
+    <td><%= link_to '削除する', favorite_path(favorite.id), method: :delete, data: { confirm: '本当に消しますか？' },remote: true, class: "btn btn-sm btn-danger"%></td>
+  </tr>
+<% end %>

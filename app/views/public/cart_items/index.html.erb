@@ -77,5 +77,8 @@
     </div>
   </div>
 </div>
+ <tbody id="cart_item_favorite_area">
+          <%= render 'public/favorites/cart_item_favorite', cart_items: @cart_items, favorite: @favorite %>
+        </tbody>
 <%end%>
 
