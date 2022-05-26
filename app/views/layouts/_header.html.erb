@@ -1,5 +1,5 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light p-3", style='background-color: #e7879a;'>
+<header style='background-color: #e7879a;'>
+  <nav class="navbar navbar-expand-lg navbar-light p-3">
     <div class="container">
       <a class="navbar-brand" href="/"><%= image_tag 'logo.jpeg', class: "logo" %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,6 +77,12 @@
   </nav>
 
   <!-- フラッシュメッセージ -->
-  
+  <div>
+    <% if flash[:notice] %> 
+      <p id='notice'><%= notice %></p>
+      <% elsif flash[:alert] %> 
+      <span class='alert'><%= alert %></span>
+    <% end %>
+  </div>
 
 </header>
