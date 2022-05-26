@@ -7,7 +7,7 @@
 .top_page {
   width: 100vw;
   height: 100vh;
-  background-image: url('cake-3.jpeg');
+  background-image: url('top-image.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -33,11 +33,6 @@
   color: black;
 }
 
-.about_text {
-  margin-top: 10%;
-}
-
-
 .genre {
   width: 15%;
   background-color:rgba(99,99,99,0.8);
@@ -57,4 +52,23 @@
   padding: 0;
   border-bottom: solid 1px black;
   list-style: none;
+}
+
+.about_page {
+  width: 100vw;
+  height: 85vh;
+  background-image: url('about.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position : relative;
+}
+
+.about_text {
+  font-size: 30px;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  color: white;
+  background-color:rgba(128,128,128,0.2);
 }
