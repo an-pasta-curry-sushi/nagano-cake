@@ -1,0 +1,3 @@
+$("#favorite_index_area").html("<%= j(render 'public/favorites/index',  favorites: @favorites_all, cart_item: @cart_item) %>");
+
+$("#favorite_paginate_area").html("<%= j(render 'public/favorites/paginate',  favorites: @favorites_all) %>");
