@@ -20,7 +20,7 @@
         <p class='text-light'>(税込)</p>
       </div>
       <div class="row show-item-buttons">
-        <div class='mt-5'>
+        <div class='mt-5 d-inline-flex'>
           <%= form_with model: @cart_item do |f| %>
 
           <!--hidden_field-->
@@ -31,11 +31,13 @@
             <%= f.submit 'カートに入れる',class: 'btn btn-success ml-2' %>
             <% end %>
           </div>
-          <div class="form-group d-inline-flex">
+
+          <div class="form-group d-inline-flex ml-2">
           <% if customer_signed_in? %>
             <% if @favorites %>
               <%= link_to "欲しいものリストから外す", favorite_path(@favorite_id), method: :delete, data: { confirm: '本当に外しますか？' }, class: 'btn btn-danger ml-2' %>
             <% else %>
+
             <%= form_with model: @favorite do |f| %>
               <%= f.hidden_field :item_id, :value => @item.id %>
               <%= f.submit '欲しいものリストに入れる',class: 'btn btn-success ml-2' %>
