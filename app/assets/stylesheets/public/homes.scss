@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  position: relative; 
+  position: relative;
 }
 
 // トップページテキスト
@@ -25,12 +25,33 @@
   background-color:rgba(128,128,128,0.3);
 }
 
+.home-items {
+  background: linear-gradient(#CBFFD3, white);
+}
+
 .top_items {
   color: black;
 }
 
 .link {
   color: black;
+}
+
+.top-item-content {
+  height: 280px;
+}
+
+.top-item-image {
+  width: 100%;
+  height: 200px;
+  text-align: center;
+}
+
+.top-item-image img {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  border-radius: 30px;
 }
 
 .about_page {

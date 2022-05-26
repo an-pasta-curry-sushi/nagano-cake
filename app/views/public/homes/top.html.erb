@@ -9,7 +9,9 @@
   </div>
 </section>
 <section>
-  <%= render "new_items", items: @items %>
+  <div class="home-items">
+    <%= render "new_items", items: @items %>
+    <%= render "rank_items", month_rank_items: @month_rank_items %>
+  </div>
 </section>
-<p  class="text-right"><%= link_to "ランキング順を見る 👉", items_ranks_path %></p>
 

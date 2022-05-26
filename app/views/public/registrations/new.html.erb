@@ -1,15 +1,16 @@
-<div class='container_fuild px-5 px-sm-0'>
+<div class="log-in-page">
+  <div class='container_fuild px-5 px-sm-0'>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="row">
     <div class="offset-md-1 my-2">
-      <h4 class="title text-center px-4">新規会員登録</h4>
+      <h4 class="title text-center px-4 text-light">新規会員登録</h4>
     </div>
   </div>
 
   <div class='row'>
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-10 offset-md-1 form-table">
       <%= form_with model: @customer, url: customer_registration_path, local: true, method: :post do |f| %>
-      <table class="table table-borderless row_table">
+      <table class="table table-borderless row_table text-light">
 
         <tr class='mt-2'>
           <td>名前</td>
@@ -81,12 +82,13 @@
   </div>
   <div class="row">
     <div class="offset-md-1 my-2">
-      <h4 class="title text-center px-4">既に登録済みの方</h4>
+      <h4 class="title text-center px-4 text-light">既に登録済みの方</h4>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-5 offset-md-2 my-2">
+    <div class="col-md-3 offset-md-2 my-2 text-light link-area">
       <p class="ml-5 mt-2"><%= render "public/shared/links" %>　からログインしてください</p>
     </div>
   </div>
+</div>
 </div>
