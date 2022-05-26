@@ -2,25 +2,35 @@
   <div class="item-index-page">
     <div class="index-main">
       <div class="index-item-title text-light">
-        <h4 class="font-weight-bold">商品一覧</h4>
+        <% if @word != nil %>
+          <h4 class="font-weight-bold">検索結果:"<%= @word %>"</h4>
+        <% elsif @genre != nil %>
+          <h4 class="font-weight-bold"><%= @genre.name %>一覧</h4>
+        <% else %>
+          <h4 class="font-weight-bold">商品一覧</h4>
+        <% end %>
         <h6 class="font-weight-bold">(全<%= @total_items.size %>件)</h6>
       </div>
-      <div class="index-item-contents">
-        <% @items.each do |item| %>
-        <div class="index-content">
-          <%= link_to item_path(item), class: "text-light" do %>
-            <div class="index-item-image">
-              <%= image_tag item.get_item_image%>
-            </div>
-            <div class="tag">
-              <h6 class="font-weight-bold"><%= item.name %></h6>
-              <p class="font-weight-bold">¥<%= item.get_taxin_price.to_s(:delimited) %></p>
-            </div>
-          <% end %>
-        </div>
-        <% end %>
+      <!-- 並び替え用フォーム -->
+      <%= render 'layouts/sort_item', link: sort_path %>
+      <div id="public_items_index">
+        <%= render 'index', items: @items %>
       </div>
-      <%= paginate @items %>
+      <div class='col-md-2 offset-md-1  text-center m-5'>
+  <div class="card" style="width: 12rem;">
+    <div class="card-header">ジャンル一覧</div>
+    <ul class="list-group list-group-flush">
+      <% @genres.each do |genre| %>
+        <li class="list-group-item">
+          <%= form_with url: search_path, local: true, method: :get do |f| %>
+            <%= f.hidden_field :genre, :value => genre.id %>
+            <%= f.submit genre.name, class: "btn btn-link" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
     </div>
   </div>
 </section>
