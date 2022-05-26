@@ -1,18 +1,18 @@
 <div class='container'>
   <div class="row">
-    <div class="col-md-2 offset-md-1 my-2">
-      <h5 class="text-center" style='background-color: #ededed;'>会員一覧</h5>
+    <div class="col-md-2 my-2">
+      <h4 class="text-center title">会員一覧</h4>
     </div>
   </div>
   <div class='row'>
-    <div class='col-md-10 mx-auto'>
-      <table class='table table-hover table-inverse col-md-10 mx-auto'>
+    <div class='col-md-12 mx-auto'>
+      <table class='table table-inverse border-bottom'>
         <thead class='thead-light text-dark'>
           <tr>
-            <th>会員ID</th>
-            <th><u>氏名</u></th>
-            <th>メールアドレス</th>
-            <th>ステータス</th>
+            <th style="width: 10%">会員ID</th>
+            <th style="width: 46%"><u>氏名</u></th>
+            <th style="width: 34%">メールアドレス</th>
+            <th style="width: 10%">ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -27,9 +27,9 @@
               <td><%= customer.email %></td>
               <td>
                 <% if customer.is_active == true %>
-                  <span class="text-success">有効</span>
+                  <span class="text-success font-weight-bold">有効</span>
                 <% else %>
-                  <span class="text-muted">無効</span>
+                  <span class="text-muted font-weight-bold">無効</span>
                 <% end %>
               </td>
             </tr>
