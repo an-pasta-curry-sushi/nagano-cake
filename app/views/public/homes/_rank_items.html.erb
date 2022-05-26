@@ -1,12 +1,12 @@
-  <div class='container mt-5'>
-  <div class='row'>
-    <div class='col-12 text-center'>
-      <span>人気商品ラインナップ</span>
+  <div class='container my-5 '>
+   <div class='row'>
+     <div class='col-12 text-center'>
+      <span class='font-weight-bold'>人気商品ラインナップ</span>
       <div class='top-items row mt-5'>
         <% month_rank_items.each do |month_rank_item| %>
-          <div class='col-3 top-item-content'>
-            <%=link_to item_path(month_rank_item), class: 'link text-decoration-none'  do %>
-              <div class="top-item-image">
+          <div id='item' class='col-3 content item'>
+            <%=link_to item_path(month_rank_item), class: 'link-color'  do %>
+              <div class="item-image">
                 <%= image_tag month_rank_item.get_item_image %>
               </div>
               <div class="tag">
@@ -16,7 +16,7 @@
           </div>
         <%end%>
       </div>
-      <p class="text-right"><%= link_to "ランキング順を見る 👉", items_ranks_path, class: "text-dark" %></p>
+      <p class="text-right"><%= link_to "ランキング順を見る", items_ranks_path, class: "link-color" %></p>
     </div>
   </div>
 </div>

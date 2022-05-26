@@ -1,14 +1,13 @@
 <div class='container pt-5'>
-
   <div class='row'>
     <div class='col-12 text-center'>
       <h2>Menu</h2>
-      <span>新着商品ラインナップ</span>
+      <span class='font-weight-bold'>新着商品ラインナップ</span>
       <div class='top-items row mt-5'>
         <% items.each do |item| %>
-          <div class='col-3 top-item-content'>
-            <%=link_to item_path(item), class: 'link text-decoration-none'  do %>
-              <div class="top-item-image">
+          <div class='col-3 content item'>
+            <%=link_to item_path(item), class: 'link-color' do %>
+              <div class="item-image">
                 <%= image_tag item.get_item_image %>
               </div>
               <div class="tag">
@@ -18,7 +17,7 @@
           </div>
         <%end%>
       </div>
-      <p class="text-right"><%= link_to "すべての商品を見る 👉", items_path, class: 'link text-decoration-none' %></p>
+      <p class="text-right"><%= link_to "すべての商品を見る", items_path, class: 'link-color' %></p>
     </div>
   </div>
 
