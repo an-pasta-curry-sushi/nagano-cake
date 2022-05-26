@@ -13,6 +13,27 @@
  *= require_tree .
  *= require_self
  */
+ nav {
+  position: relative
+ }
+ 
+ 
+/*エラーメッセージ*/
+#notice{
+  color: green; 
+  position: absolute;
+  top: 8%;
+  left: 2%;
+  z-index: 1;
+}
+
+.alert {
+  color: red; 
+  position: absolute;
+  left: 2%;
+  z-index: 1;
+}
+
 *{
   font-family: Georgia, serif;
 }
@@ -24,22 +45,6 @@
 /*見出しのバックグランドカラー*/
 .title {
   background-color: #ededed;
-}
-/*エラーメッセージ*/
-#notice{
-  color: green; 
-  position: absolute;
-  top: 2%;
-  left: 2%;
-  z-index: 1;
-}
-
-.alert {
-  color: red; 
-  position: absolute;
-  top: 2%;
-  left: 2%;
-  z-index: 1;
 }
 
 /*商品一覧ページ*/

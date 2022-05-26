@@ -4,8 +4,9 @@
 
 .item-index-page{
   background-image: url('item-bg.jpg');
-  height: 800px;
+  height: 100vh;
   padding: 10px;
+  background-size: cover;
 }
 
 .index-main {
@@ -62,6 +63,7 @@
   height: 95%;
   object-fit: cover;
   border-radius: 30px;
+
 }
 
 .show-item-introduction {
@@ -74,6 +76,8 @@
 
 .items-show-page {
   background-image: url('item-bg.jpg');
-  height: 600px;
+  height: 100vh;
+  background-size: cover;
 }
+
 

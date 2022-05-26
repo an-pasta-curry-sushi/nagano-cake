@@ -1,3 +1,45 @@
 // Place all the styles related to the public/favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.back-color {
+  background-image: url(item-bg.jpg);
+  background-size: cover;
+  height: 100vh;
+}
+
+.favorite-title h4 {
+  background-color: rgba(128,128,128,0.5);
+}
+
+.favorite-content {
+  display: flex;
+  width: 80%;
+  height: 210px;
+  margin: 0 auto;
+  padding: 0.5%;
+  background-color: rgba(128,128,128,0.5);
+}
+
+.favorite-item-image {
+  width: 30%;
+  height: 200px;
+  text-align: center;
+}
+
+.favorite-item-image img {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.favorite-item-tag {
+  align-items: flex-end;
+}
+
+.favorite-none {
+  background-color: rgba(128,128,128,0.5);
+  margin-top: 5%;
+  text-align: center;
+}
