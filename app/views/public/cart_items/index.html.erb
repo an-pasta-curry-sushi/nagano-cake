@@ -1,86 +1,57 @@
 <%if @cart_items.exists? %>
-<div class='container mt-5'>
-
+<div class="cart-item-page">
+  <div class='container'>
   <!--ショッピングカートとカートを空にするボタン-->
   <div class='row'>
-    <div class='offset-md-1 my-2'>
-      <h4 class='title text-center px-4'>ショッピングカート</h4>
+    <div class='offset-md-1 my-2 cart-item-title'>
+      <h4 class='title text-center px-4 text-light'>ショッピングカート</h4>
     </div>
-    <div class='col-md-4 offset-md-4'>
+    <div class='col-md-2 offset-md-6 mt-2'>
       <%= link_to 'カートを空にする', cart_items_destroy_all_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
     </div>
   </div>
 
   <!--ショッピングカートのテーブル-->
-  <div class='row mt-5'>
-    <div class='col-md-12'>
-      <table class='table table-bordered'>
-
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th colspan="1"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          <% @cart_items.each do |cart_item| %>
-
-          <tr>
-
-            <td>
-              <%= link_to item_path(cart_item.item_id) do %>
-                <%= image_tag cart_item.item.get_item_image, size:'50x50' %>
-                <%= cart_item.item.name %>
-              <% end %>
-            </td>
-
-            <td>¥<%= cart_item.item.get_taxin_price.to_s(:delimited) %></td>
-
-            <td>
-              <%= form_with model: cart_item do |f| %>
-                  <%= f.number_field :amount,min: 1, class: 'amount_field' %>
-                  <%= f.submit '変更',class: 'btn btn-sm btn-success' %>
-              <% end %>
-            </td>
-
-            <td>¥<%= cart_item.sum_of_price.to_s(:delimited) %></td>
-            <td>
-              <% if @favorite_id = current_customer.favorites.find_by(item_id: cart_item.item_id) %>
-                <%= link_to "欲しいものリストから外す", favorite_path(@favorite_id), method: :delete, data: { confirm: '本当に外しますか？' }, class: 'btn btn-danger btn-sm' %>
+  <div class='row mt-3'>
+    <div class='col-md-12 mx-auto'>
+      <div class="cart-item-contents">
+        <% @cart_items.each do |cart_item| %>
+          <div class="cart-item-image">
+            <%= link_to item_path(cart_item.item_id) do %>
+              <%= image_tag cart_item.item.get_item_image, size:'50x50' %>
+            <% end %>
+          </div>
+          <div class="col-md-3 mt-5 ml-4 text-end text-light favorite-item-tag">
+            <%= link_to item_path(cart_item.item_id), class: "text-light" do %>
+              <%= cart_item.item.name %>
+            <% end %>
+            <h5 class="mt-5">
+              ¥<%= cart_item.item.get_taxin_price.to_s(:delimited) %>
+            </h5>
+          </div>
+          <div class="cart-item-ammount">
+            <%= form_with model: cart_item do |f| %>
+              <%= f.number_field :amount,min: 1, class: 'amount_field' %>
+              <%= f.submit '変更',class: 'btn btn-sm btn-success' %>
+            <% end %>
+          </div>
+          <div class="cart-item-total">
+            ¥<%= cart_item.sum_of_price.to_s(:delimited) %>
+          </div>
+          <div class="cart-item-buttons">
+            <% if @favorite_id = current_customer.favorites.find_by(item_id: cart_item.item_id) %>
+              <%= link_to "欲しいものリストから外す", favorite_path(@favorite_id), method: :delete, data: { confirm: '本当に外しますか？' }, class: 'btn btn-danger btn-sm' %>
+              <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+            <% else %>
+              <%= form_with model: @favorite do |f| %>
+                <%= f.hidden_field :item_id, :value => cart_item.item_id %>
+                <%= f.submit '欲しいものリストに入れる',class: 'btn btn-success btn-sm' %>
                 <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-              <% else %>
-                <%= form_with model: @favorite do |f| %>
-                  <%= f.hidden_field :item_id, :value => cart_item.item_id %>
-                  <%= f.submit '欲しいものリストに入れる',class: 'btn btn-success btn-sm' %>
-                  <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-                <% end %>
               <% end %>
-
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!--買い物続けるボタンと合計金額テーブル-->
-  <div class='row'>
-    <div class='col-md-3 offset-md-1'>
-      <%= link_to '買い物を続ける',root_path, class: "btn btn-primary btn-sm" %>
-    </div>
-    <div class='col-md-4 offset-md-4'>
-      <table class='table table-bordered' width='50%'>
-        <tr>
-          <td>合計金額</td>
-          <td>¥<%= @total.to_s(:delimited) %></td>
-        </tr>
-      </table>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 
@@ -94,11 +65,15 @@
 </div>
 
 <%elsif%>
-<div class='container mt-5 mb-5'>
-
-  <div class='row'>
-    <div class='col-md-8 offset-md-2'>
-      <h1><i class="fas fa-shopping-cart"></i>カートに商品がありません</h1>
+<div class="cart-item-page">
+  <div class='container mb-5'>
+    <div class='row'>
+      <div class='col-md-6 offset-md-3 cart-item-none text-light'>
+        <h1><i class="fas fa-shopping-cart"></i>カートに商品がありません</h1>
+      </div>
+      <div class='col-md-2 offset-md-5 mt-4'>
+        <%= link_to '買い物を続ける',root_path, class: "btn btn-primary " %>
+      </div>
     </div>
   </div>
 </div>

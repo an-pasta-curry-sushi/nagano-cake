@@ -40,7 +40,7 @@ class Public::ItemsController < Public::ApplicationController
       @genre = Genre.find(params[:genre])
       @total_items = Item.where(genre_id: @genre.id)
     end
-    @items = @total_items.page(params[:page])
+    @items = @total_items.page(params[:page]).per(8)
     render "index"
   end
 
@@ -49,14 +49,13 @@ class Public::ItemsController < Public::ApplicationController
     @genres = Genre.all
     case params[:sort_items]
     when "old"
-      @items = Item.page(params[:page])
+      @items = Item.page(params[:page]).per(8)
     when "high_price"
-      @items = Item.order(no_tax_price: "DESC").page(params[:page])
+      @items = Item.order(no_tax_price: "DESC").page(params[:page]).per(8)
     when "low_price"
-      @items = Item.order(:no_tax_price).page(params[:page])
+      @items = Item.order(:no_tax_price).page(params[:page]).per(8)
     else # default(new)
-      @items = Item.latest.page(params[:page])
+      @items = Item.latest.page(params[:page]).per(8)
     end
-    render "index"
   end
 end

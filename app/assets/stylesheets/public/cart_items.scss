@@ -1,3 +1,34 @@
 // Place all the styles related to the public/cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.cart-item-page {
+  background-image: url(item-bg.jpg);
+  background-size: cover;
+  height: 100vh;
+}
+
+.cart-item-title h4 {
+    background-color: rgba(128,128,128,0.5);
+}
+
+.cart-item-contents {
+  display: flex;
+  width: 80%;
+  height: 210px;
+  margin: 0 auto;
+  padding: 0.5%;
+  background-color: rgba(128,128,128,0.5);
+}
+
+
+
+
+
+
+
+.cart-item-none {
+  background-color: rgba(128,128,128,0.5);
+  margin-top: 5%;
+  text-align: center;
+}

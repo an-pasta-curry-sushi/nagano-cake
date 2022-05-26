@@ -1,7 +1,7 @@
 class Public::FavoritesController < Public::ApplicationController
 
   def index
-    @favorites = current_customer.favorites
+    @favorites = current_customer.favorites.page(params[:page]).per(5)
     @cart_item = CartItem.new
   end
 
