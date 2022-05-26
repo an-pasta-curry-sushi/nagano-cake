@@ -1,6 +1,9 @@
 // Place all the styles related to the public/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+// orders/new
 .order-new-page {
   background-image: url('item-bg.jpg');
   height: 100vh;
@@ -11,21 +14,58 @@
   background-color:rgba(128,128,128,0.3);
 }
 
-.order-new-page {
-  background-image: url('item-bg.jpg');
-  height: 100vh;
-  background-size: cover;
-}
 
-.order-forms {
-  background-color:rgba(128,128,128,0.3);
-}
-
+// orders/comfirm
 .order-comfirm-page {
   background-image: url('item-bg.jpg');
   height: 100vh;
   background-size: cover;
 }
 .order-comfirm-form {
+  background-color:rgba(128,128,128,0.3);
+}
+
+
+// orders/thanks
+.thanks-page {
+  background-image: url('item-bg.jpg');
+  height: 100vh;
+  background-size: cover;
+  position: relative;
+}
+
+.thanks-text {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  padding: 1%;
+  background-color:rgba(128,128,128,0.3);
+}
+
+
+// orders/index
+.order-index-page {
+  background-image: url('item-bg.jpg');
+  height: 100vh;
+  background-size: cover;
+}
+
+.order-index-text {
+  color : white;
+  background-color:rgba(128,128,128,0.3);
+}
+
+
+// orders/show
+.order-show-page {
+  background-image: url('item-bg.jpg');
+  height: 100vh;
+  background-size: cover;
+}
+
+.order-show-text {
+  color : white;
   background-color:rgba(128,128,128,0.3);
 }
