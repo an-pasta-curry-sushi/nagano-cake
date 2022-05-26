@@ -1,4 +1,5 @@
-<div class='container'>
+<div class="bg-image">
+  <div class='container'>
   <div class="row">
     <div class="col-md-2 offset-md-1 my-2">
       <h4 class="text-center title">商品編集</h4>
@@ -7,7 +8,7 @@
   <div class="row mt-2">
     <div class="col-md-6 mx-auto">
   	  <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
-      <table class="table table-borderless">
+      <table class="table table-borderless text-light">
   	  <%= render 'layouts/errors', obj: @item %>
         <tr>
           <td style="width30%"><%= f.label :image, "商品画像" %></td>
@@ -48,4 +49,5 @@
       <% end %>
     </div>
   </div>
+</div>
 </div>
