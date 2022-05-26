@@ -1,5 +1,13 @@
 <section>
   <div class='top_page'>
+    <div class='genre text-center'>
+      <h3>ジャンル一覧</h3>
+      <ul class='genre_lists'>
+        <% @genres.each do |genre|%>
+          <li class="genre_list mb-2"><%=genre.name %></li>
+        <%end%>
+      </ul>
+    </div>
     <h2 class='main_text'>
       ようこそ、ながのCAKEへ</br>
       このサイトは、ケーキ販売のECサイトになります。</br>
