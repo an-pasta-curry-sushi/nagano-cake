@@ -33,7 +33,7 @@ class Public::FavoritesController < Public::ApplicationController
     @item = Item.find(@favorite.item_id)
     @favorite_id = current_customer.favorites.find_by(item_id: @favorite.item_id)
     @favorite.destroy
-    flash.now[:notice] = "選択した商品を削除しました"
+    flash.now[:alert] = "選択した商品を削除しました"
 
     @favorites = false
     @favorite = Favorite.new

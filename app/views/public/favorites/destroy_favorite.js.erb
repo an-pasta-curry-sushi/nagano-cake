@@ -3,3 +3,5 @@ $("#item_favorite_area").html("<%= j(render 'public/favorites/item_favorite', fa
 $("#cart_item_favorite_area").html("<%= j(render 'public/favorites/cart_item_favorite', cart_items: @cart_items, favorite: @favorite, total: @total) %>");
 
 $("#favorite_index_area").html("<%= j(render 'public/favorites/index',  favorites: @favorites_all, cart_item: @cart_item) %>");
+
+$("#flash_message").html("<%= j(render 'layouts/flash_message') %>")
