@@ -1,3 +1,3 @@
 $("#item_favorite_area").html("<%= j(render 'public/favorites/item_favorite', favorites: @favorites, favorite: @favorite, favorite_id: @favorite_id, item: @item) %>");
 
-$("#cart_item_favorite_area").html("<%= j(render 'public/favorites/cart_item_favorite', cart_items: @cart_items, favorite: @favorite) %>");
+$("#cart_item_favorite_area").html("<%= j(render 'public/favorites/cart_item_favorite', cart_items: @cart_items, favorite: @favorite, total: @total) %>");

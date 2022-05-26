@@ -40,13 +40,21 @@ class Public::CartItemsController < Public::ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
-    redirect_to request.referer, notice: "数量を変更しました"
+    flash.now[:notice] = "数量を変更しました"
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @favorite = Favorite.new
+    render :create_favorite
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to cart_items_path, notice: "選択した商品を削除しました"
+    flash.now[:alert] = "数量を変更しました"
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @favorite = Favorite.new
+    render :create_favorite
   end
 
   def destroy_all

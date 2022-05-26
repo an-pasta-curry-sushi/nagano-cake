@@ -20,9 +20,8 @@ class Public::FavoritesController < Public::ApplicationController
         @favorite_id = current_customer.favorites.find_by(item_id: params[:favorite][:item_id])
         @cart_items = current_customer.cart_items
         @favorite = Favorite.new
+        @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
         render :create_favorite
-
-
       else
         redirect_to request.referer
       end
@@ -39,6 +38,7 @@ class Public::FavoritesController < Public::ApplicationController
     @favorites = false
     @favorite = Favorite.new
     @cart_items = current_customer.cart_items
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
     @favorites_all = current_customer.favorites
     @cart_item = CartItem.new
     render :destroy_favorite
