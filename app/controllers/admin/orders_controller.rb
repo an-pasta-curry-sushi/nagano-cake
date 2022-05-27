@@ -12,18 +12,19 @@ class Admin::OrdersController < Admin::ApplicationController
   end
 
   def update
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:order][:id])
     if @order.update(order_params)
       if @order.status == "confirm"
         @order.order_details.update(making_status: 1)
       end
-      @order = Order.find(params[:id])
-      @order_details = @order.order_details
+      @order = Order.find(params[:order][:id])
+      @order_details = @order.order_details.all
       flash.now[:notice] = "注文ステータスを更新しました"
       render :update
     else
+      @order = Order.find(params[:order][:id])
       @order_details = @order.order_details
-      render 'show'
+      render :update
     end
   end
 
@@ -31,7 +32,7 @@ class Admin::OrdersController < Admin::ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:status)
+    params.require(:order).permit(:id, :status)
   end
 
   def order_detail_params

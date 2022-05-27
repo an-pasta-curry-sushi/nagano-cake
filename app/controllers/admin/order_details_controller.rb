@@ -9,7 +9,7 @@ class Admin::OrderDetailsController < Admin::ApplicationController
       if @order_detail.making_status == "making"
         @order_detail.order.update(status: 2)
       elsif @order_details.all? { |order_detail|order_detail.making_status == "complete" }
-        @order.update(status: 3)
+        @order_detail.order.update(status: 3)
       end
       @order = Order.find(params[:order_id])
       @order_details = @order.order_details
@@ -18,11 +18,14 @@ class Admin::OrderDetailsController < Admin::ApplicationController
     else
       @order = Order.find(params[:order_id])
       @order_details = @order.order_details
-      render admin_order_path(oreder_id: @order.id)
+      render :update
     end
   end
+
+  private
 
   def order_detail_params
     params.require(:order_detail).permit(:making_status)
   end
+
 end
