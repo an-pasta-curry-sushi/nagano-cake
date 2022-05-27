@@ -29,10 +29,14 @@
           </div>
           <div class="button col-md-3 offset-md-1">
             <div class="cart-button mt-5">
-              <%= form_with model: cart_item do |f| %>
-                <%= f.hidden_field :item_id, :value => favorite.item_id %>
-                <%= f.number_field :amount, min: 1, :value =>1,class: 'amount_field' %>
-                <%= f.submit 'カートに入れる',class: 'btn btn-success' %>
+              <% if favorite.item.salling_status == true %>
+                <%= form_with model: cart_item do |f| %>
+                  <%= f.hidden_field :item_id, :value => favorite.item_id %>
+                  <%= f.number_field :amount, min: 1, :value =>1,class: 'amount_field' %>
+                  <%= f.submit 'カートに入れる',class: 'btn btn-success' %>
+                <% end %>
+              <% else %>
+                <p class="text-danger font-weight-bold">※売り切れ中です</p>
               <% end %>
             </div>
             <%= link_to '削除する', favorite_path(favorite.id), method: :delete,remote: true, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger ml-5 mt-1"%>
