@@ -1,6 +1,11 @@
 // Place all the styles related to the public/favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.back-color-none {
+  padding-top: 10%;
+}
+
 .favorite-title h4 {
   background-color: rgba(128,128,128,0.5);
 }
