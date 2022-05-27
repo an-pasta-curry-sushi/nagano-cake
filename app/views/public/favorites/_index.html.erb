@@ -4,7 +4,7 @@
       <h4 class='text-center px-4 text-light'>欲しいものリスト</h4>
     </div>
     <div class='col-md-2 offset-md-6 mt-2'>
-      <%= link_to '買い物を続ける',root_path, class: "btn btn-primary " %>
+      <%= link_to '買い物を続ける',items_path, class: "btn btn-primary " %>
     </div>
   </div>
   <div class='row mt-3'>
@@ -29,10 +29,14 @@
           </div>
           <div class="button col-md-3 offset-md-1">
             <div class="cart-button mt-5">
-              <%= form_with model: cart_item do |f| %>
-                <%= f.hidden_field :item_id, :value => favorite.item_id %>
-                <%= f.number_field :amount, min: 1, :value =>1,class: 'amount_field' %>
-                <%= f.submit 'カートに入れる',class: 'btn btn-success' %>
+              <% if favorite.item.salling_status == true %>
+                <%= form_with model: cart_item do |f| %>
+                  <%= f.hidden_field :item_id, :value => favorite.item_id %>
+                  <%= f.number_field :amount, min: 1, :value =>1,class: 'amount_field' %>
+                  <%= f.submit 'カートに入れる',class: 'btn btn-success' %>
+                <% end %>
+              <% else %>
+                <p class="text-danger font-weight-bold">※売り切れ中です</p>
               <% end %>
             </div>
             <%= link_to '削除する', favorite_path(favorite.id), method: :delete,remote: true, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger ml-5 mt-1"%>
