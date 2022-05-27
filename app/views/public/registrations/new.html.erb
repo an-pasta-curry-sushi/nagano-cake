@@ -1,94 +1,98 @@
 <div class="log-in-page">
-  <div class='container_fuild px-5 px-sm-0'>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="row">
-    <div class="offset-md-1 my-2">
-      <h4 class="title text-center px-4 text-light">新規会員登録</h4>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class="col-md-10 offset-md-1 form-table">
-      <%= form_with model: @customer, url: customer_registration_path, local: true, method: :post do |f| %>
-      <table class="table table-borderless row_table text-light">
-
-        <tr class='mt-2'>
-          <td>名前</td>
-          <td>
-            <span class='mr-3'>(姓)</span>
-              <%= f.text_field :last_name, placeholder: "令和", autofocus: true, class: 'last_name' %>
-            <span class='mr-3 ml-5'>(名)</span>
-              <%= f.text_field :first_name, placeholder: "道子", autocomplete: "off", class: 'first_name' %>
-          </td>
-        </tr>
-
-        <tr class='mt-2'>
-          <td>フリガナ</td>
-          <td>
-            <span>(セイ)</span>
-              <%= f.text_field :last_name_easy, placeholder: "レイワ", autocomplete: 'off', class: 'last_name_easy' %>
-            <span class='ml-5'>(メイ)</span>
-              <%= f.text_field :first_name_easy, placeholder: "ミチコ", autocomplete: 'off', class: 'first_name_easy' %>
-          </td>
-        </tr>
-
-        <tr class='mt-2'>
-          <td>メールアドレス</td>
-          <td>
-            <%= f.email_field :email, placeholder: "sample@example.com", autocomplete: 'off', class: 'ml-5 email' %>
-          </td>
-        </tr>
-
-        <tr class='mt-2'>
-          <td>郵便番号(ハイフン無し)</td>
-          <td>
-            <%= f.text_field :postal_code, placeholder: "0000000", autocomplete: 'off', class: 'ml-5 postal_code' %>
-          </td>
-        </tr>
-
-        <tr class='mt-2'>
-          <td>住所</td>
-          <td>
-            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", autocomplete: 'off', :size =>"54", class: 'ml-5 address' %>
-          </td>
-        </tr>
-
-        <tr class='mt-2'>
-          <td>電話番号(ハイフン無し)</td>
-          <td>
-            <%= f.text_field :phone_number, autocomplete: 'off', class: 'ml-5 phone_number' %>
-          </td>
-        </tr>
-
-        <tr class='mt-2'>
-          <td>パスワード(6文字以上)</td>
-          <td>
-            <%= f.password_field :password, autocomplete: 'off', class: "ml-5 new-password" %>
-          </td>
-        </tr>
-
-        <tr class='mt-2'>
-          <td>パスワード(確認用)</td>
-          <td>
-            <%= f.password_field :password_confirmation, autocomplete: 'off', class: "ml-5 new-password" %>
-          </td>
-        </tr>
-      </table>
-      <div class='text-center'>
-        <%= f.submit "新規登録", class: "col-3 ml-5 btn btn-success"%>
+  <div class='container-fluid'>
+    <div class="row">
+      <div class="offset-md-1 my-2">
+        <h4 class="title text-center px-4 text-light">新規会員登録</h4>
       </div>
-      <% end %>
+    </div>
+    <div class="row">
+      <div class="offset-md-1">
+        <%= render "devise/shared/error_messages", resource: resource %>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="col-md-10 offset-md-1 form-table">
+        <%= form_with model: @customer, url: customer_registration_path, local: true, method: :post do |f| %>
+        <table class="table table-borderless text-light">
+
+          <tr class='mt-2'>
+            <td>名前</td>
+            <td>
+              <span class='mr-3'>(姓)</span>
+              <%= f.text_field :last_name, placeholder: "令和", autofocus: true, class: 'last_name' %>
+              <span class='mr-3 ml-5'>(名)</span>
+              <%= f.text_field :first_name, placeholder: "道子", autocomplete: "off", class: 'first_name' %>
+            </td>
+          </tr>
+
+          <tr class='mt-2'>
+            <td>フリガナ</td>
+            <td>
+              <span>(セイ)</span>
+              <%= f.text_field :last_name_easy, placeholder: "レイワ", autocomplete: 'off', class: 'last_name_easy' %>
+              <span class='ml-5'>(メイ)</span>
+              <%= f.text_field :first_name_easy, placeholder: "ミチコ", autocomplete: 'off', class: 'first_name_easy' %>
+            </td>
+          </tr>
+
+          <tr class='mt-2'>
+            <td>メールアドレス</td>
+            <td>
+              <%= f.email_field :email, placeholder: "sample@example.com", autocomplete: 'off', class: 'ml-5 email' %>
+            </td>
+          </tr>
+
+          <tr class='mt-2'>
+            <td>郵便番号(ハイフン無し)</td>
+            <td>
+              <%= f.text_field :postal_code, placeholder: "0000000", autocomplete: 'off', class: 'ml-5 postal_code' %>
+            </td>
+          </tr>
+
+          <tr class='mt-2'>
+            <td>住所</td>
+            <td>
+              <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", autocomplete: 'off', :size =>"54", class: 'ml-5 address' %>
+            </td>
+          </tr>
+
+          <tr class='mt-2'>
+            <td>電話番号(ハイフン無し)</td>
+            <td>
+              <%= f.text_field :phone_number, autocomplete: 'off', class: 'ml-5 phone_number' %>
+            </td>
+          </tr>
+
+          <tr class='mt-2'>
+            <td>パスワード(6文字以上)</td>
+            <td>
+              <%= f.password_field :password, autocomplete: 'off', class: "ml-5 new-password" %>
+            </td>
+          </tr>
+
+          <tr class='mt-2'>
+            <td>パスワード(確認用)</td>
+            <td>
+              <%= f.password_field :password_confirmation, autocomplete: 'off', class: "ml-5 new-password" %>
+            </td>
+          </tr>
+        </table>
+        <div class='text-center'>
+          <%= f.submit "新規登録", class: "col-3 ml-5 btn btn-success"%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset-md-1 my-2">
+        <h4 class="title text-center px-4 text-light">既に登録済みの方</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 offset-md-2 my-2 text-light link-area">
+        <p class="ml-5 mt-2"><%= render "public/shared/links" %>　からログインしてください</p>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="offset-md-1 my-2">
-      <h4 class="title text-center px-4 text-light">既に登録済みの方</h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3 offset-md-2 my-2 text-light link-area">
-      <p class="ml-5 mt-2"><%= render "public/shared/links" %>　からログインしてください</p>
-    </div>
-  </div>
-</div>
 </div>
