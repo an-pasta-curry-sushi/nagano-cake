@@ -41,7 +41,7 @@
               <% if @customer.is_active == true %>
                 <p class="text-success font-weight-bold">有効</p>
               <% else %>
-                <p class="text-secondary font-weight-bold">無効</p>
+                <p class="text-danger font-weight-bold">無効</p>
               <% end %>
             </h5></td>
           </tr>
@@ -49,7 +49,7 @@
             <td style="width: 20%"></td>
             <td>
               <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
-              <%= link_to "注文履歴一覧を見る", admin_root_path, class: "ml-5 btn btn-primary" %>
+              <%= link_to "注文履歴一覧を見る", admin_customer_orders_path(@customer), class: "ml-5 btn btn-primary" %>
             </td>
           </tr>
         </table>
