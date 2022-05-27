@@ -5,19 +5,19 @@
       <div class='top-items row mt-5'>
         <% month_rank_items.each do |month_rank_item| %>
           <div id='item' class='col-3 content item'>
-            <%=link_to item_path(month_rank_item), class: 'link-color'  do %>
+            <%=link_to item_path(month_rank_item), class: 'link-color text-decoration-none' do %>
               <div class="item-image">
                 <%= image_tag month_rank_item.get_item_image %>
               </div>
               <div class="tag">
-                <p class='mt-2 text-light'><%=month_rank_item.name%></p>
+                <p class='mt-2 link-color text-light'><%=month_rank_item.name%></p>
               </div>
             <%end%>
           </div>
         <%end%>
       </div>
 
-      <p class="text-right"><%= link_to "すべての商品を見る", items_path, class: 'link-color text-light font-weight-bold' %></p>
+      <p class="text-right"><%= link_to "すべての商品を見る", items_path, class: 'link-color text-light text-decoration-none font-weight-bold' %></p>
     </div>
   </div>
 </div>
