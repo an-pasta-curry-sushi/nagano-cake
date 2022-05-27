@@ -45,6 +45,7 @@
 /*見出しのバックグランドカラー*/
 .title {
   background-color: rgba(128,128,128,0.5);
+  color: white;
 }
 
 /*商品一覧ページ*/

@@ -1,18 +1,21 @@
 <section>
   <div class="item-index-page">
-    <div class="index-main">
-      <div class="index-item-title text-light">
+    <div class="container index-main">
+      <div class="index-item-title text-light row">
+      <div class="col-md-3 text-center">
         <% if @word != nil %>
-          <h4 class="font-weight-bold">検索結果:"<%= @word %>"</h4>
+          <h4 class="font-weight-bold">検索結果:"<%= @word %>"<small>(全<%= @total_items.size %>件)</small></h4>
         <% elsif @genre != nil %>
-          <h4 class="font-weight-bold"><%= @genre.name %>一覧</h4>
+          <h4 class="font-weight-bold"><%= @genre.name %>一覧<small>(全<%= @total_items.size %>件)</small></h4>
         <% else %>
-          <h4 class="font-weight-bold">商品一覧</h4>
+          <h4 class="font-weight-bold">商品一覧<small>(全<%= @total_items.size %>件)</small></h4>
         <% end %>
-        <h6 class="font-weight-bold">(全<%= @total_items.size %>件)</h6>
+      </div>
+      <div class="col-md-3 offset-md-1">
+        <%= render 'layouts/sort_item', link: sort_path %>
+      </div>
       </div>
       <!-- 並び替え用フォーム -->
-      <%= render 'layouts/sort_item', link: sort_path %>
       <div id="public_items_index">
         <%= render 'index', items: @items %>
       </div>

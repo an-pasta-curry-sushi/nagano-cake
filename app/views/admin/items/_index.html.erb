@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-md-8 mx-auto">
-    <table class='table table-borderless border-bottom'>
-      <thead class='thead-light'>
+  <div class="col-md-9 mx-auto mt-2">
+    <table class='table table-borderless border-bottom text-light'>
+      <thead class="border-top border-bottom">
         <tr>
           <th>商品ID</th>
           <th>商品名</th>
@@ -15,7 +15,7 @@
         <tr>
           <td style='width: 10%'><%= item.id %></td>
           <td style='width: 37%'>
-            <%= link_to admin_item_path(item), class: "text-dark" do %>
+            <%= link_to admin_item_path(item), class: "text-light" do %>
               <u><%= item.name %></u>
             <% end %>
           </td>

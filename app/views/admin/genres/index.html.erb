@@ -1,17 +1,18 @@
-<div class="container">
+<div class="bg-image">
+  <div class="container">
   <div class="row">
     <div class="col-md-3 offset-md-1 my-2">
       <h4 class="text-center title">ジャンル一覧・追加</h4>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 genre-form mb-4">
       <div id="genre_errors">
         <%= render 'layouts/errors', obj: @genre %>
       </div>
       <%= form_with model: @genre, url: '/admin/genres', method: :post, local: false do |f| %>
       <div class="row my-4">
-        <div class="col-md-2 offset-md-1 my-auto text-center">
+        <div class="col-md-2 offset-md-1 my-auto text-center text-light">
           ジャンル名
         </div>
         <div class="col-md-4 my-auto">
@@ -26,8 +27,8 @@
   </div>
   <div class="row">
     <div class="col-md-4 ml-5">
-      <table class="table border-bottom">
-        <thead class="thead-light">
+      <table class="table border-bottom text-light">
+        <thead class="border-top border-bottom">
           <tr>
             <th class="text-center">ジャンル</th>
             <th></th>
@@ -39,4 +40,5 @@
       </table>
     </div>
   </div>
+</div>
 </div>
