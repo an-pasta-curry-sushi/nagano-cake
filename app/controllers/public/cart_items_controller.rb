@@ -14,26 +14,24 @@ class Public::CartItemsController < Public::ApplicationController
   def create
 
     @cart_items = current_customer.cart_items
+    if Item.find(params[:cart_item][:item_id]).salling_status == true
 
+      if @cart_item = @cart_items.find_by(item_id: params[:cart_item][:item_id])
+        @cart_item.amount += params[:cart_item][:amount].to_i
+      else
+        @cart_item = CartItem.new(cart_item_params)
+        @cart_item.customer_id = current_customer.id
+      end
 
-    if @cart_item = @cart_items.find_by(item_id: params[:cart_item][:item_id])
-      @cart_item.amount += params[:cart_item][:amount].to_i
-
+      if @cart_item.save
+        redirect_to cart_items_path, notice: "カートに商品を追加しました"
+      else
+        redirect_to request.referer
+      end
 
     else
-      @cart_item = CartItem.new(cart_item_params)
-      @cart_item.customer_id = current_customer.id
-
+      redirect_to request.referer, alert: "売り切れ中です"
     end
-
-    if @cart_item.save
-      redirect_to cart_items_path, notice: "カートに商品を追加しました"
-    else
-
-      redirect_to request.referer
-
-    end
-
 
   end
 

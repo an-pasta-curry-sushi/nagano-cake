@@ -21,17 +21,20 @@
       </div>
       <div class="row show-item-buttons">
         <div class='mt-5 d-inline-flex'>
-          <%= form_with model: @cart_item do |f| %>
+          <% if @item.salling_status == true %>
+            <%= form_with model: @cart_item do |f| %>
 
-          <!--hidden_field-->
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <!--数量選択-->
-          <div class="form-group d-inline-flex">
-            <%= f.number_field :amount, min: 1, :value =>1,class: 'amount_field' %>
-            <%= f.submit 'カートに入れる',class: 'btn btn-success ml-2' %>
-            <% end %>
-          </div>
-
+            <!--hidden_field-->
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <!--数量選択-->
+            <div class="form-group d-inline-flex">
+              <%= f.number_field :amount, min: 1, :value =>1,class: 'amount_field' %>
+              <%= f.submit 'カートに入れる',class: 'btn btn-success ml-2' %>
+              <% end %>
+            </div>
+          <% else %>
+            <p class="text-danger font-weight-bold">※売り切れ中です</p>
+          <% end %>
           <div id="item_favorite_area"class="form-group d-inline-flex ml-2">
             <%= render 'public/favorites/item_favorite', favorites: @favorites, favorite: @favorite, favorite_id: @favorite_id, item: @item %>
           </div>
