@@ -2,11 +2,11 @@ class Public::OrdersController < Public::ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
-    
+
     unless @customer.cart_items.exists?
       redirect_to items_path, notice: "カートに商品を追加してください"
     end
-    
+
   end
 
   def index
@@ -63,7 +63,7 @@ class Public::OrdersController < Public::ApplicationController
   end
 
   def create
-    
+
     @cart_items = current_customer.cart_items
     @order = current_customer.orders.new(order_params)
 

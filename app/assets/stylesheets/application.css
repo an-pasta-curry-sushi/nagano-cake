@@ -70,6 +70,10 @@ body {
   display: flex;
   flex-flow: column;
   min-height: 100vh;
+  background-image: url('item-bg.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
 }
 main {
   flex: 1;
