@@ -11,7 +11,7 @@
         <%= render "layouts/errors", obj: @customer %>
       <div class="form-table">
 
-      <table>
+      <table class="table-form">
 
         <tr>
           <div>
@@ -91,7 +91,7 @@
             <%= f.radio_button :is_active, true, class: "ml-5" %>
             <%= f.label :is_active, "有効", class: "text-light" %>
             <%= f.radio_button :is_active, false, class: "ml-2" %>
-            <%= f.label :is_active, "退会", class: "text-light" %>
+            <%= f.label :is_active, "無効", class: "text-light" %>
           </td>
         </tr>
 
