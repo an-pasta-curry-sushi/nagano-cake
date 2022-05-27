@@ -1,5 +1,5 @@
-<table class='table table-inverse border-bottom'>
-  <thead class='thead-light text-dark'>
+<table class='table table-inverse border-bottom text-light'>
+  <thead class='text-light'>
     <tr>
       <th style="width: 15%"></th>
       <th>購入日時</th>
@@ -13,7 +13,7 @@
       <tr>
         <td></td>
         <td>
-          <%= link_to admin_order_path(order), class: "text-dark" do %>
+          <%= link_to admin_order_path(order), class: "text-decolation-none text-light" do %>
             <u><%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></u>
           <% end %>
         </td>

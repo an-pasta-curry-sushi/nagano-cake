@@ -16,7 +16,9 @@
           <% end %>
         </td>
         <td>
-          <%= order.customer.last_name %><%= order.customer.first_name %>
+          <%= link_to admin_customer_orders_path(order.customer.id), class: "text-light" do %>
+            <%= order.customer.last_name %><%= order.customer.first_name %>
+          <% end %>
         </td>
         <td>
           <%= order.order_details.sum(:amount) %>
