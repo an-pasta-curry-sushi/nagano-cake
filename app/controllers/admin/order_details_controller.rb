@@ -11,8 +11,10 @@ class Admin::OrderDetailsController < Admin::ApplicationController
       elsif @order_details.all? { |order_detail|order_detail.making_status == "complete" }
         @order.update(status: 3)
       end
-
-      redirect_to request.referer, notice: "製作ステータスを更新しました"
+      @order = Order.find(params[:order_id])
+      @order_details = @order.order_details
+      flash.now[:notice] = "製作ステータスを更新しました"
+      render :update
     else
       @order = Order.find(params[:order_id])
       @order_details = @order.order_details

@@ -17,7 +17,10 @@ class Admin::OrdersController < Admin::ApplicationController
       if @order.status == "confirm"
         @order.order_details.update(making_status: 1)
       end
-      redirect_to request.referer, notice: "注文ステータスを更新しました"
+      @order = Order.find(params[:id])
+      @order_details = @order.order_details
+      flash.now[:notice] = "注文ステータスを更新しました"
+      render :update
     else
       @order_details = @order.order_details
       render 'show'
