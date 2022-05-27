@@ -10,7 +10,7 @@ class Public::OrdersController < Public::ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.latest
+    @orders = current_customer.orders.latest.page(params[:page]).per(5)
   end
 
   def show
