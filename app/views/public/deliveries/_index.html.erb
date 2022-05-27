@@ -8,7 +8,7 @@
           </div>
           <td>
             <div class='field mt-2'>
-            <%= f.text_field :postal_code, autocomplete: 'off', class: 'ml-5 email' %>
+            <%= f.text_field :postal_code, placeholder: "0000000", autocomplete: 'off', class: 'ml-5 email' %>
             </div>
           </td>
         </tr>
@@ -19,7 +19,7 @@
           </div>
           <td>
             <div class='field mt-2'>
-            <%= f.text_field :address, autocomplete: 'off', :size =>"54", class: 'ml-5 postal_code' %>
+            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", autocomplete: 'off', :size =>"54", class: 'ml-5 postal_code' %>
             </div>
           </td>
         </tr>
@@ -29,7 +29,7 @@
           </div>
           <td>
             <div class='field mt-2'>
-              <%= f.text_field :name, class: "ml-5 mr-5" %>
+              <%= f.text_field :name, placeholder: "令和道子", class: "ml-5 mr-5" %>
               <%= f.hidden_field :customer_id, :value => current_customer.id %>
               <%= f.submit "新規登録", class: "btn btn-success" %>
             </div>
