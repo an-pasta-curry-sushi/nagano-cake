@@ -59,21 +59,8 @@
     </div>
   </div>
   <div class='row'>
-    <div class='col-md-8 mx-4'>
-      <table class='table table-borderless border-bottom text-light'>
-        <thead class='border-top border-bottom'>
-          <tr>
-            <th style="width: 40%" class="font-weight-bold">商品名</th>
-            <th style="width: 15%" class="font-weight-bold">単価(税込)</th>
-            <th style="width: 10%" class="font-weight-bold">数量</th>
-            <th style="width: 10%" class="font-weight-bold">小計</th>
-            <th style="width: 25%" class="font-weight-bold">製作ステータス</th>
-          </tr>
-        </thead>
-        <tbody id="order_detail_status_area">
+    <div id="order_detail_status_area" class='col-md-8 mx-4'>
           <%= render 'admin/orders/order_detail_status', order: @order, order_details: @order_details %>
-        </tbody>
-      </table>
     </div>
     <div class='col-md-3 d-flex align-items-end'>
       <table class='table table-borderless text-light'>

@@ -39,7 +39,7 @@ class Public::FavoritesController < Public::ApplicationController
     @favorite = Favorite.new
     @cart_items = current_customer.cart_items
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
-    @favorites_all = current_customer.favorites.page(params[:page]).per(5)
+    @favorites_all = current_customer.favorites.page(params[:page]).per(4)
     @cart_item = CartItem.new
     render :destroy_favorite
   end
