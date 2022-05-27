@@ -22,7 +22,7 @@
                -1px 1px 0 #000,
                1px -1px 0 #000,
                -1px -1px 0 #000;
-  
+
   position: absolute;
   top: 55%;
   left: 5%;
@@ -78,10 +78,10 @@
 .about_page {
   width: 100vw;
   height: 85vh;
-  background-image: url('abouts.jpeg');
+  background-image: url('about.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top;
+  background-position: center;
   position : relative;
 }
 
@@ -91,11 +91,11 @@
   top: 30%;
   left: 30%;
   color: white;
-  
+
   text-shadow: 1px 1px 0 #000,
                -1px 1px 0 #000,
                1px -1px 0 #000,
                -1px -1px 0 #000;
-               
-  background-color:rgba(128,128,128,0.2);
+
+  background-color:rgba(128,128,128,0.5);
 }
