@@ -1,13 +1,15 @@
 // Place all the styles related to the public/cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
 .cart-item-page {
-  padding-top : 10%;
+  padding: 40px 20px;
+  
 }
 
-
-.cart-item-page {
-  padding-bottom: 20px;
+.cart-item-page-none {
+  padding-top : 10%;
 }
 
 .cart-item-title h4 {
