@@ -1,17 +1,6 @@
 // Place all the styles related to the public/favorites controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.favorite-page {
-  height: 1200px;
-} 
-
-
-.back-img {
-  background-image: url(item-bg.jpg);
-  background-size: cover;
-  height: 1200px;
-}
-
 .favorite-title h4 {
   background-color: rgba(128,128,128,0.5);
 }
@@ -40,7 +29,7 @@
 }
 
 .favorite-item-image:hover{
-  transform: scale(1.1);
+  transform: scale(1.05);
   transition-duration: 0.3s;
 }
 
