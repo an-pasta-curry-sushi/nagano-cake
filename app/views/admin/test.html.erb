@@ -1,103 +1,16 @@
-<div class="bg-image">
-<%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
-<div class='container'>
-  <div class="row">
-    <div class="offset-md-1 my-2 title">
-      <h4 class="text-center px-4 text-light">会員情報編集</h4>
-    </div>
-  </div>
-  <div class='row'>
-    <div>
-        <%= render "layouts/errors", obj: @customer %>
-      <div class="form-table">
-
-      <table>
-
-        <tr>
-          <div>
-            <td class="text-light mt">名前</td>
-          </div>
-          <td>
-            <div class='mt-3'>
-              <span class='mr-3 text-light'>(姓)</span>
-              <%= f.text_field :last_name, autofocus: true, class: 'last_name' %>
-              <span class='mr-3 ml-5 text-light'>(名)</span>
-              <%= f.text_field :first_name, autocomplete: "off", class: 'first_name' %>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <div class='mt-3'>
-            <td class="text-light">フリガナ</td>
-          </div>
-          <td>
-            <div class='field mt-3'>
-              <span class="text-light">(セイ)</span>
-              <%= f.text_field :last_name_easy, autocomplete: 'off', class: 'last_name_easy' %>
-              <span class='ml-5 text-light'>(メイ)</span>
-              <%= f.text_field :first_name_easy, autocomplete: 'off', class: 'first_name_easy' %>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <div class='mt-3'>
-            <td class="text-light">郵便番号(ハイフン無し)</td>
-          </div>
-          <td>
-            <div class='field mt-3'>
-            <%= f.text_field :postal_code, autocomplete: 'off', class: 'ml-5 email' %>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <div class='mt-3'>
-            <td class="text-light">住所</td>
-          </div>
-          <td>
-            <div class='field mt-3'>
-            <%= f.text_field :address, autocomplete: 'off', :size =>"54", class: 'ml-5 postal_code' %>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <div class='mt-3'>
-            <td class="text-light">電話番号(ハイフン無し)</td>
-          </div>
-          <td>
-            <div class='field mt-3'>
-            <%= f.text_field :phone_number, autocomplete: 'off', class: 'ml-5 address' %>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <div class='mt-3'>
-            <td class="text-light">メールアドレス</td>
-          </div>
-          <td>
-            <div class='field mt-3' >
-            <%= f.email_field :email, autocomplete: 'off', class: 'ml-5 phone_number' %>
-            </div>
-          </td>
-        </td>
-
-      </table>
-        <div class='field mt-3 ml-5' >
-          <%= f.radio_button :is_active, true %>
-          <%= f.label :is_active, "有効"%>
-          <%= f.radio_button :is_active, false %>
-          <%= f.label :is_active, "退会"%>
-        </div>
-      </div>
-      <div class="actions mt-5 d-grid gap-2">
-          <%= f.submit "編集内容を保存する", class: "col-5 ml-5 btn btn-success"%>
-        </div>
-    </div>
+<div class='col-md-2 offset-md-1  text-center m-5'>
+  <div class="card" style="width: 12rem;">
+    <div class="card-header">ジャンル一覧</div>
+    <ul class="list-group list-group-flush">
+      <% @genres.each do |genre| %>
+        <li class="list-group-item">
+          <%= form_with url: search_path, local: true, method: :get do |f| %>
+            <%= f.hidden_field :genre, :value => genre.id %>
+            <%= f.submit genre.name, class: "btn btn-link" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
-<% end %>
-</div>
+

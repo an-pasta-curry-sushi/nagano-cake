@@ -5,7 +5,7 @@
       <div class='top-items row mt-5'>
         <% month_rank_items.each do |month_rank_item| %>
           <div id='item' class='col-3 content item'>
-            <%=link_to item_path(month_rank_item), class: 'link-color'  do %>
+            <%=link_to item_path(month_rank_item), class: 'link-color text-decoration-none'  do %>
               <div class="item-image">
                 <%= image_tag month_rank_item.get_item_image %>
               </div>

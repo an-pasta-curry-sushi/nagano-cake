@@ -7,7 +7,7 @@
       <% end %>
     </div>
     <div class="col-md-2 ml-2 mt-4 text-light d-inline-flex favorite-item-name">
-      <%= link_to item_path(cart_item.item_id), class: "text-light" do %>
+      <%= link_to item_path(cart_item.item_id), class: "text-light text-decoration-none" do %>
         <%= cart_item.item.name %>
       <% end %>
     </div>
@@ -22,12 +22,12 @@
         <%= f.submit '変更',class: 'btn btn-sm btn-success' %>
       <% end %>
     </div>
-    <div class="cart-item-total mt-4 ml-4 text-light">
+    <div class="cart-item-total mt-4 ml-4 text-light col-md-1">
       <h5>¥<%= cart_item.sum_of_price.to_s(:delimited) %></h5>
     </div>
     <div class="cart-item-buttons mt-4 ml-4">
       <% if favorite_id = current_customer.favorites.find_by(item_id: cart_item.item_id) %>
-        <%= link_to "欲しいものリストから外す", favorite_path(favorite_id), method: :delete,remote: true, data: { confirm: '本当に外しますか？' }, class: 'btn btn-danger btn-sm' %>
+        <%= link_to "欲しいものリストから外す", favorite_path(favorite_id), method: :delete,remote: true, data: { confirm: '本当に外しますか？' }, class: 'btn btn-danger btn-sm mr-4' %>
         <%= link_to '削除する', cart_item_path(cart_item.id), method: :delete,remote: true, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
       <% else %>
         <%= form_with model: favorite,local:false do |f| %>

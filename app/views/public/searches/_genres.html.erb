@@ -1,0 +1,10 @@
+<%= form_with url: link, local: true, method: :get do |f| %>
+  <div class="row">
+    <div>
+      <%= f.select :genre, options_from_collection_for_select(Genre.all, :id, :name), {}, class: "form-control" %>
+    </div>
+    <div>
+      <%= f.submit "検索", class: "btn btn-secondary text-white" %>
+    </div>
+  </div>
+<% end %>
