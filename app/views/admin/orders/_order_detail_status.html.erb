@@ -1,0 +1,29 @@
+<table class='table table-borderless border-bottom text-light'>
+  <thead class='border-top border-bottom'>
+    <tr>
+      <th style="width: 40%" class="font-weight-bold">商品名</th>
+      <th style="width: 15%" class="font-weight-bold">単価(税込)</th>
+      <th style="width: 10%" class="font-weight-bold">数量</th>
+      <th style="width: 10%" class="font-weight-bold">小計</th>
+      <th style="width: 25%" class="font-weight-bold">製作ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+    <% order_details.each do |order_detail| %>
+      <tr>
+        <td><%= order_detail.item.name %></td>
+        <td><%= (order_detail.price).to_s(:delimited) %></td>
+        <td><%= order_detail.amount %></td>
+        <td><%= (order_detail.sum_of_price).to_s(:delimited) %></td>
+        <td>
+          <%= form_with model: order_detail, url: admin_order_order_detail_path(order, order_detail), method: :patch, local: false do |f| %>
+            <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+            <%= f.submit "更新", class: 'btn btn-success btn-sm ml-2' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

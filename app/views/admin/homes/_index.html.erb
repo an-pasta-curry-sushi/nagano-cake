@@ -1,0 +1,35 @@
+<table class='table table-inverse border-bottom text-light'>
+  <thead>
+    <tr>
+      <th style='width: 20%'>購入日時</th>
+      <th style='width: 55%'>購入者</th>
+      <th style='width: 10%'>注文個数</th>
+      <th style='width: 15%'>注文ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.each do |order| %>
+      <tr>
+        <td>
+          <%= link_to admin_order_path(order), class: "text-light" do %>
+            <u><%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></u>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to admin_customer_orders_path(order.customer.id), class: "text-light" do %>
+            <%= order.customer.last_name %><%= order.customer.first_name %>
+          <% end %>
+        </td>
+        <td>
+          <%= order.order_details.sum(:amount) %>
+        </td>
+        <td>
+          <%= order.status_i18n %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="mx-auto">
+  <%= paginate orders, remote: true %>
+</div>

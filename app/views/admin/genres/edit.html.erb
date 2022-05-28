@@ -1,0 +1,27 @@
+<div class="bg-image">
+  <div class="container">
+  <div class="row">
+    <div class="col-md-3 offset-md-1 my-2">
+      <h4 class="text-center title">ジャンル編集</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 genre-form">
+      <%= render 'layouts/errors', obj: @genre %>
+      <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
+      <div class="row my-4">
+        <div class="col-md-2 offset-md-1 my-auto text-center text-light">
+          ジャンル名
+        </div>
+        <div class="col-md-4 my-auto">
+          <%= f.text_field :name, class: 'form-control', placeholder: "ジャンル名" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.submit "変更を保存", class: 'btn btn-success w-75' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

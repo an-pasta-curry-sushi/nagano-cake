@@ -1,0 +1,67 @@
+<div class="row form-area col-md-10">
+      <%= form_with model: delivery, url: deliveries_path,local: false, method: :post do |f| %>
+      <table class="text-light">
+
+        <tr>
+          <div class='mt-2'>
+            <td>郵便番号(ハイフン無し)</td>
+          </div>
+          <td>
+            <div class='field mt-2'>
+            <%= f.text_field :postal_code, placeholder: "0000000", autocomplete: 'off', class: 'ml-5 email' %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <div class='mt-2'>
+            <td>住所</td>
+          </div>
+          <td>
+            <div class='field mt-2'>
+            <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", autocomplete: 'off', :size =>"54", class: 'ml-5 postal_code' %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <div class='mt-2'>
+            <td>宛名</td>
+          </div>
+          <td>
+            <div class='field mt-2'>
+              <%= f.text_field :name, placeholder: "令和道子", class: "ml-5 mr-5" %>
+              <%= f.hidden_field :customer_id, :value => current_customer.id %>
+              <%= f.submit "新規登録", class: "btn btn-success" %>
+            </div>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-12 mt-5">
+      <table class='table table-bordered text-light' style="width: 80%">
+        <thead>
+          <tr>
+            <th class="text-center" style="width: 15%">郵便番号</th>
+            <th style="width: 45%" class="text-center">住所</th>
+            <th class="text-center">宛名</th>
+            <th style="width: 26%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% deliveries.each do |delivery| %>
+            <tr>
+              <td class="align-middle"><%= delivery.postal_code %></td>
+              <td class="align-middle"><%= delivery.address %></td>
+              <td class="align-middle"><%= delivery.name %></td>
+              <td class="align-middle">
+              <%= link_to "編集する", edit_delivery_path(delivery), class: "btn btn-success mr-3" %>
+              <%= link_to "削除する", delivery_path(delivery), method: :delete,remote: true, data: {confirm: "本当に消しますか?" }, class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>

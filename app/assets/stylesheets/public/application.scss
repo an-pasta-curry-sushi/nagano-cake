@@ -1,0 +1,32 @@
+// Place all the styles related to the public/application controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+#error_explanation {
+  background-color: rgba(128,128,128,0.8);
+  width: 500px;
+  padding: 10px;
+  color: white;
+  border: solid 2px red;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+
+.link-area {
+  background-color: rgba(128,128,128,0.5);
+}
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}

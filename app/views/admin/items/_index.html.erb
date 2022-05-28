@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-9 mx-auto mt-2">
+    <table class='table table-borderless border-bottom text-light'>
+      <thead class="border-top border-bottom">
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% items.each do |item| %>
+        <tr>
+          <td style='width: 10%'><%= item.id %></td>
+          <td style='width: 37%'>
+            <%= link_to admin_item_path(item), class: "text-light" do %>
+              <u><%= item.name %></u>
+            <% end %>
+          </td>
+          <td style='width: 13%'><%= (item.no_tax_price).to_s(:delimited) %></td>
+          <td style='width: 25%'><%= item.genre.name %></td>
+          <td style='width: 15%'>
+            <% if item.salling_status == true %>
+              <p class="text-success font-weight-bold">販売中</p>
+            <% else %>
+              <p class="text-danger font-weight-bold">販売停止中</p>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= paginate items, remote: true %>
+  </div>
+</div>

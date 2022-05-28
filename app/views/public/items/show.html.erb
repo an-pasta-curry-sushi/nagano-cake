@@ -1,0 +1,47 @@
+<div class="items-show-page p-5">
+
+<div class='container'>
+  <div class='row'>
+    <!--商品画像-->
+    <div class='col-md-5 text-center show-item-image'>
+      <%=image_tag @item.get_item_image %>
+    </div>
+
+    <!--商品を数量選択欄-->
+    <div class='col-md-6 text-left pt-3 px-5 show-item-info'>
+      <div class="row show-item-naeme">
+        <h3 class='font-weight-bold text-light'><%= @item.name %></h3>
+      </div>
+      <div class="row show-item-introduction">
+        <p class='mt-3 text-light'><%= @item.introduction %></p>
+      </div>
+      <div class='row mt-5 show-item-price'>
+        <h3 class='d-inline-flex text-light'>¥<%= @item.get_taxin_price %></h3>
+        <p class='text-light'>(税込)</p>
+      </div>
+      <div class="row show-item-buttons">
+        <div class='mt-5 d-inline-flex'>
+          <% if @item.salling_status == true %>
+            <%= form_with model: @cart_item do |f| %>
+
+            <!--hidden_field-->
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <!--数量選択-->
+            <div class="form-group d-inline-flex">
+              <%= f.number_field :amount, min: 1, :value =>1,class: 'amount_field' %>
+              <%= f.submit 'カートに入れる',class: 'btn btn-success ml-2' %>
+              <% end %>
+            </div>
+          <% else %>
+            <p class="text-danger font-weight-bold">※売り切れ中です</p>
+          <% end %>
+          <div id="item_favorite_area"class="form-group d-inline-flex ml-2">
+            <%= render 'public/favorites/item_favorite', favorites: @favorites, favorite: @favorite, favorite_id: @favorite_id, item: @item %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

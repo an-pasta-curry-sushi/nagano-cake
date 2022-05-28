@@ -1,0 +1,14 @@
+<div class="delivery-page">
+  <div class="container">
+    <div class="row">
+      <div class="offset-md-1 my-2">
+        <h4 class="title text-center px-4 text-light">配送先登録 / 一覧</h4>
+      </div>
+    </div>
+    <div id="delivery_errors_area">
+      <%= render 'layouts/errors', obj: @delivery %>
+    </div>
+    <div id="delivery_index_area">
+      <%= render 'public/deliveries/index', delivery: @delivery, deliveries: @deliveries %>
+    </div>
+</div>

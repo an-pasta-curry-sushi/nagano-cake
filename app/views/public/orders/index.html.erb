@@ -1,0 +1,14 @@
+<div class='order-index-page pt-5'>
+  <div class='container'>
+    <div class="row">
+      <div class="offset-md-1 my-2">
+        <h4 class="title text-center px-4 text-light">注文履歴一覧</h4>
+      </div>
+    </div>
+    <div class='row order-index-text'>
+      <div id="public_orders_index" class='col-md-12'>
+        <%= render 'index', orders: @orders %>
+      </div>
+    </div>
+  </div>
+</div>

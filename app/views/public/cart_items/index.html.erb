@@ -1,0 +1,58 @@
+<%if @cart_items.exists? %>
+<div class="cart-item-page">
+  <div class='container-fluid'>
+  <!--ショッピングカートとカートを空にするボタン-->
+  <div class='row'>
+    <div class='offset-md-1 my-2 cart-item-title'>
+      <h4 class='title text-center px-4 text-light'>ショッピングカート</h4>
+    </div>
+    <div class='col-md-2 offset-md-6 mt-2'>
+      <%= link_to 'カートを空にする', cart_items_destroy_all_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+    </div>
+  </div>
+
+  <!--ショッピングカートのテーブル-->
+  <div class='row mt-3'>
+    <div class="col-md-8">
+      <div class="cart-item-header">
+        <div class="col-md-2 offset-md-1 text-light">
+          <h5 class="ml-5">商品名</h5>
+        </div>
+        <div class=" col-md-1.5 ml-5 text-light">
+          <h5>単価(税込)</h5>
+        </div>
+        <div class="col-md-4 text-light d-inline-flex ml-5">
+          <h5 class="ml-4 mr-5">数量</h5>
+          <h5 class="ml-5">小計</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='row mt-3' id="cart_item_favorite_area">
+    <%= render 'public/favorites/cart_item_favorite', cart_items: @cart_items, favorite: @favorite, total: @total %>
+  </div>
+
+  <!--情報入力に進むボタン-->
+  <div class='row'>
+    <div class='col-md-4 offset-md-4'>
+
+    </div>
+  </div>
+
+</div>
+
+<%elsif%>
+<div class="cart-item-page-none">
+  <div class='container mb-5'>
+    <div class='row'>
+      <div class='col-md-6 offset-md-3 cart-item-none text-light'>
+        <h1><i class="fas fa-shopping-cart"></i>カートに商品がありません</h1>
+      </div>
+      <div class='col-md-2 offset-md-5 mt-4'>
+        <%= link_to '買い物を続ける',items_path, class: "btn btn-primary " %>
+      </div>
+    </div>
+  </div>
+</div>
+<%end%>
+

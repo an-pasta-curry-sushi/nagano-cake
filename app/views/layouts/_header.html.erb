@@ -1,0 +1,87 @@
+<header style='background-color: #3D763E;'>
+  <nav class="navbar navbar-expand-lg navbar-light p-3">
+    <div class="container-fluid px-5">
+      <div>
+        <a class="navbar-brand" href="/"><%= image_tag 'logo.png', class: "ml-5", size: "150x90" %></a>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <% if admin_signed_in? %>
+          <div class="d-flex flex-column ml-auto">
+            <ul class="navbar-nav">
+              <li>
+                <%= link_to '商品一覧', admin_items_path,class: 'ml-4 text-light btn btn-outline-light' %>
+              </li>
+              <li>
+                <%=  link_to '会員一覧', admin_customers_path,class: 'ml-4 text-light btn btn-outline-light' %>
+              </li>
+              <li>
+                <%=  link_to '注文履歴一覧', admin_root_path, class: 'ml-4 text-light btn btn-outline-light' %>
+              </li>
+              <li>
+                <%= link_to 'ジャンル一覧', admin_genres_path,class: 'ml-4 text-light btn btn-outline-light'%>
+              </li>
+              <li>
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'ml-4 text-light btn btn-outline-light' %>
+              </li>
+            </ul>
+
+            <!-- 検索欄 -->
+            <%= render 'layouts/search', link: admin_search_path %>
+
+          </div>
+        <% elsif customer_signed_in? %>
+          <p class='m-auto'>ようこそ、<%= current_customer.last_name %>さん！</p>
+          <div class="d-flex flex-column ml-auto">
+            <ul class="navbar-nav ml-auto">
+              <li>
+                <%= link_to 'マイページ', my_page_customers_path, class: 'ml-4 text-light btn btn-outline-light' %>
+              </li>
+              <li>
+                <%= link_to '欲しいものリスト', favorites_path, class: 'ml-4 text-light btn btn-outline-light' %>
+              </li>
+              <li>
+                <%= link_to '商品一覧', items_path, class: 'ml-4 text-light btn btn-outline-light' %>
+              </li>
+              <li>
+                <%= link_to 'カート', cart_items_path, class: 'ml-4 text-light btn btn-outline-light' %>
+              </li>
+              <li>
+                <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'ml-4 text-light btn btn-outline-light' %>
+              </li>
+            </ul>
+
+            <!-- 検索欄 -->
+            <%= render 'layouts/search', link: search_path %>
+
+          </div>
+        <% else %>
+          <ul class="navbar-nav ml-auto">
+            <li>
+              <%= link_to  'About', about_path,class: 'ml-4 text-light btn btn-outline-light' %>
+            </li>
+            <li>
+              <%= link_to '商品一覧', items_path,class: 'ml-4 text-light btn btn-outline-light'%>
+            </li>
+            <li>
+              <%= link_to  '新規登録', new_customer_registration_path,class: 'ml-4 text-light btn btn-outline-light' %>
+            </li>
+            <li>
+              <%= link_to 'ログイン', new_customer_session_path ,class: 'ml-4 text-light btn btn-outline-light' %>
+            </li>
+          </ul>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- フラッシュメッセージ -->
+
+  <div id="flash_message">
+    <%= render 'layouts/flash_message' %>
+  </div>
+
+</header>

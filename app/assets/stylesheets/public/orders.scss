@@ -1,0 +1,28 @@
+// Place all the styles related to the public/orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+
+.order-forms {
+  background-color:rgba(128,128,128,0.3);
+  padding : 20px;
+}
+
+
+.thanks-text {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  padding: 1%;
+  background-color:rgba(128,128,128,0.3);
+}
+
+
+// orders/index
+.order-index-text {
+  color : white;
+}

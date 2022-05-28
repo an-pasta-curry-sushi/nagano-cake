@@ -13,3 +13,78 @@
  *= require_tree .
  *= require_self
  */
+*{
+  font-family: Georgia, serif;
+}
+
+ nav {
+  position: relative
+ }
+
+/*エラーメッセージ*/
+#notice{
+  color: yellow;
+  font-size: 20px;
+  position: absolute;
+  top: 15%;
+  left: 2%;
+  z-index: 1;
+}
+
+#alert {
+  color: red;
+  font-size: 20px;
+  position: absolute;
+  top: 15%;
+  left: 2%;
+  z-index: 1;
+}
+
+
+.flash_messeage {
+  position: relative;
+}
+
+/*見出しのバックグランドカラー*/
+.title {
+  background-color: rgba(128,128,128,0.5);
+  color: white;
+}
+
+/*商品一覧ページ*/
+.item_box {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+
+/*数量変更フィールド*/
+.amount_field {
+  width: 45px;
+}
+
+/*エラーが起きた時のレイアウト崩れ*/
+.field_with_errors {
+  display: contents;
+}
+
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  background-image: url('item-bg.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+}
+main {
+  flex: 1;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+
+

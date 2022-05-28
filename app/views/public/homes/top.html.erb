@@ -1,0 +1,20 @@
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class='top_page'>
+        <h2 class='main_text'>
+          ようこそ、ながのCAKEへ</br>
+          このサイトは、ケーキ販売のECサイトになります。</br>
+          会員でない方も商品の閲覧はできますが、</br>
+          購入には会員登録が必要になります。
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="home-items">
+    <%= render "new_items", items: @items %>
+    <%= render "rank_items", month_rank_items: @month_rank_items %>
+  </div>
+</section>

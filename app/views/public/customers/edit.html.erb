@@ -1,0 +1,99 @@
+<div class="my-page">
+<%= form_with model: @customer, url: my_page_customers_path do |f| %>
+<div class='container'>
+  <div class="row">
+    <div class="offset-md-1 my-2 title">
+      <h4 class="text-center px-4 text-light">会員情報編集</h4>
+    </div>
+  </div>
+  <div class='row'>
+    <div>
+        <%= render "layouts/errors", obj: @customer %>
+      <div  class="form-table">
+
+      <table>
+
+        <tr>
+          <div>
+            <td class="text-light mt">名前</td>
+          </div>
+          <td>
+            <div class='mt-3'>
+              <span class='mr-3 text-light'>(姓)</span>
+              <%= f.text_field :last_name, autofocus: true, class: 'last_name' %>
+              <span class='mr-3 ml-5 text-light'>(名)</span>
+              <%= f.text_field :first_name, autocomplete: "off", class: 'first_name' %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <div class='mt-3'>
+            <td class="text-light">フリガナ</td>
+          </div>
+          <td>
+            <div class='field mt-3'>
+              <span class="text-light">(セイ)</span>
+              <%= f.text_field :last_name_easy, autocomplete: 'off', class: 'last_name_easy' %>
+              <span class='ml-5 text-light'>(メイ)</span>
+              <%= f.text_field :first_name_easy, autocomplete: 'off', class: 'first_name_easy' %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <div class='mt-3'>
+            <td class="text-light">郵便番号(ハイフン無し)</td>
+          </div>
+          <td>
+            <div class='field mt-3'>
+            <%= f.text_field :postal_code, autocomplete: 'off', class: 'ml-5 email' %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <div class='mt-3'>
+            <td class="text-light">住所</td>
+          </div>
+          <td>
+            <div class='field mt-3'>
+            <%= f.text_field :address, autocomplete: 'off', :size =>"54", class: 'ml-5 postal_code' %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <div class='mt-3'>
+            <td class="text-light">電話番号(ハイフン無し)</td>
+          </div>
+          <td>
+            <div class='field mt-3'>
+            <%= f.text_field :phone_number, autocomplete: 'off', class: 'ml-5 address' %>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <div class='mt-3'>
+            <td class="text-light">メールアドレス</td>
+          </div>
+          <td>
+            <div class='field mt-3' >
+            <%= f.email_field :email, autocomplete: 'off', class: 'ml-5 phone_number' %>
+            </div>
+          </td>
+        </td>
+
+      </table>
+      </div>
+      <div class="actions mt-5 d-grid gap-2">
+          <%= f.submit "編集内容を保存する", class: "col-5 ml-5 btn btn-success"%>
+
+          <%=link_to '退会する', quit_check_customers_path, class: "col-3 ml-5 btn btn-danger"%>
+        </div>
+    </div>
+  </div>
+</div>
+<% end %>
+</div>

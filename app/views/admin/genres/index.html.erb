@@ -1,0 +1,44 @@
+<div class="bg-image">
+  <div class="container">
+  <div class="row">
+    <div class="col-md-3 offset-md-1 my-2">
+      <h4 class="text-center title">ジャンル一覧・追加</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 genre-form mb-4">
+      <div id="genre_errors">
+        <%= render 'layouts/errors', obj: @genre %>
+      </div>
+      <%= form_with model: @genre, url: '/admin/genres', method: :post, local: false do |f| %>
+      <div class="row my-4">
+        <div class="col-md-2 offset-md-1 my-auto text-center text-light">
+          ジャンル名
+        </div>
+        <div class="col-md-4 my-auto">
+          <%= f.text_field :name, id: 'genre_field', class: 'form-control', placeholder: "ジャンル名" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.submit "新規登録", class: 'btn btn-success w-75' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 ml-5">
+      <table class="table border-bottom text-light">
+        <thead class="border-top border-bottom">
+          <tr>
+            <th class="text-center">ジャンル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="admin_genres_index">
+          <%= render 'index', genres: @genres %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
